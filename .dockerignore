@@ -1,0 +1,25 @@
+# Build context: solo ciò che serve al motore headless
+.git/
+.github/
+.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.db
+*.sqlite
+**/*.db
+**/*.db-wal
+**/*.db-shm
+**/*.sqlite
+**/*.sqlite3
+produzione/build/dist/
+sorvegliata/*
+**/audit_export.json
+node_modules/
+.claude/
+docs/
+*.zip
+_dev_server.py
+test_*.py
+# i .md restano fuori dall'immagine (non servono a runtime), tranne nessuno
+*.md

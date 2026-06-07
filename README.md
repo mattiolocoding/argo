@@ -122,6 +122,22 @@ http://127.0.0.1:8773/audit      → tamper-evident audit log
 
 No models? No window library? ARGO **degrades gracefully**: it still runs, opens in your browser, and tells you what's missing.
 
+### Run with Docker
+
+The native desktop app stays native (a container has no GUI), but the **headless
+engine** (API + the same web UI, served over HTTP) runs great in a container, and
+multiple containers make a ready-made [fleet](#scaling). The engine is stdlib-only,
+so the image is small and needs no `pip install`.
+
+```bash
+docker compose up -d --build
+# open the UI:        http://127.0.0.1:8780
+# live status:        http://127.0.0.1:8780/stato
+```
+
+The container reaches your host's Ollama via `host.docker.internal`. Verified: the
+containerized engine starts healthy, serves the UI, and connects to the host LLM.
+
 ## Privacy
 
 ARGO is local by design:

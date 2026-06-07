@@ -5,6 +5,14 @@ All notable changes to ARGO are documented here. Format loosely based on
 
 ## [Unreleased]
 
+### Added
+- **Docker support** for the headless engine: `Dockerfile` (stdlib-only, slim image,
+  healthcheck), `docker-compose.yml` (reaches host Ollama via `host.docker.internal`,
+  maps `8780:8773`), `.dockerignore`, and `serve.py` (windowless entrypoint). Verified
+  live: containerized engine starts healthy, serves the UI, connects to the host LLM.
+  Multiple containers form a fleet. The native desktop app remains native.
+- Real UI screenshots in the README (chat, console, fleet card).
+
 ## [0.1.0] — 2026-06-07
 
 First tagged release: the local core runs, is verified live, and the project is

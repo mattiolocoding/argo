@@ -1,0 +1,30 @@
+# ARGO su Docker — motore headless (UI via browser).
+#
+#   docker compose up -d --build
+#   apri  http://127.0.0.1:8780      (UI)
+#   stato http://127.0.0.1:8780/stato
+#
+# Presuppone Ollama in esecuzione sull'HOST (https://ollama.com). Il container
+# lo raggiunge via host.docker.internal. Per la persistenza della memoria,
+# decommenta il volume.
+
+services:
+  argo:
+    build: .
+    image: argo:latest
+    container_name: argo
+    ports:
+      - "8780:8773"          # host:container — 8780 per non scontrarsi con un ARGO nativo sulla 8773
+    environment:
+      ARGO_HOST: "0.0.0.0"
+      ARGO_ISTANZA_NOME: "ARGO-docker"
+      OLLAMA_HOST: "http://host.docker.internal:11434"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # raggiunge Ollama sull'host anche su Linux
+    restart: unless-stopped
+    # Persistenza opzionale dei dati (memoria/grafo/audit):
+    # volumes:
+    #   - argo-data:/app/data
+
+# volumes:
+#   argo-data:
