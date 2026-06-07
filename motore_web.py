@@ -714,11 +714,15 @@ class Motore:
                 print("[MOTORE] pensatore chat:", e)
                 risp = ""
         if not risp and self.mesh:
-            risp = self.mesh.pensa(prompt)
-            if str(risp).startswith("[ModelMesh"):
+            res = self.mesh.pensa(prompt)
+            # mesh.pensa() ritorna un dict {risposta, livello, modello}: estrai il testo.
+            risp = res.get("risposta", "") if isinstance(res, dict) else str(res)
+            if not risp or str(risp).startswith("[ModelMesh"):
                 risp = self.cervello.pensa(prompt)
         elif not risp:
             risp = self.cervello.pensa(prompt)
+        if not isinstance(risp, str):
+            risp = str(risp)
         risp = sicurezza.redigi(risp)
         try:
             self.memoria.ricorda("chat", risp[:200])
