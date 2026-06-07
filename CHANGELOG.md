@@ -5,6 +5,16 @@ All notable changes to ARGO are documented here. Format loosely based on
 
 ## [Unreleased]
 
+### Changed
+- **Repo reorganized into a clean tree**: status/planning docs moved to `docs/`, tests to
+  `tests/` (with path bootstrap), standalone dev scripts to `scripts/`; removed the dead
+  `ponte_sonar.py` (SONAR bridge); README gained a "Project layout" section. CI and
+  `.dockerignore` updated to the new paths.
+- **UI improved to the impeccable standard**: fixed the chat-view scroll/overflow so the
+  feed scrolls cleanly; rebuilt the companion eye with a real eyelid blink (pure CSS);
+  removed an AI-tell glow; detector stays at 0. (A residual chat-bubble overlay is being
+  finalized.)
+
 ### Added
 - **Docker support** for the headless engine: `Dockerfile` (stdlib-only, slim image,
   healthcheck), `docker-compose.yml` (reaches host Ollama via `host.docker.internal`,
