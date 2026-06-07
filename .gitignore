@@ -7,6 +7,7 @@ produzione/build/dist/
 *.db-wal
 *.db-shm
 _dev_server.py
+*.zip
 
 # Stato runtime / dati personali — non sono sorgente
 sorvegliata/*

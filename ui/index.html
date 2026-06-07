@@ -222,10 +222,13 @@ p, .opt-desc, .onb-sub, .prop-txt, .advice-box { text-wrap: pretty; }
 }
 
 /* ---------- Pannelli vista ---------- */
-.view { flex: 1; overflow-y: auto; display: none; flex-direction: column; }
+/* Le viste scrollano internamente; quella chat gestisce lo scroll per-colonna */
+.view { flex: 1; min-height: 0; overflow-y: auto; display: none; flex-direction: column; }
 .view.active { display: flex; }
 
 /* ---------- CHAT ---------- */
+/* La vista chat NON scrolla in blocco: riempie #main e ogni colonna
+   ha il suo scroll interno (così bolle/proposte non invadono le sezioni in basso). */
 #view-chat {
   padding: 14px;
   gap: 12px;
@@ -234,13 +237,17 @@ p, .opt-desc, .onb-sub, .prop-txt, .advice-box { text-wrap: pretty; }
 #view-chat.active {
   display: grid;
   grid-template-columns: minmax(280px, 1.15fr) minmax(260px, .85fr);
-  grid-template-rows: auto 1fr;
+  grid-template-rows: minmax(0, 1fr);
   align-items: stretch;
+  overflow: hidden;        /* lo scroll vive dentro le colonne, non qui */
+  min-height: 0;
 }
 .presence-stage {
   grid-column: 1 / 2;
-  grid-row: 1 / 3;
+  grid-row: 1 / 2;
   min-height: 0;
+  overflow-y: auto;        /* colonna sinistra: scroll indipendente */
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -248,69 +255,102 @@ p, .opt-desc, .onb-sub, .prop-txt, .advice-box { text-wrap: pretty; }
 .companion-card {
   position: relative;
   overflow: hidden;
-  min-height: 300px;
+  flex: 0 0 auto;
   border: 1px solid rgba(99,102,241,.35);
   border-radius: 18px;
   background:
-    radial-gradient(circle at 50% 42%, rgba(99,102,241,.30), transparent 48%),
+    radial-gradient(circle at 50% 40%, rgba(99,102,241,.28), transparent 52%),
     linear-gradient(180deg, #111a2d 0%, #0a0f1d 100%);
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 22px 18px 18px;
   box-shadow: 0 18px 42px rgba(0,0,0,.28);
 }
 .companion-card::before {
   content: "";
-  position: absolute; inset: 18px;
+  position: absolute; inset: 12px;
   border: 1px solid rgba(148,163,184,.08);
-  border-radius: 16px;
+  border-radius: 14px;
+  pointer-events: none;
 }
+/* --- Occhio di ARGO: iride + palpebra reale in CSS puro --- */
 .argo-eye {
   position: relative;
-  width: min(52vw, 250px);
-  aspect-ratio: 1.45;
+  width: min(40vw, 168px);
+  aspect-ratio: 1.5;
   border-radius: 999px;
-  background: linear-gradient(135deg, rgba(226,232,240,.96), rgba(165,180,252,.78));
-  box-shadow: 0 0 0 1px rgba(255,255,255,.18), 0 6px 16px rgba(0,0,0,.35);
-  animation: eye-float 4.8s ease-in-out infinite;
+  overflow: hidden;                 /* le palpebre restano dentro il bulbo */
+  background:
+    radial-gradient(circle at 50% 42%, rgba(99,102,241,.18), transparent 70%),
+    #0b1120;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.10),
+    inset 0 8px 18px rgba(0,0,0,.55),
+    0 6px 18px rgba(0,0,0,.4);
+  animation: eye-float 5s ease-in-out infinite;
 }
+/* iride + pupilla (si muove leggermente: "pensiero") */
 .argo-eye::before {
   content: "";
   position: absolute;
-  inset: 16%;
+  left: 50%; top: 50%;
+  width: 46%; aspect-ratio: 1;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
   background:
-    radial-gradient(circle at 50% 46%, rgba(165,180,252,.55) 0 30%, transparent 62%),
-    radial-gradient(circle at 42% 38%, #f8fafc 0 10%, #111827 11% 29%, #6366f1 30% 58%, #1e1b4b 59%);
-  animation: eye-think 6s ease-in-out infinite;
+    radial-gradient(circle at 42% 38%, rgba(255,255,255,.95) 0 7%, transparent 9%),
+    radial-gradient(circle at 50% 50%, #0a0a14 0 24%, #6366f1 26%, #4338ca 52%, #1e1b4b 74%);
+  box-shadow: inset 0 0 10px rgba(255,255,255,.18);
+  animation: eye-look 6.5s ease-in-out infinite;
 }
+/* palpebra: copre TUTTO il bulbo, parte dall'alto e si chiude fino in fondo */
 .argo-eye::after {
   content: "";
   position: absolute;
-  left: 15%; right: 15%; top: -9%;
-  height: 16%;
-  border-radius: 50%;
-  background: rgba(8,12,20,.78);
-  transform-origin: center top;
-  animation: blink 7s ease-in-out infinite;
+  left: -4%; right: -4%; top: -4%; bottom: -4%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #0b1120 0%, #0b1120 60%, #0a0f1d 100%);
+  box-shadow: inset 0 -6px 10px rgba(0,0,0,.4);
+  transform-origin: 50% 0;
+  transform: scaleY(0);             /* aperto: palpebra ritratta in alto */
+  animation: blink 6s ease-in-out infinite;
 }
-.companion-card.think .argo-eye::before { animation-duration: 2.2s; }
-.companion-card.alert .argo-eye   { box-shadow: 0 0 0 2px rgba(245,158,11,.55), 0 6px 16px rgba(0,0,0,.35); }
-.companion-card.protect .argo-eye { box-shadow: 0 0 0 2px rgba(34,197,94,.5),  0 6px 16px rgba(0,0,0,.35); }
+.companion-card.think .argo-eye::before { animation-duration: 2.6s; }
+.companion-card.think .argo-eye::after  { animation-duration: 4.2s; }
+.companion-card.alert .argo-eye   { box-shadow: inset 0 0 0 1px rgba(245,158,11,.4), inset 0 8px 18px rgba(0,0,0,.55), 0 0 0 2px rgba(245,158,11,.45), 0 6px 18px rgba(0,0,0,.4); }
+.companion-card.protect .argo-eye { box-shadow: inset 0 0 0 1px rgba(34,197,94,.35), inset 0 8px 18px rgba(0,0,0,.55), 0 0 0 2px rgba(34,197,94,.4), 0 6px 18px rgba(0,0,0,.4); }
+.companion-card.alert .argo-eye::before   { background: radial-gradient(circle at 42% 38%, rgba(255,255,255,.95) 0 7%, transparent 9%), radial-gradient(circle at 50% 50%, #0a0a14 0 24%, #f59e0b 26%, #b45309 52%, #422006 74%); }
+.companion-card.protect .argo-eye::before  { background: radial-gradient(circle at 42% 38%, rgba(255,255,255,.95) 0 7%, transparent 9%), radial-gradient(circle at 50% 50%, #0a0a14 0 24%, #22c55e 26%, #15803d 52%, #052e16 74%); }
 /* L'aura di stato è portata dal fondo della scheda, non da un alone diffuso */
-.companion-card.alert   { background: radial-gradient(circle at 50% 42%, rgba(245,158,11,.20), transparent 50%), linear-gradient(180deg, #1a1606 0%, #0a0f1d 100%); }
-.companion-card.protect { background: radial-gradient(circle at 50% 42%, rgba(34,197,94,.18),  transparent 50%), linear-gradient(180deg, #0c1a14 0%, #0a0f1d 100%); }
-@keyframes eye-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-@keyframes eye-think { 0%,100% { transform: translate(0,0) scale(1); } 30% { transform: translate(7px,-2px) scale(.98); } 62% { transform: translate(-6px,3px) scale(1.02); } }
-@keyframes blink { 0%,92%,100% { transform: scaleY(0); } 94%,96% { transform: scaleY(1); } }
-.presence-copy {
-  position: absolute;
-  left: 18px; right: 18px; bottom: 18px;
-  display: grid;
-  gap: 5px;
-  text-align: center;
+.companion-card.alert   { background: radial-gradient(circle at 50% 40%, rgba(245,158,11,.20), transparent 54%), linear-gradient(180deg, #1a1606 0%, #0a0f1d 100%); }
+.companion-card.protect { background: radial-gradient(circle at 50% 40%, rgba(34,197,94,.16),  transparent 54%), linear-gradient(180deg, #0c1a14 0%, #0a0f1d 100%); }
+@keyframes eye-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+/* la pupilla scruta dolcemente l'ambiente */
+@keyframes eye-look {
+  0%,100% { transform: translate(-50%, -50%); }
+  28%     { transform: translate(calc(-50% + 9px), calc(-50% - 2px)); }
+  60%     { transform: translate(calc(-50% - 8px), calc(-50% + 3px)); }
 }
-.presence-copy b { font-size: 18px; letter-spacing: .2px; }
-.presence-copy span { color: var(--tx2); font-size: 12px; }
+/* palpebra: aperta quasi sempre; chiusura rapida (~140ms) con doppio battito occasionale */
+@keyframes blink {
+  0%, 90%       { transform: scaleY(0); }
+  92.5%         { transform: scaleY(1); }   /* chiuso */
+  95%           { transform: scaleY(0); }   /* riaperto */
+  96.5%         { transform: scaleY(1); }   /* secondo battito */
+  98.5%, 100%   { transform: scaleY(0); }
+}
+.presence-copy {
+  position: static;
+  display: grid;
+  gap: 4px;
+  text-align: center;
+  max-width: 30ch;
+}
+.presence-copy b { font-size: 16px; letter-spacing: .2px; line-height: 1.3; }
+.presence-copy span { color: var(--tx2); font-size: 12px; line-height: 1.45; }
 .cockpit-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -335,12 +375,23 @@ p, .opt-desc, .onb-sub, .prop-txt, .advice-box { text-wrap: pretty; }
 .cockpit-card span { display: block; color: var(--tx2); font-size: 11px; margin-top: 4px; }
 .side-live {
   grid-column: 2 / 3;
-  grid-row: 1 / 3;
+  grid-row: 1 / 2;
   min-height: 0;
+  overflow-y: auto;          /* fallback: scrolla se le sezioni fisse non entrano */
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
+.side-live > .live-panel { flex: 0 0 auto; }
+/* solo la timeline (flex:1, via style inline) si espande e scrolla al suo interno */
+.side-live > .live-panel[style*="flex:1"] {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.side-live > .live-panel[style*="flex:1"] > .activity-stream { flex: 1 1 auto; max-height: none; }
 .panel-title {
   display: flex; justify-content: space-between; align-items: center;
   color: var(--mut);
@@ -402,10 +453,29 @@ p, .opt-desc, .onb-sub, .prop-txt, .advice-box { text-wrap: pretty; }
 .toast b { display:block; font-size: 12px; margin-bottom: 3px; }
 .toast span { color: var(--tx2); font-size: 11px; }
 @keyframes toast-in { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+/* --- Finestra stretta (es. Qt ~540px): le colonne si impilano e l'intera
+       vista chat scrolla come un unico flusso. Niente scroll annidati che
+       facciano sovrapporre bolle, proposta e sezioni in basso. --- */
 @media (max-width: 900px) {
-  #view-chat.active { display: flex; flex-direction: column; }
-  .cockpit-grid { grid-template-columns: 1fr; }
-  .side-live { min-height: 420px; }
+  #view-chat.active {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;          /* unico contenitore di scroll in questa modalità */
+    overscroll-behavior: contain;
+  }
+  .presence-stage,
+  .side-live {
+    grid-column: auto;
+    grid-row: auto;
+    overflow: visible;         /* lo scroll torna al genitore, niente annidamenti */
+    flex: 0 0 auto;
+    min-height: 0;
+  }
+  /* la timeline non deve più "rubare" altezza: scorre con limite proprio */
+  .side-live > .live-panel[style*="flex:1"] { flex: 0 0 auto; display: block; }
+  .side-live > .live-panel[style*="flex:1"] > .activity-stream { flex: 0 0 auto; max-height: 240px; }
+  /* il livebar non resta appiccicato dentro un flusso che scorre tutto insieme */
+  #livebar { position: static; }
 }
 #livebar {
   position: sticky;

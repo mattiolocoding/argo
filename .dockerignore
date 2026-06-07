@@ -18,6 +18,8 @@ sorvegliata/*
 node_modules/
 .claude/
 docs/
+scripts/
+tests/
 *.zip
 _dev_server.py
 test_*.py

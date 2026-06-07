@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/logo.svg" alt="ARGO" width="80" height="80" />
+<img src="../assets/logo.svg" alt="ARGO" width="80" height="80" />
 
 # ARGO — Cosa offre
 
@@ -208,5 +208,5 @@ Workflow ancora più profondi · knowledge graph temporale · console centrale d
 ---
 
 <div align="center">
-<sub>ARGO · 100% locale · di tua proprietà · <a href="README.md">README</a> · <a href="PROGETTO_ARGO.md">la Bibbia</a> · <a href="SICUREZZA_REPORT.md">sicurezza</a></sub>
+<sub>ARGO · 100% locale · di tua proprietà · <a href="../README.md">README</a> · <a href="PROGETTO_ARGO.md">la Bibbia</a> · <a href="SICUREZZA_REPORT.md">sicurezza</a></sub>
 </div>

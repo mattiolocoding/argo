@@ -222,7 +222,7 @@ For each kind of task, *you* decide how much ARGO may dare. The safe default is 
 
 ## Project status
 
-ARGO is **alpha** and Windows-first. The core (memory, brain, hands, governance, engine) runs and is covered by module self-tests; some enterprise layers (deep workflows, fleet/multi-instance, signed packaging) are in progress. See [`STATO_PROGETTO.md`](STATO_PROGETTO.md) for the living status (Italian) and the [roadmap](#roadmap) below.
+ARGO is **alpha** and Windows-first. The core (memory, brain, hands, governance, engine) runs and is covered by module self-tests; some enterprise layers (deep workflows, fleet/multi-instance, signed packaging) are in progress. See [`docs/STATO_PROGETTO.md`](docs/STATO_PROGETTO.md) for the living status (Italian) and the [roadmap](#roadmap) below.
 
 ## Roadmap
 
@@ -240,7 +240,28 @@ ARGO is **alpha** and Windows-first. The core (memory, brain, hands, governance,
 ## Documentation
 
 The design docs live at the repo root (currently in Italian, translations welcome):
-[`PROGETTO_ARGO.md`](PROGETTO_ARGO.md) (the "bible"), [`ARGO_VISIONE_ENTERPRISE.md`](ARGO_VISIONE_ENTERPRISE.md) (vision), [`PIANO_LAVORO.md`](PIANO_LAVORO.md) (work plan), [`SICUREZZA_REPORT.md`](SICUREZZA_REPORT.md) (security report).
+[`docs/PROGETTO_ARGO.md`](docs/PROGETTO_ARGO.md) (the "bible"), [`docs/ARGO_VISIONE_ENTERPRISE.md`](docs/ARGO_VISIONE_ENTERPRISE.md) (vision), [`docs/PIANO_LAVORO.md`](docs/PIANO_LAVORO.md) (work plan), [`docs/SICUREZZA_REPORT.md`](docs/SICUREZZA_REPORT.md) (security report), [`docs/COSA_OFFRE_ARGO.md`](docs/COSA_OFFRE_ARGO.md) (full capability catalog).
+
+## Project layout
+
+```
+argo/
+├─ motore_web.py        engine: local API on 127.0.0.1:8773 (stdlib http.server)
+├─ serve.py · cli.py    headless entrypoint · `argo` CLI launcher
+├─ cervello.py modelli.py     brain (Ollama) + model-mesh routing
+├─ sensi.py sistema.py        senses (window/network/clipboard, disk/processes)
+├─ sicurezza.py               security: secrets, hash-chain audit, DPAPI
+├─ workflow.py fleet.py       workflow engine · horizontal fleet
+├─ memoria/                   episodic + graph + semantic memory (SQLite)
+├─ governo/                   policy · RBAC · audit · rollback · metrics · sleep
+├─ cognizione/                world model · goals · journal · experiments
+├─ connettori/  mani/  config/   connectors · safe file actions · settings
+├─ ui/index.html              single-file dark dashboard
+├─ assets/                    logo + screenshots
+├─ deploy → Dockerfile, docker-compose*.yml, install.ps1/.sh
+├─ tests/  scripts/  docs/    tests · dev scripts · project docs
+└─ produzione/                native packaging (PyInstaller, installer)
+```
 
 ## Contributing
 

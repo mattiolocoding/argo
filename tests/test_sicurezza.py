@@ -18,6 +18,9 @@ import os
 import sys
 import tempfile
 
+# consente l'import dei moduli a root anche eseguendo da tests/
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 # Assicura che la root del progetto sia nel path
 _ROOT = os.path.dirname(os.path.abspath(__file__))
 if _ROOT not in sys.path:

@@ -9,6 +9,11 @@ Blindano due bug corretti nel giugno 2026:
 Uso:  python test_fleet.py   (esce != 0 se un controllo fallisce)
 """
 
+import os
+import sys
+# consente l'import dei moduli a root anche eseguendo da tests/
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import fleet
 import modelli
 
