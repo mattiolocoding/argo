@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARGO · Console della flotta</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236366f1'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='256' height='256' rx='58' fill='url(%23g)'/%3E%3C/svg%3E">
+<style>
+/* ============================================================
+   ARGO — Console centrale della flotta (file singolo)
+   Tema scuro indaco, coerente col brand. Nessuna dipendenza.
+   ============================================================ */
+:root {
+  --bg:    #0a0f1d;
+  --bg2:   #0e1525;
+  --card:  #111827;
+  --card2: #141e31;
+  --bd:    #1e2d45;
+  --bd2:   #263550;
+  --tx:    #e8edf5;
+  --tx2:   #aab6c9;
+  --mut:   #8492a8;
+  --acc1:  #6366f1;
+  --acc2:  #8b5cf6;
+  --acc-tx:#a5b4fc;
+  --ok:    #22c55e;
+  --off:   #6b7689;
+  --focus: #a5b4fc;
+  --rad:   14px;
+  --trans: .18s cubic-bezier(.22,1,.36,1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 500px at 80% -10%, rgba(139,92,246,.10), transparent 60%),
+    radial-gradient(900px 500px at -10% 0%, rgba(99,102,241,.12), transparent 55%),
+    var(--bg);
+  color: var(--tx);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Focus visibile (a11y) ---------- */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+/* ---------- Reduced motion (a11y) ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+/* ---------- Header ---------- */
+header.top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+.logo {
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--acc1), var(--acc2));
+  flex: none;
+  box-shadow: 0 6px 20px rgba(99,102,241,.35);
+}
+.titoli h1 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: .3px;
+}
+.titoli p {
+  margin: 2px 0 0;
+  color: var(--tx2);
+  font-size: 13px;
+}
+.aggiorna {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--mut);
+  font-size: 12.5px;
+}
+.live {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 0 0 rgba(34,197,94,.5);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(34,197,94,.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+  100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+.live.spenta { background: var(--off); animation: none; }
+
+/* ---------- Schede metriche ---------- */
+.metriche {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin-bottom: 26px;
+}
+.metrica {
+  background: linear-gradient(180deg, var(--card2), var(--card));
+  border: 1px solid var(--bd);
+  border-radius: var(--rad);
+  padding: 16px 18px;
+}
+.metrica .etich {
+  color: var(--mut);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+}
+.metrica .val {
+  font-size: 30px;
+  font-weight: 650;
+  margin-top: 6px;
+  background: linear-gradient(135deg, var(--acc-tx), #c7b6ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.metrica .sotto { color: var(--tx2); font-size: 12.5px; margin-top: 2px; }
+
+/* ---------- Lista istanze ---------- */
+section.istanze h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+  color: var(--tx2);
+  margin: 0 0 12px;
+}
+.griglia {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+.istanza {
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: var(--rad);
+  padding: 16px;
+  transition: border-color var(--trans), transform var(--trans);
+}
+.istanza:hover { border-color: var(--bd2); transform: translateY(-2px); }
+.istanza .riga1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.istanza .nome {
+  font-weight: 600;
+  font-size: 16px;
+}
+.badge {
+  margin-left: auto;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.badge.on  { color: #bbf7d0; background: rgba(34,197,94,.14);  border-color: rgba(34,197,94,.35); }
+.badge.off { color: #c4cdda; background: rgba(107,118,137,.16); border-color: rgba(107,118,137,.35); }
+.istanza .base {
+  color: var(--acc-tx);
+  font-size: 12.5px;
+  word-break: break-all;
+}
+.istanza .meta {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  color: var(--tx2);
+  font-size: 12.5px;
+}
+.istanza .meta b { color: var(--tx); font-weight: 600; }
+.istanza.errore { border-color: rgba(248,113,113,.4); }
+.istanza .err { color: #f8b4b4; font-size: 12px; margin-top: 8px; }
+
+.vuoto, .stato-msg {
+  color: var(--mut);
+  text-align: center;
+  padding: 30px 10px;
+  font-size: 13.5px;
+}
+
+footer.pie {
+  margin-top: 32px;
+  text-align: center;
+  color: var(--mut);
+  font-size: 12px;
+}
+footer.pie a { color: var(--acc-tx); text-decoration: none; }
+footer.pie a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="logo" aria-hidden="true"></div>
+    <div class="titoli">
+      <h1>Console della flotta</h1>
+      <p>Panoramica in tempo reale delle istanze ARGO</p>
+    </div>
+    <div class="aggiorna">
+      <span id="live" class="live spenta" aria-hidden="true"></span>
+      <span id="agg">in attesa…</span>
+    </div>
+  </header>
+
+  <div class="metriche" id="metriche" aria-live="polite">
+    <div class="metrica">
+      <div class="etich">Istanze</div>
+      <div class="val" id="m-totale">·</div>
+      <div class="sotto"><span id="m-online">0</span> online</div>
+    </div>
+    <div class="metrica">
+      <div class="etich">Ricordi</div>
+      <div class="val" id="m-ricordi">·</div>
+      <div class="sotto">aggregati sulla flotta</div>
+    </div>
+    <div class="metrica">
+      <div class="etich">Azioni</div>
+      <div class="val" id="m-azioni">·</div>
+      <div class="sotto">eseguite in totale</div>
+    </div>
+    <div class="metrica">
+      <div class="etich">Versioni</div>
+      <div class="val" id="m-versioni">·</div>
+      <div class="sotto">in circolazione</div>
+    </div>
+  </div>
+
+  <section class="istanze">
+    <h2>Istanze</h2>
+    <div class="griglia" id="griglia">
+      <div class="stato-msg">Carico la flotta…</div>
+    </div>
+  </section>
+
+  <footer class="pie">
+    ARGO · <a href="/">torna all'interfaccia</a>
+  </footer>
+
+</div>
+
+<script>
+// ------------------------------------------------------------------
+// Console flotta: polling di /flotta ogni ~5s. Degrada con grazia
+// se l'endpoint non risponde, senza mai bloccare la pagina.
+// ------------------------------------------------------------------
+const $ = (id) => document.getElementById(id);
+
+function num(v) {
+  const n = Number(v || 0);
+  return Number.isFinite(n) ? n.toLocaleString("it-IT") : "0";
+}
+
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[c]));
+}
+
+function ora() {
+  const d = new Date();
+  return d.toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+}
+
+function cardIstanza(i) {
+  const online = !!i._online;
+  const nome = esc(i.nome || i.id || "ARGO");
+  const base = esc(i._base || "");
+  const ver = esc(i.versione || "?");
+  const div = document.createElement("div");
+  div.className = "istanza" + (i.errore ? " errore" : "");
+  let meta = "";
+  if (online) {
+    meta = '<div class="meta">' +
+           '<span><b>' + num(i.ricordi) + '</b> ricordi</span>' +
+           '<span><b>' + num(i.azioni) + '</b> azioni</span>' +
+           '<span>v' + ver + '</span>' +
+           '</div>';
+  } else if (i.errore) {
+    meta = '<div class="err">' + esc(i.errore) + '</div>';
+  }
+  div.innerHTML =
+    '<div class="riga1">' +
+      '<span class="nome">' + nome + '</span>' +
+      '<span class="badge ' + (online ? "on" : "off") + '">' +
+        (online ? "online" : "offline") + '</span>' +
+    '</div>' +
+    '<div class="base">' + base + '</div>' +
+    meta;
+  return div;
+}
+
+function rendi(d) {
+  $("m-totale").textContent  = num(d.totale);
+  $("m-online").textContent  = num(d.online);
+  $("m-ricordi").textContent = num(d.ricordi_totali);
+  $("m-azioni").textContent  = num(d.azioni_totali);
+  const versioni = Array.isArray(d.versioni) ? d.versioni.filter(Boolean) : [];
+  $("m-versioni").textContent = versioni.length ? versioni.length : "—";
+
+  const griglia = $("griglia");
+  griglia.innerHTML = "";
+  const lista = Array.isArray(d.istanze) ? d.istanze : [];
+  if (!lista.length) {
+    const v = document.createElement("div");
+    v.className = "vuoto";
+    v.textContent = d.errore ? ("Flotta non disponibile: " + d.errore) : "Nessuna istanza registrata.";
+    griglia.appendChild(v);
+    return;
+  }
+  // Online prima, poi offline; ognuna ordinata per nome.
+  lista.sort((a, b) => (b._online ? 1 : 0) - (a._online ? 1 : 0) ||
+                       String(a.nome || "").localeCompare(String(b.nome || "")));
+  for (const i of lista) griglia.appendChild(cardIstanza(i));
+}
+
+async function tick() {
+  try {
+    const r = await fetch("/flotta", { cache: "no-store" });
+    const d = await r.json();
+    rendi(d);
+    $("live").classList.remove("spenta");
+    $("agg").textContent = "aggiornato alle " + ora();
+  } catch (e) {
+    // Degrada con grazia: segnala lo stato senza svuotare la vista.
+    $("live").classList.add("spenta");
+    $("agg").textContent = "offline, riprovo…";
+  }
+}
+
+tick();
+setInterval(tick, 5000);
+</script>
+</body>
+</html>

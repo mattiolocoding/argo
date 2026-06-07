@@ -1181,6 +1181,57 @@ def crea_handler(m):
                         self._send(f.read(), "text/html; charset=utf-8")
                 except Exception as e:
                     self._send(f"UI non trovata: {e}", "text/plain", 500)
+            elif self.path.startswith("/flotta/console"):
+                # Console centrale della flotta: pagina autonoma servita da ui/.
+                # Degrada con grazia se il file manca.
+                try:
+                    percorso = os.path.join(_DIR, "ui", "flotta.html")
+                    with open(percorso, "r", encoding="utf-8") as f:
+                        self._send(f.read(), "text/html; charset=utf-8")
+                except Exception as e:
+                    self._send(f"Console flotta non trovata: {e}", "text/plain", 500)
+            elif self.path.startswith("/manifest.webmanifest"):
+                # PWA: manifest letto da ui/. Degrada con grazia se assente.
+                try:
+                    percorso = os.path.join(_DIR, "ui", "manifest.webmanifest")
+                    with open(percorso, "r", encoding="utf-8") as f:
+                        self._send(f.read(), "application/manifest+json; charset=utf-8")
+                except Exception as e:
+                    self._send(f"manifest non trovato: {e}", "text/plain", 500)
+            elif self.path.startswith("/sw.js"):
+                # PWA: service worker letto da ui/. Degrada con grazia se assente.
+                try:
+                    percorso = os.path.join(_DIR, "ui", "sw.js")
+                    with open(percorso, "r", encoding="utf-8") as f:
+                        self._send(f.read(), "application/javascript; charset=utf-8")
+                except Exception as e:
+                    self._send(f"sw.js non trovato: {e}", "text/plain", 500)
+            elif self.path.startswith("/assets/"):
+                # File statici (logo, icone PWA, screenshot) da assets/. Anti path-traversal.
+                try:
+                    rel = self.path.split("?")[0][len("/assets/"):]
+                    base = os.path.normpath(os.path.join(_DIR, "assets"))
+                    percorso = os.path.normpath(os.path.join(base, rel))
+                    if not percorso.startswith(base) or not os.path.isfile(percorso):
+                        self._send("not found", "text/plain", 404)
+                        return
+                    ext = os.path.splitext(percorso)[1].lower()
+                    ctype = {
+                        ".png": "image/png", ".svg": "image/svg+xml; charset=utf-8",
+                        ".ico": "image/x-icon", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
+                        ".webp": "image/webp", ".gif": "image/gif",
+                    }.get(ext, "application/octet-stream")
+                    with open(percorso, "rb") as f:
+                        self._send(f.read(), ctype)
+                except Exception as e:
+                    self._send(f"asset error: {e}", "text/plain", 500)
+            elif self.path.startswith("/aggiornamenti"):
+                # Controllo aggiornamenti difensivo: degrada se il modulo manca.
+                try:
+                    import aggiornamenti
+                    self._json(aggiornamenti.controlla())
+                except Exception as e:
+                    self._json({"aggiornamento_disponibile": False, "errore": str(e)[:140]})
             elif self.path.startswith("/stato"):
                 self._json(m.stato())
             elif self.path.startswith("/eventi"):
@@ -1248,6 +1299,16 @@ def crea_handler(m):
                 b = self._body()
                 if b.get("_errore"): self._json({"ok": False, "messaggio": b["_errore"]}, 413); return
                 self._json(m.chat(b.get("testo", "")))
+            elif self.path.startswith("/voce"):
+                # Sintesi vocale difensiva: degrada se il modulo manca.
+                b = self._body()
+                if b.get("_errore"): self._json({"ok": False, "messaggio": b["_errore"]}, 413); return
+                testo = str(b.get("testo", ""))[:MAX_CHAT_CHARS]
+                try:
+                    import voce
+                    self._json(voce.parla(testo))
+                except Exception as e:
+                    self._json({"ok": False, "motivo": str(e)[:140]})
             elif self.path.startswith("/ricerca"):
                 b = self._body()
                 if b.get("_errore"): self._json({"ok": False, "messaggio": b["_errore"]}, 413); return

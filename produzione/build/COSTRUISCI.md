@@ -98,6 +98,49 @@ pyinstaller argo.spec
 
 ---
 
+### 3-bis. (Opzionale) Firma (self-signed)
+
+Dopo aver costruito `dist\ARGO\ARGO.exe` con PyInstaller, puoi firmarlo con
+lo script `firma.ps1`. La firma garantisce che il file non venga manomesso
+e applica un timestamp.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File produzione\build\firma.ps1 `
+    -EseguibileDaFirmare "produzione\build\dist\ARGO\ARGO.exe"
+```
+
+Lo script:
+
+1. crea un certificato di code-signing **self-signed** in
+   `Cert:\CurrentUser\My` (solo se non ne esiste gia' uno con lo stesso
+   nome — di default `ARGO Self-Signed`);
+2. firma l'eseguibile con `Set-AuthenticodeSignature`, includendo un
+   **timestamp server** (così la firma resta valida anche dopo la scadenza
+   del certificato).
+
+Parametri opzionali: `-NomeCertificato`, `-ServerTimestamp`, `-AnniValidita`.
+
+> **AVVISO ONESTO — la firma self-signed NON e' CA-trusted.**
+> Una firma self-signed **non** e' emessa da una Certificate Authority
+> riconosciuta da Windows. Di conseguenza **Windows SmartScreen mostrera'
+> comunque "Editore sconosciuto"** e l'avviso blu "Windows ha protetto il
+> PC". Serve solo per integrità e per chi importa manualmente il certificato
+> tra quelli fidati (la tua macchina, una flotta aziendale via GPO).
+>
+> Per la **vera fiducia** (nessun avviso, nome editore verificato) serve un
+> certificato di code-signing **a pagamento**:
+> - **OV** (Organization Validation): ~100-300 €/anno, costruisce reputazione
+>   nel tempo;
+> - **EV** (Extended Validation): più caro, su token hardware, reputazione
+>   SmartScreen immediata.
+>
+> Emittenti tipici: DigiCert, Sectigo, GlobalSign, SSL.com.
+
+Conviene firmare anche `ARGO Setup.exe` dopo il passo 5 (stessa sintassi,
+puntando al file in `Output\`).
+
+---
+
 ### 4. (Opzionale) Includi Ollama nell'installer
 
 Se vuoi distribuire Ollama insieme ad ARGO:

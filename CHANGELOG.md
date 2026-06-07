@@ -18,6 +18,20 @@ All notable changes to ARGO are documented here. Format loosely based on
   cards. Now contained — verified across window sizes.
 
 ### Added
+- **Roadmap features** (built via a multi-agent workflow, verified live):
+  - **Temporal knowledge graph** (`memoria/grafo.py`): edges carry `valido_da`/`valido_a`,
+    with an `as-of` neighbor query and a defensive schema migration.
+  - **Voice** (`voce.py` + `POST /voce`): real offline TTS via pyttsx3 (ARGO speaks); STT is
+    an honest stub. Degrades gracefully without audio.
+  - **Update check** (`aggiornamenti.py` + `GET /aggiornamenti`): compares the running version
+    against the latest GitHub release; offline-safe.
+  - **Central fleet console** (`ui/flotta.html` + `GET /flotta/console`): a standalone page that
+    polls `/flotta` and shows aggregated multi-instance status.
+  - **PWA / mobile companion** (`ui/manifest.webmanifest`, `ui/sw.js`): installable on a phone,
+    with a cache-first shell service worker; engine serves the manifest, SW, and `/assets/`.
+  - **Deeper workflow**: a real end-to-end "riordino download" flow with a human approval gate.
+  - **Self-signed signing script** (`produzione/build/firma.ps1`): packaging signature via a
+    self-signed cert (not CA-trusted — flagged), plus update notes.
 - **`crt-screen` skill** (`.claude/skills/crt-screen/`): a reusable, pure-CSS CRT/TV screen
   effect (scanlines, phosphor glow, flicker, chromatic aberration, rolling interference, with
   a reduced-motion fallback). Applied to the companion eye, which now sits on its own little

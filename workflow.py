@@ -256,7 +256,9 @@ class MotoreWorkflow:
         for k in ("tipo_documento", "estensione", "bloccato", "riassunto_contenuto",
                   "categoria_contenuto", "dati_estratti", "bozza_report",
                   "nota_proposta", "risultato_archiviazione", "audit_registrato",
-                  "dati_report", "testo_report", "report_salvato_in"):
+                  "dati_report", "testo_report", "report_salvato_in",
+                  "file_osservati", "classificazione", "piano_riordino",
+                  "azioni_applicate", "riepilogo_riordino"):
             if k in ctx:
                 dati_chiave[k] = ctx[k]
         return {
@@ -866,6 +868,285 @@ def crea_workflow_report_giornaliero() -> Workflow:
 
 
 # ===========================================================================
+# WORKFLOW 3: "riordino_download"
+# Riordino governato della cartella Download con gate di approvazione umano.
+#
+# Idea: la cartella Download accumula file di ogni tipo. ARGO la osserva,
+# classifica ogni file, propone una destinazione per ciascuno (raggruppando
+# per categoria), si ferma al GATE per l'approvazione umana e, solo dopo
+# l'ok, sposta davvero i file e produce un riepilogo dell'operazione.
+#
+# Passi:
+#   1. osserva_download   -> elenca i file presenti (no gate)
+#   2. classifica_file    -> assegna categoria + flag sensibile a ogni file
+#   3. proponi_riordino   -> costruisce il piano di spostamento [GATE]
+#   4. applica_riordino    -> esegue gli spostamenti approvati (irreversibile)
+#   5. riepiloga          -> compone un riepilogo testuale dell'operazione
+#
+# Degrada con grazia: se Mani non e' disponibile usa shutil come ripiego,
+# se la cartella e' vuota il piano e' vuoto e il workflow completa lo stesso.
+# ===========================================================================
+
+# Mappa categoria -> sottocartella di destinazione (raggruppamento per tipo).
+_CATEGORIE_DOWNLOAD = {
+    ".pdf": "Documenti", ".docx": "Documenti", ".doc": "Documenti",
+    ".odt": "Documenti", ".rtf": "Documenti",
+    ".txt": "Testi", ".md": "Testi",
+    ".jpg": "Immagini", ".jpeg": "Immagini", ".png": "Immagini",
+    ".gif": "Immagini", ".webp": "Immagini", ".bmp": "Immagini",
+    ".xlsx": "Fogli", ".xls": "Fogli", ".csv": "Fogli", ".ods": "Fogli",
+    ".zip": "Archivi", ".rar": "Archivi", ".7z": "Archivi",
+    ".tar": "Archivi", ".gz": "Archivi",
+    ".mp3": "Audio", ".wav": "Audio", ".flac": "Audio",
+    ".mp4": "Video", ".mkv": "Video", ".avi": "Video", ".mov": "Video",
+    ".py": "Codice", ".js": "Codice", ".ts": "Codice", ".json": "Codice",
+    ".exe": "Programmi", ".msi": "Programmi",
+}
+
+
+def _categoria_da_estensione(ext: str) -> str:
+    """Ritorna la sottocartella di destinazione per una data estensione."""
+    return _CATEGORIE_DOWNLOAD.get(ext.lower(), "Varie")
+
+
+def _passo_osserva_download(ctx: Dict) -> Dict:
+    """
+    Osserva la cartella Download indicata in ctx['cartella_download'].
+    Elenca solo i file in primo livello (ignora le sottocartelle, cosi' da
+    non rimescolare cartelle gia' ordinate).
+    Aggiunge: ctx['file_osservati'] = lista di nomi file.
+    """
+    cartella = ctx.get("cartella_download", ".")
+    osservati: List[str] = []
+    try:
+        for nome in sorted(os.listdir(cartella)):
+            p = os.path.join(cartella, nome)
+            if os.path.isfile(p):
+                osservati.append(nome)
+    except Exception as exc:
+        ctx["errore_osservazione"] = str(exc)
+        osservati = []
+    ctx["file_osservati"] = osservati
+    ctx["nota_osservazione"] = (
+        f"Trovati {len(osservati)} file in '{cartella}'."
+    )
+    return ctx
+
+
+def _passo_classifica_file(ctx: Dict) -> Dict:
+    """
+    Classifica ogni file osservato: categoria di destinazione + flag sensibile.
+    Usa sicurezza.file_sensibile() (degradando con grazia se non disponibile)
+    per non spostare automaticamente file sensibili.
+    Aggiunge: ctx['classificazione'] = lista di dict
+              {nome, estensione, categoria, sensibile}.
+    """
+    try:
+        import sicurezza
+        _e_sensibile = sicurezza.file_sensibile
+    except Exception:
+        # ripiego: senza il modulo di sicurezza nessun file e' marcato sensibile
+        def _e_sensibile(_p):  # noqa: ANN001
+            return False
+
+    cartella = ctx.get("cartella_download", ".")
+    classificazione: List[Dict] = []
+    for nome in ctx.get("file_osservati", []):
+        percorso = os.path.join(cartella, nome)
+        ext = os.path.splitext(nome)[1].lower()
+        try:
+            sensibile = bool(_e_sensibile(percorso))
+        except Exception:
+            sensibile = False
+        classificazione.append({
+            "nome": nome,
+            "estensione": ext or "(nessuna)",
+            "categoria": _categoria_da_estensione(ext),
+            "sensibile": sensibile,
+        })
+    ctx["classificazione"] = classificazione
+    n_sens = sum(1 for c in classificazione if c["sensibile"])
+    ctx["nota_classificazione"] = (
+        f"Classificati {len(classificazione)} file "
+        f"({n_sens} segnalati come sensibili e quindi esclusi dal riordino)."
+    )
+    return ctx
+
+
+def _passo_proponi_riordino(ctx: Dict) -> Dict:
+    """
+    Costruisce il piano di riordino: per ogni file NON sensibile propone lo
+    spostamento nella sottocartella della sua categoria. I file sensibili
+    restano dove sono (vengono solo segnalati).
+    Non esegue nulla: e' solo una proposta -> GATE di approvazione.
+    Aggiunge: ctx['piano_riordino'] = lista di dict
+              {nome, da, a, categoria}.
+    """
+    cartella = ctx.get("cartella_download", ".")
+    piano: List[Dict] = []
+    esclusi: List[str] = []
+    for voce in ctx.get("classificazione", []):
+        if voce["sensibile"]:
+            esclusi.append(voce["nome"])
+            continue
+        categoria = voce["categoria"]
+        origine = os.path.join(cartella, voce["nome"])
+        destinazione = os.path.join(cartella, categoria, voce["nome"])
+        # se il file e' gia' nella cartella giusta non proponiamo nulla
+        if os.path.dirname(origine) == os.path.dirname(destinazione):
+            continue
+        piano.append({
+            "nome": voce["nome"],
+            "da": origine,
+            "a": destinazione,
+            "categoria": categoria,
+        })
+    ctx["piano_riordino"] = piano
+    ctx["file_esclusi"] = esclusi
+    if piano:
+        ctx["nota_proposta_riordino"] = (
+            f"Proposti {len(piano)} spostamenti in {len(set(p['categoria'] for p in piano))} "
+            f"categorie. {len(esclusi)} file sensibili lasciati al loro posto."
+        )
+    else:
+        ctx["nota_proposta_riordino"] = (
+            "Nessuno spostamento necessario: la cartella e' gia' in ordine."
+        )
+    return ctx
+
+
+def _passo_applica_riordino(ctx: Dict) -> Dict:
+    """
+    Esegue il piano di riordino approvato. Per ogni voce crea la sottocartella
+    di destinazione e sposta il file. Operazione IRREVERSIBILE.
+    Usa Mani.esegui() se disponibile, altrimenti ripiega su shutil.move.
+    Le singole eccezioni non bloccano l'intero riordino: vengono raccolte.
+    Aggiunge: ctx['azioni_applicate'] = lista di dict {nome, a, esito}.
+    """
+    import shutil
+
+    piano = ctx.get("piano_riordino", []) or []
+    cartella = ctx.get("cartella_download", ".")
+
+    # prova a usare Mani per coerenza con il resto del progetto
+    mani = None
+    try:
+        from mani import Mani
+        mani = Mani(radici=[cartella])
+    except Exception:
+        mani = None
+
+    azioni: List[Dict] = []
+    for voce in piano:
+        nome = voce["nome"]
+        destinazione = voce["a"]
+        esito = "ok"
+        try:
+            os.makedirs(os.path.dirname(destinazione), exist_ok=True)
+            spostato = False
+            if mani is not None and hasattr(mani, "esegui"):
+                # piano in formato compatibile con Mani.esegui()
+                piano_mani = {
+                    "azione": "sposta",
+                    "sorgente": voce["da"],
+                    "destinazione": destinazione,
+                    "descrizione": f"riordino: {nome} -> {voce['categoria']}",
+                }
+                try:
+                    risultato = mani.esegui(piano_mani)
+                    if isinstance(risultato, dict) and risultato.get("ok"):
+                        spostato = True
+                except Exception:
+                    spostato = False
+            if not spostato:
+                # ripiego deterministico con la libreria standard
+                shutil.move(voce["da"], destinazione)
+        except Exception as exc:
+            esito = f"errore: {exc}"
+        azioni.append({"nome": nome, "a": destinazione, "esito": esito})
+
+    ctx["azioni_applicate"] = azioni
+    n_ok = sum(1 for a in azioni if a["esito"] == "ok")
+    ctx["nota_applicazione"] = (
+        f"Applicati {n_ok}/{len(azioni)} spostamenti."
+    )
+    return ctx
+
+
+def _passo_riepiloga_riordino(ctx: Dict) -> Dict:
+    """
+    Compone un riepilogo testuale dell'operazione di riordino.
+    Puramente deterministico. Aggiunge: ctx['riepilogo_riordino'] (str).
+    """
+    cartella = ctx.get("cartella_download", "?")
+    osservati = ctx.get("file_osservati", [])
+    azioni = ctx.get("azioni_applicate", [])
+    esclusi = ctx.get("file_esclusi", [])
+    n_ok = sum(1 for a in azioni if a.get("esito") == "ok")
+    n_ko = len(azioni) - n_ok
+
+    # conteggio per categoria di destinazione
+    per_categoria: Dict[str, int] = {}
+    for voce in ctx.get("piano_riordino", []) or []:
+        cat = voce["categoria"]
+        per_categoria[cat] = per_categoria.get(cat, 0) + 1
+
+    righe = [
+        "=" * 60,
+        f"RIEPILOGO RIORDINO DOWNLOAD  --  {_ora()}",
+        "=" * 60,
+        f"Cartella analizzata : {cartella}",
+        f"File osservati      : {len(osservati)}",
+        f"Spostamenti riusciti: {n_ok}",
+        f"Spostamenti falliti : {n_ko}",
+        f"File sensibili tenuti: {len(esclusi)}",
+        "",
+        "Riordino per categoria:",
+    ]
+    if per_categoria:
+        for cat, n in sorted(per_categoria.items(), key=lambda x: -x[1]):
+            righe.append(f"  {cat:<18} {n:>4} file")
+    else:
+        righe.append("  (nessuno spostamento necessario)")
+    if esclusi:
+        righe += ["", "File sensibili lasciati al loro posto:"]
+        for nome in esclusi:
+            righe.append(f"  - {nome}")
+    righe += ["", "=" * 60]
+    ctx["riepilogo_riordino"] = "\n".join(righe)
+    return ctx
+
+
+def crea_workflow_riordino_download() -> Workflow:
+    """
+    Costruisce il workflow "riordino_download".
+
+    Flusso:
+      1. osserva_download  -> elenca i file della cartella Download
+      2. classifica_file   -> categoria + flag sensibile per ogni file
+      3. proponi_riordino  -> piano di spostamento per categoria [GATE]
+      4. applica_riordino  -> esegue gli spostamenti approvati (irreversibile)
+      5. riepiloga         -> riepilogo testuale dell'operazione
+
+    Parametri attesi in ctx:
+      cartella_download : cartella da riordinare (default '.').
+    """
+    passi = [
+        Passo(nome="osserva_download", funzione=_passo_osserva_download,  reversibile=True),
+        Passo(nome="classifica_file",  funzione=_passo_classifica_file,   reversibile=True),
+        Passo(
+            nome="proponi_riordino",
+            funzione=_passo_proponi_riordino,
+            approvazione=True,   # <-- GATE: mostra il piano, aspetta ok umano
+            reversibile=True,
+        ),
+        Passo(nome="applica_riordino", funzione=_passo_applica_riordino,  reversibile=False),
+        Passo(nome="riepiloga",        funzione=_passo_riepiloga_riordino, reversibile=True),
+    ]
+    return Workflow("riordino_download", passi)
+
+
+# ===========================================================================
 # SMOKE-TEST
 # ===========================================================================
 
@@ -910,6 +1191,7 @@ if __name__ == "__main__":
         motore = MotoreWorkflow()
         motore.registra(crea_workflow_documento_in_arrivo())
         motore.registra(crea_workflow_report_giornaliero())
+        motore.registra(crea_workflow_riordino_download())
         print(f"\nWorkflow registrati: {list(motore._catalogo.keys())}")
 
         # -------------------------------------------------------
@@ -1029,6 +1311,80 @@ if __name__ == "__main__":
         assert len(log) > 0, "Il log non deve essere vuoto"
         for voce in log:
             print(f"  {voce['quando']}  {voce['evento']:<30} {voce['dettaglio'][:55]}")
+        print("  PASS")
+
+        # -------------------------------------------------------
+        # TEST G: riordino_download con gate di approvazione
+        # atteso:
+        #   1. osserva + classifica + propone, poi si ferma al GATE
+        #   2. il piano contiene spostamenti e i file sensibili sono esclusi
+        #   3. approva() esegue gli spostamenti e produce il riepilogo
+        #   4. i file finiscono nelle sottocartelle di categoria
+        # -------------------------------------------------------
+        print("\n--- TEST G: riordino_download (osserva, classifica, gate, applica) ---")
+
+        # cartella Download finta con file di tipi diversi + un file sensibile
+        dl = os.path.join(tmp, "Download")
+        os.makedirs(dl, exist_ok=True)
+        finti = {
+            "foto_vacanza.jpg": "Immagini",
+            "manuale.pdf": "Documenti",
+            "musica.mp3": "Audio",
+            "appunti.md": "Testi",
+            "credentials.env": None,   # sensibile: deve restare al suo posto
+        }
+        for nome in finti:
+            with open(os.path.join(dl, nome), "w", encoding="utf-8") as f:
+                f.write("contenuto finto di " + nome)
+
+        id_g = motore.avvia("riordino_download", {"cartella_download": dl})
+        st_g = motore.stato(id_g)
+
+        print(f"  Stato dopo avvio : {st_g['stato']}")
+        print(f"  Gate aperto su   : {st_g['gate_su']}")
+        assert st_g["stato"] == "in_attesa_approvazione", \
+            f"Atteso 'in_attesa_approvazione', ottenuto '{st_g['stato']}'"
+        assert st_g["gate_su"] == "proponi_riordino", \
+            f"Gate atteso su 'proponi_riordino', trovato '{st_g['gate_su']}'"
+
+        dati_g = st_g["dati"]
+        osservati = dati_g.get("file_osservati", [])
+        piano = dati_g.get("piano_riordino", [])
+        print(f"  File osservati   : {len(osservati)} -> {osservati}")
+        print(f"  Spostamenti prop.: {len(piano)}")
+        assert len(osservati) == 5, f"Attesi 5 file osservati, trovati {len(osservati)}"
+        # il file .env e' sensibile -> escluso dal piano (restano 4 spostamenti)
+        nomi_piano = {p["nome"] for p in piano}
+        assert "credentials.env" not in nomi_piano, \
+            "Il file sensibile non doveva essere incluso nel piano"
+        assert len(piano) == 4, f"Attesi 4 spostamenti, trovati {len(piano)}"
+
+        # mostra lo stato dei passi prima dell'approvazione
+        print("\n  Passi del workflow:")
+        for p in motore.passi(id_g):
+            print(f"    [{p['indice']}] {p['nome']:<22} stato={p['stato']}"
+                  f"{'  [GATE]' if p['approvazione'] else ''}"
+                  f"{'  [IRREVERSIBILE]' if not p['reversibile'] else ''}")
+
+        print("\n  [utente approva]")
+        st_g_finale = motore.approva(id_g)
+        assert st_g_finale["stato"] == "completato", \
+            f"Atteso 'completato', ottenuto '{st_g_finale['stato']}'"
+
+        # verifica che i file siano stati spostati davvero
+        assert os.path.isfile(os.path.join(dl, "Immagini", "foto_vacanza.jpg")), \
+            "foto_vacanza.jpg non e' stata spostata in Immagini"
+        assert os.path.isfile(os.path.join(dl, "Documenti", "manuale.pdf")), \
+            "manuale.pdf non e' stato spostato in Documenti"
+        # il file sensibile deve essere rimasto al suo posto
+        assert os.path.isfile(os.path.join(dl, "credentials.env")), \
+            "Il file sensibile non doveva essere spostato"
+
+        print(f"  Stato finale     : {st_g_finale['stato']}")
+        print(f"  Azioni applicate : {st_g_finale['dati'].get('azioni_applicate')}")
+        print("\n" + st_g_finale["dati"].get("riepilogo_riordino", ""))
+        assert st_g_finale["dati"].get("riepilogo_riordino"), \
+            "Il riepilogo non e' stato generato"
         print("  PASS")
 
         print("\n" + "=" * 60)
