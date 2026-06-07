@@ -1,0 +1,22 @@
+{
+  "_commento": "Credenziali e parametri per i connettori enterprise di ARGO. Compilare i campi vuoti con i valori reali.",
+  "email_imap": {
+    "_commento": "Configurazione IMAP per leggere le email in sola lettura",
+    "host": "",
+    "porta": 993,
+    "ssl": true,
+    "utente": "",
+    "password": "",
+    "cartella": "INBOX",
+    "max_messaggi": 10
+  },
+  "filesystem": {
+    "_commento": "Cartella radice predefinita per il connettore filesystem (può essere sovrascritta per chiamata)",
+    "cartella_default": ""
+  },
+  "git": {
+    "_commento": "Percorso predefinito del repository git locale (può essere sovrascritta per chiamata)",
+    "repo_default": "",
+    "max_commit": 20
+  }
+}

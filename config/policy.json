@@ -1,0 +1,59 @@
+{
+  "regole": [
+    {
+      "nome": "Mai toccare contratti",
+      "se": {
+        "nome_contiene": [
+          "contratto",
+          "contract",
+          "nda",
+          "accordo"
+        ]
+      },
+      "esito": "blocca",
+      "motivo": "I contratti non si spostano automaticamente."
+    },
+    {
+      "nome": "Dati HR / buste paga: sempre conferma",
+      "se": {
+        "nome_contiene": [
+          "busta",
+          "paga",
+          "payroll",
+          "stipendio",
+          "hr",
+          "cedolino",
+          "dipendent"
+        ]
+      },
+      "esito": "escala",
+      "motivo": "Dati del personale: serve conferma umana."
+    },
+    {
+      "nome": "Documenti fiscali/legali: conferma",
+      "se": {
+        "nome_contiene": [
+          "fattura",
+          "f24",
+          "imu",
+          "tasse",
+          "notaio",
+          "sentenza",
+          "ricorso"
+        ]
+      },
+      "esito": "escala",
+      "motivo": "Documento sensibile: meglio confermare."
+    },
+    {
+      "nome": "Eliminazioni: vietate in automatico",
+      "se": {
+        "azione": [
+          "elimina"
+        ]
+      },
+      "esito": "blocca",
+      "motivo": "ARGO non elimina file."
+    }
+  ]
+}

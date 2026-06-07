@@ -1,0 +1,24 @@
+{
+  "cartelle_sorvegliate": [
+    "sorvegliata"
+  ],
+  "occhi_tutto_pc": true,
+  "regola_ordine": "tipo",
+  "soglia_accumulo": 10,
+  "cartelle_protette": [
+    "Windows",
+    "Program Files",
+    "Program Files (x86)",
+    "ProgramData",
+    "System32",
+    "AppData"
+  ],
+  "autonomia": {
+    "default": "chiede",
+    "crea_cartella": "agisce",
+    "archivia": "chiede",
+    "sposta": "chiede",
+    "rinomina": "chiede",
+    "elimina": "osserva"
+  }
+}

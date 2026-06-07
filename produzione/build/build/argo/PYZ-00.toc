@@ -1,0 +1,2734 @@
+('C:\\Users\\Tufilli '
+ 'Davide\\Desktop\\Argo\\produzione\\build\\build\\argo\\PYZ-00.pyz',
+ [('PySide6',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\__init__.py',
+   'PYMODULE'),
+  ('PySide6.QtAsyncio',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\QtAsyncio\\__init__.py',
+   'PYMODULE'),
+  ('PySide6.QtAsyncio.events',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\QtAsyncio\\events.py',
+   'PYMODULE'),
+  ('PySide6.QtAsyncio.futures',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\QtAsyncio\\futures.py',
+   'PYMODULE'),
+  ('PySide6.QtAsyncio.tasks',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\QtAsyncio\\tasks.py',
+   'PYMODULE'),
+  ('PySide6._config',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\_config.py',
+   'PYMODULE'),
+  ('PySide6._git_pyside_version',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\_git_pyside_version.py',
+   'PYMODULE'),
+  ('PySide6.scripts',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\__init__.py',
+   'PYMODULE'),
+  ('PySide6.scripts.deploy',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\deploy.py',
+   'PYMODULE'),
+  ('PySide6.scripts.metaobjectdump',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\metaobjectdump.py',
+   'PYMODULE'),
+  ('PySide6.scripts.project',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\project.py',
+   'PYMODULE'),
+  ('PySide6.scripts.project_lib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\project_lib\\__init__.py',
+   'PYMODULE'),
+  ('PySide6.scripts.project_lib.design_studio_project',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\project_lib\\design_studio_project.py',
+   'PYMODULE'),
+  ('PySide6.scripts.project_lib.newproject',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\project_lib\\newproject.py',
+   'PYMODULE'),
+  ('PySide6.scripts.project_lib.project_data',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\project_lib\\project_data.py',
+   'PYMODULE'),
+  ('PySide6.scripts.project_lib.pyproject_json',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\project_lib\\pyproject_json.py',
+   'PYMODULE'),
+  ('PySide6.scripts.project_lib.pyproject_parse_result',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\project_lib\\pyproject_parse_result.py',
+   'PYMODULE'),
+  ('PySide6.scripts.project_lib.pyproject_toml',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\project_lib\\pyproject_toml.py',
+   'PYMODULE'),
+  ('PySide6.scripts.project_lib.utils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\project_lib\\utils.py',
+   'PYMODULE'),
+  ('PySide6.scripts.pyside_tool',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\pyside_tool.py',
+   'PYMODULE'),
+  ('PySide6.scripts.qml',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\qml.py',
+   'PYMODULE'),
+  ('PySide6.scripts.qtpy2cpp',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\scripts\\qtpy2cpp.py',
+   'PYMODULE'),
+  ('PySide6.support',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\support\\__init__.py',
+   'PYMODULE'),
+  ('PySide6.support.deprecated',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\support\\deprecated.py',
+   'PYMODULE'),
+  ('PySide6.support.generate_pyi',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PySide6\\support\\generate_pyi.py',
+   'PYMODULE'),
+  ('__future__',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\__future__.py',
+   'PYMODULE'),
+  ('_aix_support',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_aix_support.py',
+   'PYMODULE'),
+  ('_bootsubprocess',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_bootsubprocess.py',
+   'PYMODULE'),
+  ('_compat_pickle',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_compat_pickle.py',
+   'PYMODULE'),
+  ('_compression',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_compression.py',
+   'PYMODULE'),
+  ('_distutils_hack',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\_distutils_hack\\__init__.py',
+   'PYMODULE'),
+  ('_distutils_hack.override',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\_distutils_hack\\override.py',
+   'PYMODULE'),
+  ('_osx_support',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_osx_support.py',
+   'PYMODULE'),
+  ('_py_abc',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_py_abc.py',
+   'PYMODULE'),
+  ('_pydecimal',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_pydecimal.py',
+   'PYMODULE'),
+  ('_pyi_rth_utils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyInstaller\\fake-modules\\_pyi_rth_utils\\__init__.py',
+   'PYMODULE'),
+  ('_pyi_rth_utils.qt',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyInstaller\\fake-modules\\_pyi_rth_utils\\qt.py',
+   'PYMODULE'),
+  ('_sitebuiltins',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_sitebuiltins.py',
+   'PYMODULE'),
+  ('_strptime',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_strptime.py',
+   'PYMODULE'),
+  ('_threading_local',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_threading_local.py',
+   'PYMODULE'),
+  ('argo_app',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\argo_app.py',
+   'PYMODULE'),
+  ('argparse',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\argparse.py',
+   'PYMODULE'),
+  ('ast',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\ast.py',
+   'PYMODULE'),
+  ('asyncio',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\__init__.py',
+   'PYMODULE'),
+  ('asyncio.base_events',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\base_events.py',
+   'PYMODULE'),
+  ('asyncio.base_futures',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\base_futures.py',
+   'PYMODULE'),
+  ('asyncio.base_subprocess',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\base_subprocess.py',
+   'PYMODULE'),
+  ('asyncio.base_tasks',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\base_tasks.py',
+   'PYMODULE'),
+  ('asyncio.constants',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\constants.py',
+   'PYMODULE'),
+  ('asyncio.coroutines',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\coroutines.py',
+   'PYMODULE'),
+  ('asyncio.events',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\events.py',
+   'PYMODULE'),
+  ('asyncio.exceptions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\exceptions.py',
+   'PYMODULE'),
+  ('asyncio.format_helpers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\format_helpers.py',
+   'PYMODULE'),
+  ('asyncio.futures',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\futures.py',
+   'PYMODULE'),
+  ('asyncio.locks',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\locks.py',
+   'PYMODULE'),
+  ('asyncio.log',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\log.py',
+   'PYMODULE'),
+  ('asyncio.mixins',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\mixins.py',
+   'PYMODULE'),
+  ('asyncio.proactor_events',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\proactor_events.py',
+   'PYMODULE'),
+  ('asyncio.protocols',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\protocols.py',
+   'PYMODULE'),
+  ('asyncio.queues',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\queues.py',
+   'PYMODULE'),
+  ('asyncio.runners',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\runners.py',
+   'PYMODULE'),
+  ('asyncio.selector_events',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\selector_events.py',
+   'PYMODULE'),
+  ('asyncio.sslproto',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\sslproto.py',
+   'PYMODULE'),
+  ('asyncio.staggered',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\staggered.py',
+   'PYMODULE'),
+  ('asyncio.streams',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\streams.py',
+   'PYMODULE'),
+  ('asyncio.subprocess',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\subprocess.py',
+   'PYMODULE'),
+  ('asyncio.taskgroups',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\taskgroups.py',
+   'PYMODULE'),
+  ('asyncio.tasks',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\tasks.py',
+   'PYMODULE'),
+  ('asyncio.threads',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\threads.py',
+   'PYMODULE'),
+  ('asyncio.timeouts',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\timeouts.py',
+   'PYMODULE'),
+  ('asyncio.transports',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\transports.py',
+   'PYMODULE'),
+  ('asyncio.trsock',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\trsock.py',
+   'PYMODULE'),
+  ('asyncio.unix_events',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\unix_events.py',
+   'PYMODULE'),
+  ('asyncio.windows_events',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\windows_events.py',
+   'PYMODULE'),
+  ('asyncio.windows_utils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\windows_utils.py',
+   'PYMODULE'),
+  ('backports',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\backports\\__init__.py',
+   'PYMODULE'),
+  ('backports.tarfile',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\backports\\tarfile\\__init__.py',
+   'PYMODULE'),
+  ('backports.tarfile.compat',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\backports\\tarfile\\compat\\__init__.py',
+   'PYMODULE'),
+  ('backports.tarfile.compat.py38',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\backports\\tarfile\\compat\\py38.py',
+   'PYMODULE'),
+  ('base64',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\base64.py',
+   'PYMODULE'),
+  ('bdb',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\bdb.py',
+   'PYMODULE'),
+  ('bisect',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\bisect.py',
+   'PYMODULE'),
+  ('bz2',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\bz2.py',
+   'PYMODULE'),
+  ('calendar',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\calendar.py',
+   'PYMODULE'),
+  ('cervello',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\cervello.py',
+   'PYMODULE'),
+  ('cgi',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\cgi.py',
+   'PYMODULE'),
+  ('cmd',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\cmd.py',
+   'PYMODULE'),
+  ('code',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\code.py',
+   'PYMODULE'),
+  ('codeop',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\codeop.py',
+   'PYMODULE'),
+  ('cognizione',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\cognizione\\__init__.py',
+   'PYMODULE'),
+  ('cognizione.timeline',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\cognizione\\timeline.py',
+   'PYMODULE'),
+  ('comprensione',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\comprensione.py',
+   'PYMODULE'),
+  ('concurrent',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\concurrent\\__init__.py',
+   'PYMODULE'),
+  ('concurrent.futures',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\concurrent\\futures\\__init__.py',
+   'PYMODULE'),
+  ('concurrent.futures._base',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\concurrent\\futures\\_base.py',
+   'PYMODULE'),
+  ('concurrent.futures.process',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\concurrent\\futures\\process.py',
+   'PYMODULE'),
+  ('concurrent.futures.thread',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\concurrent\\futures\\thread.py',
+   'PYMODULE'),
+  ('config',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\config\\__init__.py',
+   'PYMODULE'),
+  ('config.impostazioni',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\config\\impostazioni.py',
+   'PYMODULE'),
+  ('config.permessi',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\config\\permessi.py',
+   'PYMODULE'),
+  ('configparser',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\configparser.py',
+   'PYMODULE'),
+  ('connettori',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\connettori\\__init__.py',
+   'PYMODULE'),
+  ('connettori.base',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\connettori\\base.py',
+   'PYMODULE'),
+  ('connettori.email_imap',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\connettori\\email_imap.py',
+   'PYMODULE'),
+  ('connettori.filesystem',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\connettori\\filesystem.py',
+   'PYMODULE'),
+  ('connettori.git',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\connettori\\git.py',
+   'PYMODULE'),
+  ('contextlib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\contextlib.py',
+   'PYMODULE'),
+  ('contextvars',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\contextvars.py',
+   'PYMODULE'),
+  ('copy',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\copy.py',
+   'PYMODULE'),
+  ('cryptography',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\__init__.py',
+   'PYMODULE'),
+  ('cryptography.__about__',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\__about__.py',
+   'PYMODULE'),
+  ('cryptography.exceptions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\exceptions.py',
+   'PYMODULE'),
+  ('cryptography.fernet',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\fernet.py',
+   'PYMODULE'),
+  ('cryptography.hazmat',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\__init__.py',
+   'PYMODULE'),
+  ('cryptography.hazmat._oid',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\_oid.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.backends',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\backends\\__init__.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.backends.openssl',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\backends\\openssl\\__init__.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.backends.openssl.backend',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\backends\\openssl\\backend.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.bindings',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\bindings\\__init__.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.bindings.openssl',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\bindings\\openssl\\__init__.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.bindings.openssl._conditional',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\bindings\\openssl\\_conditional.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.bindings.openssl.binding',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\bindings\\openssl\\binding.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.decrepit',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\decrepit\\__init__.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.decrepit.ciphers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\decrepit\\ciphers\\__init__.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.decrepit.ciphers.algorithms',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\decrepit\\ciphers\\algorithms.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.decrepit.ciphers.modes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\decrepit\\ciphers\\modes.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\__init__.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives._asymmetric',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\_asymmetric.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives._cipheralgorithm',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\_cipheralgorithm.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives._modes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\_modes.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives._serialization',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\_serialization.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives.asymmetric',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\asymmetric\\__init__.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives.asymmetric.ec',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\asymmetric\\ec.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives.asymmetric.padding',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\asymmetric\\padding.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives.asymmetric.rsa',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\asymmetric\\rsa.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives.asymmetric.utils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\asymmetric\\utils.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives.ciphers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\ciphers\\__init__.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives.ciphers.algorithms',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\ciphers\\algorithms.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives.ciphers.base',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\ciphers\\base.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives.ciphers.modes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\ciphers\\modes.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives.hashes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\hashes.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives.hmac',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\hmac.py',
+   'PYMODULE'),
+  ('cryptography.hazmat.primitives.padding',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\hazmat\\primitives\\padding.py',
+   'PYMODULE'),
+  ('cryptography.utils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\cryptography\\utils.py',
+   'PYMODULE'),
+  ('csv',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\csv.py',
+   'PYMODULE'),
+  ('ctypes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\ctypes\\__init__.py',
+   'PYMODULE'),
+  ('ctypes._endian',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\ctypes\\_endian.py',
+   'PYMODULE'),
+  ('ctypes.wintypes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\ctypes\\wintypes.py',
+   'PYMODULE'),
+  ('dataclasses',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\dataclasses.py',
+   'PYMODULE'),
+  ('datetime',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\datetime.py',
+   'PYMODULE'),
+  ('decimal',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\decimal.py',
+   'PYMODULE'),
+  ('difflib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\difflib.py',
+   'PYMODULE'),
+  ('dis',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\dis.py',
+   'PYMODULE'),
+  ('distutils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\__init__.py',
+   'PYMODULE'),
+  ('distutils._msvccompiler',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\_msvccompiler.py',
+   'PYMODULE'),
+  ('distutils.archive_util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\archive_util.py',
+   'PYMODULE'),
+  ('distutils.ccompiler',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\ccompiler.py',
+   'PYMODULE'),
+  ('distutils.cmd',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\cmd.py',
+   'PYMODULE'),
+  ('distutils.command',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\command\\__init__.py',
+   'PYMODULE'),
+  ('distutils.command.bdist',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\command\\bdist.py',
+   'PYMODULE'),
+  ('distutils.command.build',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\command\\build.py',
+   'PYMODULE'),
+  ('distutils.command.build_ext',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\command\\build_ext.py',
+   'PYMODULE'),
+  ('distutils.command.sdist',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\command\\sdist.py',
+   'PYMODULE'),
+  ('distutils.config',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\config.py',
+   'PYMODULE'),
+  ('distutils.core',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\core.py',
+   'PYMODULE'),
+  ('distutils.debug',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\debug.py',
+   'PYMODULE'),
+  ('distutils.dep_util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\dep_util.py',
+   'PYMODULE'),
+  ('distutils.dir_util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\dir_util.py',
+   'PYMODULE'),
+  ('distutils.dist',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\dist.py',
+   'PYMODULE'),
+  ('distutils.errors',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\errors.py',
+   'PYMODULE'),
+  ('distutils.extension',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\extension.py',
+   'PYMODULE'),
+  ('distutils.fancy_getopt',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\fancy_getopt.py',
+   'PYMODULE'),
+  ('distutils.file_util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\file_util.py',
+   'PYMODULE'),
+  ('distutils.filelist',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\filelist.py',
+   'PYMODULE'),
+  ('distutils.log',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\log.py',
+   'PYMODULE'),
+  ('distutils.spawn',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\spawn.py',
+   'PYMODULE'),
+  ('distutils.sysconfig',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\sysconfig.py',
+   'PYMODULE'),
+  ('distutils.text_file',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\text_file.py',
+   'PYMODULE'),
+  ('distutils.util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\util.py',
+   'PYMODULE'),
+  ('distutils.version',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\version.py',
+   'PYMODULE'),
+  ('distutils.versionpredicate',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\distutils\\versionpredicate.py',
+   'PYMODULE'),
+  ('doctest',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\doctest.py',
+   'PYMODULE'),
+  ('email',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\__init__.py',
+   'PYMODULE'),
+  ('email._encoded_words',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\_encoded_words.py',
+   'PYMODULE'),
+  ('email._header_value_parser',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\_header_value_parser.py',
+   'PYMODULE'),
+  ('email._parseaddr',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\_parseaddr.py',
+   'PYMODULE'),
+  ('email._policybase',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\_policybase.py',
+   'PYMODULE'),
+  ('email.base64mime',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\base64mime.py',
+   'PYMODULE'),
+  ('email.charset',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\charset.py',
+   'PYMODULE'),
+  ('email.contentmanager',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\contentmanager.py',
+   'PYMODULE'),
+  ('email.encoders',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\encoders.py',
+   'PYMODULE'),
+  ('email.errors',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\errors.py',
+   'PYMODULE'),
+  ('email.feedparser',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\feedparser.py',
+   'PYMODULE'),
+  ('email.generator',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\generator.py',
+   'PYMODULE'),
+  ('email.header',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\header.py',
+   'PYMODULE'),
+  ('email.headerregistry',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\headerregistry.py',
+   'PYMODULE'),
+  ('email.iterators',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\iterators.py',
+   'PYMODULE'),
+  ('email.message',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\message.py',
+   'PYMODULE'),
+  ('email.mime',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\mime\\__init__.py',
+   'PYMODULE'),
+  ('email.mime.base',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\mime\\base.py',
+   'PYMODULE'),
+  ('email.mime.multipart',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\mime\\multipart.py',
+   'PYMODULE'),
+  ('email.mime.nonmultipart',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\mime\\nonmultipart.py',
+   'PYMODULE'),
+  ('email.mime.text',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\mime\\text.py',
+   'PYMODULE'),
+  ('email.parser',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\parser.py',
+   'PYMODULE'),
+  ('email.policy',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\policy.py',
+   'PYMODULE'),
+  ('email.quoprimime',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\quoprimime.py',
+   'PYMODULE'),
+  ('email.utils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\email\\utils.py',
+   'PYMODULE'),
+  ('fnmatch',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\fnmatch.py',
+   'PYMODULE'),
+  ('fractions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\fractions.py',
+   'PYMODULE'),
+  ('ftplib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\ftplib.py',
+   'PYMODULE'),
+  ('getopt',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\getopt.py',
+   'PYMODULE'),
+  ('getpass',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\getpass.py',
+   'PYMODULE'),
+  ('gettext',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\gettext.py',
+   'PYMODULE'),
+  ('glob',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\glob.py',
+   'PYMODULE'),
+  ('governo',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\governo\\__init__.py',
+   'PYMODULE'),
+  ('governo.agenti',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\governo\\agenti.py',
+   'PYMODULE'),
+  ('governo.consolidamento',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\governo\\consolidamento.py',
+   'PYMODULE'),
+  ('governo.lacune',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\governo\\lacune.py',
+   'PYMODULE'),
+  ('governo.metriche',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\governo\\metriche.py',
+   'PYMODULE'),
+  ('governo.policy',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\governo\\policy.py',
+   'PYMODULE'),
+  ('governo.rollback',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\governo\\rollback.py',
+   'PYMODULE'),
+  ('governo.ruoli',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\governo\\ruoli.py',
+   'PYMODULE'),
+  ('governo.sandbox_skill',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\governo\\sandbox_skill.py',
+   'PYMODULE'),
+  ('governo.skill_registry',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\governo\\skill_registry.py',
+   'PYMODULE'),
+  ('governo.skill_writer',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\governo\\skill_writer.py',
+   'PYMODULE'),
+  ('governo.sonno',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\governo\\sonno.py',
+   'PYMODULE'),
+  ('governo.validator',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\governo\\validator.py',
+   'PYMODULE'),
+  ('gzip',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\gzip.py',
+   'PYMODULE'),
+  ('hashlib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\hashlib.py',
+   'PYMODULE'),
+  ('hmac',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\hmac.py',
+   'PYMODULE'),
+  ('html',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\html\\__init__.py',
+   'PYMODULE'),
+  ('html.entities',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\html\\entities.py',
+   'PYMODULE'),
+  ('http',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\http\\__init__.py',
+   'PYMODULE'),
+  ('http.client',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\http\\client.py',
+   'PYMODULE'),
+  ('http.cookiejar',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\http\\cookiejar.py',
+   'PYMODULE'),
+  ('http.server',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\http\\server.py',
+   'PYMODULE'),
+  ('imaplib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\imaplib.py',
+   'PYMODULE'),
+  ('importlib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\__init__.py',
+   'PYMODULE'),
+  ('importlib._abc',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\_abc.py',
+   'PYMODULE'),
+  ('importlib._bootstrap',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\_bootstrap.py',
+   'PYMODULE'),
+  ('importlib._bootstrap_external',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\_bootstrap_external.py',
+   'PYMODULE'),
+  ('importlib.abc',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\abc.py',
+   'PYMODULE'),
+  ('importlib.machinery',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\machinery.py',
+   'PYMODULE'),
+  ('importlib.metadata',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\metadata\\__init__.py',
+   'PYMODULE'),
+  ('importlib.metadata._adapters',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\metadata\\_adapters.py',
+   'PYMODULE'),
+  ('importlib.metadata._collections',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\metadata\\_collections.py',
+   'PYMODULE'),
+  ('importlib.metadata._functools',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\metadata\\_functools.py',
+   'PYMODULE'),
+  ('importlib.metadata._itertools',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\metadata\\_itertools.py',
+   'PYMODULE'),
+  ('importlib.metadata._meta',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\metadata\\_meta.py',
+   'PYMODULE'),
+  ('importlib.metadata._text',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\metadata\\_text.py',
+   'PYMODULE'),
+  ('importlib.readers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\readers.py',
+   'PYMODULE'),
+  ('importlib.resources',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\resources\\__init__.py',
+   'PYMODULE'),
+  ('importlib.resources._adapters',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\resources\\_adapters.py',
+   'PYMODULE'),
+  ('importlib.resources._common',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\resources\\_common.py',
+   'PYMODULE'),
+  ('importlib.resources._itertools',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\resources\\_itertools.py',
+   'PYMODULE'),
+  ('importlib.resources._legacy',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\resources\\_legacy.py',
+   'PYMODULE'),
+  ('importlib.resources.abc',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\resources\\abc.py',
+   'PYMODULE'),
+  ('importlib.resources.readers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\resources\\readers.py',
+   'PYMODULE'),
+  ('importlib.util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\importlib\\util.py',
+   'PYMODULE'),
+  ('importlib_metadata',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\importlib_metadata\\__init__.py',
+   'PYMODULE'),
+  ('importlib_metadata._adapters',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\importlib_metadata\\_adapters.py',
+   'PYMODULE'),
+  ('importlib_metadata._collections',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\importlib_metadata\\_collections.py',
+   'PYMODULE'),
+  ('importlib_metadata._compat',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\importlib_metadata\\_compat.py',
+   'PYMODULE'),
+  ('importlib_metadata._context',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\importlib_metadata\\_context.py',
+   'PYMODULE'),
+  ('importlib_metadata._functools',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\importlib_metadata\\_functools.py',
+   'PYMODULE'),
+  ('importlib_metadata._itertools',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\importlib_metadata\\_itertools.py',
+   'PYMODULE'),
+  ('importlib_metadata._meta',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\importlib_metadata\\_meta.py',
+   'PYMODULE'),
+  ('importlib_metadata._text',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\importlib_metadata\\_text.py',
+   'PYMODULE'),
+  ('importlib_metadata.compat',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\importlib_metadata\\compat\\__init__.py',
+   'PYMODULE'),
+  ('importlib_metadata.compat.py311',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\importlib_metadata\\compat\\py311.py',
+   'PYMODULE'),
+  ('inspect',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\inspect.py',
+   'PYMODULE'),
+  ('ipaddress',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\ipaddress.py',
+   'PYMODULE'),
+  ('jaraco', '-', 'PYMODULE'),
+  ('jaraco.context',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\jaraco\\context\\__init__.py',
+   'PYMODULE'),
+  ('jaraco.functools',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\jaraco\\functools\\__init__.py',
+   'PYMODULE'),
+  ('json',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\__init__.py',
+   'PYMODULE'),
+  ('json.decoder',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\decoder.py',
+   'PYMODULE'),
+  ('json.encoder',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\encoder.py',
+   'PYMODULE'),
+  ('json.scanner',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\scanner.py',
+   'PYMODULE'),
+  ('logging',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\logging\\__init__.py',
+   'PYMODULE'),
+  ('lzma',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\lzma.py',
+   'PYMODULE'),
+  ('mani',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\mani\\__init__.py',
+   'PYMODULE'),
+  ('mani.mani',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\mani\\mani.py',
+   'PYMODULE'),
+  ('memoria',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\memoria\\__init__.py',
+   'PYMODULE'),
+  ('memoria.consolidamento',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\memoria\\consolidamento.py',
+   'PYMODULE'),
+  ('memoria.grafo',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\memoria\\grafo.py',
+   'PYMODULE'),
+  ('memoria.memoria',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\memoria\\memoria.py',
+   'PYMODULE'),
+  ('memoria.semantica',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\memoria\\semantica.py',
+   'PYMODULE'),
+  ('mimetypes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\mimetypes.py',
+   'PYMODULE'),
+  ('modelli',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\modelli.py',
+   'PYMODULE'),
+  ('more_itertools',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\more_itertools\\__init__.py',
+   'PYMODULE'),
+  ('more_itertools.more',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\more_itertools\\more.py',
+   'PYMODULE'),
+  ('more_itertools.recipes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\more_itertools\\recipes.py',
+   'PYMODULE'),
+  ('motore_web',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\motore_web.py',
+   'PYMODULE'),
+  ('multiprocessing',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\__init__.py',
+   'PYMODULE'),
+  ('multiprocessing.connection',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\connection.py',
+   'PYMODULE'),
+  ('multiprocessing.context',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\context.py',
+   'PYMODULE'),
+  ('multiprocessing.dummy',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\dummy\\__init__.py',
+   'PYMODULE'),
+  ('multiprocessing.dummy.connection',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\dummy\\connection.py',
+   'PYMODULE'),
+  ('multiprocessing.forkserver',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\forkserver.py',
+   'PYMODULE'),
+  ('multiprocessing.heap',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\heap.py',
+   'PYMODULE'),
+  ('multiprocessing.managers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\managers.py',
+   'PYMODULE'),
+  ('multiprocessing.pool',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\pool.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_fork',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\popen_fork.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_forkserver',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\popen_forkserver.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_spawn_posix',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\popen_spawn_posix.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_spawn_win32',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\popen_spawn_win32.py',
+   'PYMODULE'),
+  ('multiprocessing.process',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\process.py',
+   'PYMODULE'),
+  ('multiprocessing.queues',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\queues.py',
+   'PYMODULE'),
+  ('multiprocessing.reduction',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\reduction.py',
+   'PYMODULE'),
+  ('multiprocessing.resource_sharer',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\resource_sharer.py',
+   'PYMODULE'),
+  ('multiprocessing.resource_tracker',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\resource_tracker.py',
+   'PYMODULE'),
+  ('multiprocessing.shared_memory',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\shared_memory.py',
+   'PYMODULE'),
+  ('multiprocessing.sharedctypes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\sharedctypes.py',
+   'PYMODULE'),
+  ('multiprocessing.spawn',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\spawn.py',
+   'PYMODULE'),
+  ('multiprocessing.synchronize',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\synchronize.py',
+   'PYMODULE'),
+  ('multiprocessing.util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\multiprocessing\\util.py',
+   'PYMODULE'),
+  ('netrc',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\netrc.py',
+   'PYMODULE'),
+  ('nturl2path',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\nturl2path.py',
+   'PYMODULE'),
+  ('numbers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\numbers.py',
+   'PYMODULE'),
+  ('numpy',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\__init__.py',
+   'PYMODULE'),
+  ('numpy.__config__',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\__config__.py',
+   'PYMODULE'),
+  ('numpy._distributor_init',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_distributor_init.py',
+   'PYMODULE'),
+  ('numpy._globals',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_globals.py',
+   'PYMODULE'),
+  ('numpy._pytesttester',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_pytesttester.py',
+   'PYMODULE'),
+  ('numpy._typing',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_typing\\__init__.py',
+   'PYMODULE'),
+  ('numpy._typing._add_docstring',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_typing\\_add_docstring.py',
+   'PYMODULE'),
+  ('numpy._typing._array_like',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_typing\\_array_like.py',
+   'PYMODULE'),
+  ('numpy._typing._char_codes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_typing\\_char_codes.py',
+   'PYMODULE'),
+  ('numpy._typing._dtype_like',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_typing\\_dtype_like.py',
+   'PYMODULE'),
+  ('numpy._typing._nbit',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_typing\\_nbit.py',
+   'PYMODULE'),
+  ('numpy._typing._nested_sequence',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_typing\\_nested_sequence.py',
+   'PYMODULE'),
+  ('numpy._typing._scalars',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_typing\\_scalars.py',
+   'PYMODULE'),
+  ('numpy._typing._shape',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_typing\\_shape.py',
+   'PYMODULE'),
+  ('numpy._utils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_utils\\__init__.py',
+   'PYMODULE'),
+  ('numpy._utils._convertions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_utils\\_convertions.py',
+   'PYMODULE'),
+  ('numpy._utils._inspect',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\_utils\\_inspect.py',
+   'PYMODULE'),
+  ('numpy.array_api',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\__init__.py',
+   'PYMODULE'),
+  ('numpy.array_api._array_object',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_array_object.py',
+   'PYMODULE'),
+  ('numpy.array_api._constants',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_constants.py',
+   'PYMODULE'),
+  ('numpy.array_api._creation_functions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_creation_functions.py',
+   'PYMODULE'),
+  ('numpy.array_api._data_type_functions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_data_type_functions.py',
+   'PYMODULE'),
+  ('numpy.array_api._dtypes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_dtypes.py',
+   'PYMODULE'),
+  ('numpy.array_api._elementwise_functions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_elementwise_functions.py',
+   'PYMODULE'),
+  ('numpy.array_api._indexing_functions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_indexing_functions.py',
+   'PYMODULE'),
+  ('numpy.array_api._manipulation_functions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_manipulation_functions.py',
+   'PYMODULE'),
+  ('numpy.array_api._searching_functions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_searching_functions.py',
+   'PYMODULE'),
+  ('numpy.array_api._set_functions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_set_functions.py',
+   'PYMODULE'),
+  ('numpy.array_api._sorting_functions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_sorting_functions.py',
+   'PYMODULE'),
+  ('numpy.array_api._statistical_functions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_statistical_functions.py',
+   'PYMODULE'),
+  ('numpy.array_api._typing',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_typing.py',
+   'PYMODULE'),
+  ('numpy.array_api._utility_functions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\_utility_functions.py',
+   'PYMODULE'),
+  ('numpy.array_api.linalg',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\array_api\\linalg.py',
+   'PYMODULE'),
+  ('numpy.compat',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\compat\\__init__.py',
+   'PYMODULE'),
+  ('numpy.compat.py3k',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\compat\\py3k.py',
+   'PYMODULE'),
+  ('numpy.core',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\__init__.py',
+   'PYMODULE'),
+  ('numpy.core._add_newdocs',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\_add_newdocs.py',
+   'PYMODULE'),
+  ('numpy.core._add_newdocs_scalars',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\_add_newdocs_scalars.py',
+   'PYMODULE'),
+  ('numpy.core._asarray',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\_asarray.py',
+   'PYMODULE'),
+  ('numpy.core._dtype',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\_dtype.py',
+   'PYMODULE'),
+  ('numpy.core._dtype_ctypes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\_dtype_ctypes.py',
+   'PYMODULE'),
+  ('numpy.core._exceptions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\_exceptions.py',
+   'PYMODULE'),
+  ('numpy.core._internal',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\_internal.py',
+   'PYMODULE'),
+  ('numpy.core._machar',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\_machar.py',
+   'PYMODULE'),
+  ('numpy.core._methods',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\_methods.py',
+   'PYMODULE'),
+  ('numpy.core._string_helpers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\_string_helpers.py',
+   'PYMODULE'),
+  ('numpy.core._type_aliases',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\_type_aliases.py',
+   'PYMODULE'),
+  ('numpy.core._ufunc_config',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\_ufunc_config.py',
+   'PYMODULE'),
+  ('numpy.core.arrayprint',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\arrayprint.py',
+   'PYMODULE'),
+  ('numpy.core.defchararray',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\defchararray.py',
+   'PYMODULE'),
+  ('numpy.core.einsumfunc',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\einsumfunc.py',
+   'PYMODULE'),
+  ('numpy.core.fromnumeric',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\fromnumeric.py',
+   'PYMODULE'),
+  ('numpy.core.function_base',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\function_base.py',
+   'PYMODULE'),
+  ('numpy.core.getlimits',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\getlimits.py',
+   'PYMODULE'),
+  ('numpy.core.memmap',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\memmap.py',
+   'PYMODULE'),
+  ('numpy.core.multiarray',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\multiarray.py',
+   'PYMODULE'),
+  ('numpy.core.numeric',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\numeric.py',
+   'PYMODULE'),
+  ('numpy.core.numerictypes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\numerictypes.py',
+   'PYMODULE'),
+  ('numpy.core.overrides',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\overrides.py',
+   'PYMODULE'),
+  ('numpy.core.records',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\records.py',
+   'PYMODULE'),
+  ('numpy.core.shape_base',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\shape_base.py',
+   'PYMODULE'),
+  ('numpy.core.umath',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\core\\umath.py',
+   'PYMODULE'),
+  ('numpy.ctypeslib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\ctypeslib.py',
+   'PYMODULE'),
+  ('numpy.dtypes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\dtypes.py',
+   'PYMODULE'),
+  ('numpy.exceptions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\exceptions.py',
+   'PYMODULE'),
+  ('numpy.fft',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\fft\\__init__.py',
+   'PYMODULE'),
+  ('numpy.fft._pocketfft',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\fft\\_pocketfft.py',
+   'PYMODULE'),
+  ('numpy.fft.helper',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\fft\\helper.py',
+   'PYMODULE'),
+  ('numpy.lib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\__init__.py',
+   'PYMODULE'),
+  ('numpy.lib._datasource',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\_datasource.py',
+   'PYMODULE'),
+  ('numpy.lib._iotools',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\_iotools.py',
+   'PYMODULE'),
+  ('numpy.lib._version',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\_version.py',
+   'PYMODULE'),
+  ('numpy.lib.arraypad',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\arraypad.py',
+   'PYMODULE'),
+  ('numpy.lib.arraysetops',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\arraysetops.py',
+   'PYMODULE'),
+  ('numpy.lib.arrayterator',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\arrayterator.py',
+   'PYMODULE'),
+  ('numpy.lib.format',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\format.py',
+   'PYMODULE'),
+  ('numpy.lib.function_base',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\function_base.py',
+   'PYMODULE'),
+  ('numpy.lib.histograms',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\histograms.py',
+   'PYMODULE'),
+  ('numpy.lib.index_tricks',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\index_tricks.py',
+   'PYMODULE'),
+  ('numpy.lib.mixins',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\mixins.py',
+   'PYMODULE'),
+  ('numpy.lib.nanfunctions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\nanfunctions.py',
+   'PYMODULE'),
+  ('numpy.lib.npyio',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\npyio.py',
+   'PYMODULE'),
+  ('numpy.lib.polynomial',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\polynomial.py',
+   'PYMODULE'),
+  ('numpy.lib.recfunctions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\recfunctions.py',
+   'PYMODULE'),
+  ('numpy.lib.scimath',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\scimath.py',
+   'PYMODULE'),
+  ('numpy.lib.shape_base',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\shape_base.py',
+   'PYMODULE'),
+  ('numpy.lib.stride_tricks',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\stride_tricks.py',
+   'PYMODULE'),
+  ('numpy.lib.twodim_base',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\twodim_base.py',
+   'PYMODULE'),
+  ('numpy.lib.type_check',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\type_check.py',
+   'PYMODULE'),
+  ('numpy.lib.ufunclike',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\ufunclike.py',
+   'PYMODULE'),
+  ('numpy.lib.utils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\lib\\utils.py',
+   'PYMODULE'),
+  ('numpy.linalg',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\linalg\\__init__.py',
+   'PYMODULE'),
+  ('numpy.linalg.linalg',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\linalg\\linalg.py',
+   'PYMODULE'),
+  ('numpy.ma',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\ma\\__init__.py',
+   'PYMODULE'),
+  ('numpy.ma.core',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\ma\\core.py',
+   'PYMODULE'),
+  ('numpy.ma.extras',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\ma\\extras.py',
+   'PYMODULE'),
+  ('numpy.ma.mrecords',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\ma\\mrecords.py',
+   'PYMODULE'),
+  ('numpy.matrixlib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\matrixlib\\__init__.py',
+   'PYMODULE'),
+  ('numpy.matrixlib.defmatrix',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\matrixlib\\defmatrix.py',
+   'PYMODULE'),
+  ('numpy.polynomial',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\polynomial\\__init__.py',
+   'PYMODULE'),
+  ('numpy.polynomial._polybase',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\polynomial\\_polybase.py',
+   'PYMODULE'),
+  ('numpy.polynomial.chebyshev',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\polynomial\\chebyshev.py',
+   'PYMODULE'),
+  ('numpy.polynomial.hermite',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\polynomial\\hermite.py',
+   'PYMODULE'),
+  ('numpy.polynomial.hermite_e',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\polynomial\\hermite_e.py',
+   'PYMODULE'),
+  ('numpy.polynomial.laguerre',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\polynomial\\laguerre.py',
+   'PYMODULE'),
+  ('numpy.polynomial.legendre',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\polynomial\\legendre.py',
+   'PYMODULE'),
+  ('numpy.polynomial.polynomial',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\polynomial\\polynomial.py',
+   'PYMODULE'),
+  ('numpy.polynomial.polyutils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\polynomial\\polyutils.py',
+   'PYMODULE'),
+  ('numpy.random',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\random\\__init__.py',
+   'PYMODULE'),
+  ('numpy.random._pickle',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\random\\_pickle.py',
+   'PYMODULE'),
+  ('numpy.testing',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\testing\\__init__.py',
+   'PYMODULE'),
+  ('numpy.testing._private',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\testing\\_private\\__init__.py',
+   'PYMODULE'),
+  ('numpy.testing._private.extbuild',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\testing\\_private\\extbuild.py',
+   'PYMODULE'),
+  ('numpy.testing._private.utils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\testing\\_private\\utils.py',
+   'PYMODULE'),
+  ('numpy.testing.overrides',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\testing\\overrides.py',
+   'PYMODULE'),
+  ('numpy.typing',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\typing\\__init__.py',
+   'PYMODULE'),
+  ('numpy.version',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\numpy\\version.py',
+   'PYMODULE'),
+  ('opcode',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\opcode.py',
+   'PYMODULE'),
+  ('packaging',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('packaging._elffile',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\_elffile.py',
+   'PYMODULE'),
+  ('packaging._manylinux',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\_manylinux.py',
+   'PYMODULE'),
+  ('packaging._musllinux',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\_musllinux.py',
+   'PYMODULE'),
+  ('packaging._parser',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\_parser.py',
+   'PYMODULE'),
+  ('packaging._tokenizer',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\_tokenizer.py',
+   'PYMODULE'),
+  ('packaging.licenses',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\licenses\\__init__.py',
+   'PYMODULE'),
+  ('packaging.licenses._spdx',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\licenses\\_spdx.py',
+   'PYMODULE'),
+  ('packaging.markers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\markers.py',
+   'PYMODULE'),
+  ('packaging.requirements',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('packaging.specifiers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('packaging.tags',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\tags.py',
+   'PYMODULE'),
+  ('packaging.utils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\utils.py',
+   'PYMODULE'),
+  ('packaging.version',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\packaging\\version.py',
+   'PYMODULE'),
+  ('pathlib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\pathlib.py',
+   'PYMODULE'),
+  ('pdb',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\pdb.py',
+   'PYMODULE'),
+  ('pickle',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\pickle.py',
+   'PYMODULE'),
+  ('pkgutil',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\pkgutil.py',
+   'PYMODULE'),
+  ('platform',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\platform.py',
+   'PYMODULE'),
+  ('pprint',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\pprint.py',
+   'PYMODULE'),
+  ('py_compile',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\py_compile.py',
+   'PYMODULE'),
+  ('pydoc',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\pydoc.py',
+   'PYMODULE'),
+  ('pydoc_data',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\pydoc_data\\__init__.py',
+   'PYMODULE'),
+  ('pydoc_data.topics',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\pydoc_data\\topics.py',
+   'PYMODULE'),
+  ('queue',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\queue.py',
+   'PYMODULE'),
+  ('quopri',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\quopri.py',
+   'PYMODULE'),
+  ('random',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\random.py',
+   'PYMODULE'),
+  ('rlcompleter',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\rlcompleter.py',
+   'PYMODULE'),
+  ('runpy',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\runpy.py',
+   'PYMODULE'),
+  ('secrets',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\secrets.py',
+   'PYMODULE'),
+  ('selectors',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\selectors.py',
+   'PYMODULE'),
+  ('sensi', 'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\sensi.py', 'PYMODULE'),
+  ('setuptools',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._core_metadata',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_core_metadata.py',
+   'PYMODULE'),
+  ('setuptools._discovery',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_discovery.py',
+   'PYMODULE'),
+  ('setuptools._distutils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._distutils._log',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\_log.py',
+   'PYMODULE'),
+  ('setuptools._distutils._macos_compat',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\_macos_compat.py',
+   'PYMODULE'),
+  ('setuptools._distutils._modified',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\_modified.py',
+   'PYMODULE'),
+  ('setuptools._distutils._msvccompiler',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\_msvccompiler.py',
+   'PYMODULE'),
+  ('setuptools._distutils.archive_util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\archive_util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.ccompiler',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\ccompiler.py',
+   'PYMODULE'),
+  ('setuptools._distutils.cmd',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\cmd.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command._framework_compat',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\_framework_compat.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.bdist',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\bdist.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.bdist_dumb',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\bdist_dumb.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.bdist_rpm',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\bdist_rpm.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.build',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\build.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.build_clib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\build_clib.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.build_ext',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\build_ext.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.build_py',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\build_py.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.build_scripts',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\build_scripts.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.check',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\check.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.clean',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\clean.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.config',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\config.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.install',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\install.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.install_data',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\install_data.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.install_egg_info',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\install_egg_info.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.install_headers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\install_headers.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.install_lib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\install_lib.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.install_scripts',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\install_scripts.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.sdist',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\command\\sdist.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compat',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\compat\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compat.numpy',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\compat\\numpy.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compat.py39',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\compat\\py39.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compilers', '-', 'PYMODULE'),
+  ('setuptools._distutils.compilers.C', '-', 'PYMODULE'),
+  ('setuptools._distutils.compilers.C.base',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\compilers\\C\\base.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compilers.C.cygwin',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\compilers\\C\\cygwin.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compilers.C.errors',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\compilers\\C\\errors.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compilers.C.msvc',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\compilers\\C\\msvc.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compilers.C.unix',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\compilers\\C\\unix.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compilers.C.zos',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\compilers\\C\\zos.py',
+   'PYMODULE'),
+  ('setuptools._distutils.core',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\core.py',
+   'PYMODULE'),
+  ('setuptools._distutils.cygwinccompiler',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\cygwinccompiler.py',
+   'PYMODULE'),
+  ('setuptools._distutils.debug',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\debug.py',
+   'PYMODULE'),
+  ('setuptools._distutils.dep_util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\dep_util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.dir_util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\dir_util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.dist',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\dist.py',
+   'PYMODULE'),
+  ('setuptools._distutils.errors',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\errors.py',
+   'PYMODULE'),
+  ('setuptools._distutils.extension',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\extension.py',
+   'PYMODULE'),
+  ('setuptools._distutils.fancy_getopt',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\fancy_getopt.py',
+   'PYMODULE'),
+  ('setuptools._distutils.file_util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\file_util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.filelist',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\filelist.py',
+   'PYMODULE'),
+  ('setuptools._distutils.log',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\log.py',
+   'PYMODULE'),
+  ('setuptools._distutils.spawn',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\spawn.py',
+   'PYMODULE'),
+  ('setuptools._distutils.sysconfig',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\sysconfig.py',
+   'PYMODULE'),
+  ('setuptools._distutils.text_file',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\text_file.py',
+   'PYMODULE'),
+  ('setuptools._distutils.unixccompiler',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\unixccompiler.py',
+   'PYMODULE'),
+  ('setuptools._distutils.util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.version',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\version.py',
+   'PYMODULE'),
+  ('setuptools._distutils.versionpredicate',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\versionpredicate.py',
+   'PYMODULE'),
+  ('setuptools._distutils.zosccompiler',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_distutils\\zosccompiler.py',
+   'PYMODULE'),
+  ('setuptools._entry_points',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_entry_points.py',
+   'PYMODULE'),
+  ('setuptools._imp',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_imp.py',
+   'PYMODULE'),
+  ('setuptools._importlib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_importlib.py',
+   'PYMODULE'),
+  ('setuptools._itertools',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_itertools.py',
+   'PYMODULE'),
+  ('setuptools._normalization',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_normalization.py',
+   'PYMODULE'),
+  ('setuptools._path',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_path.py',
+   'PYMODULE'),
+  ('setuptools._reqs',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_reqs.py',
+   'PYMODULE'),
+  ('setuptools._shutil',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_shutil.py',
+   'PYMODULE'),
+  ('setuptools._static',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_static.py',
+   'PYMODULE'),
+  ('setuptools._vendor', '-', 'PYMODULE'),
+  ('setuptools._vendor.jaraco', '-', 'PYMODULE'),
+  ('setuptools._vendor.jaraco.text',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\jaraco\\text\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._elffile',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\_elffile.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._manylinux',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\_manylinux.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._musllinux',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\_musllinux.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._parser',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\_parser.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._structures',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._tokenizer',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\_tokenizer.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.markers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\markers.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.requirements',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.specifiers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.tags',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\tags.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.utils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.version',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
+  ('setuptools._vendor.tomli',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\tomli\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.tomli._parser',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\tomli\\_parser.py',
+   'PYMODULE'),
+  ('setuptools._vendor.tomli._re',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\tomli\\_re.py',
+   'PYMODULE'),
+  ('setuptools._vendor.tomli._types',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\tomli\\_types.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.macosx_libfile',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\macosx_libfile.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.wheelfile',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\wheelfile.py',
+   'PYMODULE'),
+  ('setuptools.archive_util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\archive_util.py',
+   'PYMODULE'),
+  ('setuptools.command',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\command\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.command._requirestxt',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\command\\_requirestxt.py',
+   'PYMODULE'),
+  ('setuptools.command.bdist_egg',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\command\\bdist_egg.py',
+   'PYMODULE'),
+  ('setuptools.command.bdist_wheel',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\command\\bdist_wheel.py',
+   'PYMODULE'),
+  ('setuptools.command.build',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\command\\build.py',
+   'PYMODULE'),
+  ('setuptools.command.egg_info',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\command\\egg_info.py',
+   'PYMODULE'),
+  ('setuptools.command.sdist',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\command\\sdist.py',
+   'PYMODULE'),
+  ('setuptools.command.setopt',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\command\\setopt.py',
+   'PYMODULE'),
+  ('setuptools.compat',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\compat\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.compat.py310',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\compat\\py310.py',
+   'PYMODULE'),
+  ('setuptools.compat.py311',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\compat\\py311.py',
+   'PYMODULE'),
+  ('setuptools.compat.py39',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\compat\\py39.py',
+   'PYMODULE'),
+  ('setuptools.config',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\config\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.config._apply_pyprojecttoml',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\config\\_apply_pyprojecttoml.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.error_reporting',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject\\error_reporting.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.extra_validations',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject\\extra_validations.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.fastjsonschema_exceptions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject\\fastjsonschema_exceptions.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.fastjsonschema_validations',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject\\fastjsonschema_validations.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.formats',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject\\formats.py',
+   'PYMODULE'),
+  ('setuptools.config.expand',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\config\\expand.py',
+   'PYMODULE'),
+  ('setuptools.config.pyprojecttoml',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\config\\pyprojecttoml.py',
+   'PYMODULE'),
+  ('setuptools.config.setupcfg',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\config\\setupcfg.py',
+   'PYMODULE'),
+  ('setuptools.depends',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\depends.py',
+   'PYMODULE'),
+  ('setuptools.discovery',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\discovery.py',
+   'PYMODULE'),
+  ('setuptools.dist',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\dist.py',
+   'PYMODULE'),
+  ('setuptools.errors',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\errors.py',
+   'PYMODULE'),
+  ('setuptools.extension',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\extension.py',
+   'PYMODULE'),
+  ('setuptools.glob',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\glob.py',
+   'PYMODULE'),
+  ('setuptools.installer',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\installer.py',
+   'PYMODULE'),
+  ('setuptools.logging',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\logging.py',
+   'PYMODULE'),
+  ('setuptools.monkey',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\monkey.py',
+   'PYMODULE'),
+  ('setuptools.msvc',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\msvc.py',
+   'PYMODULE'),
+  ('setuptools.unicode_utils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\unicode_utils.py',
+   'PYMODULE'),
+  ('setuptools.version',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\version.py',
+   'PYMODULE'),
+  ('setuptools.warnings',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\warnings.py',
+   'PYMODULE'),
+  ('setuptools.wheel',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\wheel.py',
+   'PYMODULE'),
+  ('setuptools.windows_support',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\setuptools\\windows_support.py',
+   'PYMODULE'),
+  ('shiboken6',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\shiboken6\\__init__.py',
+   'PYMODULE'),
+  ('shlex',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\shlex.py',
+   'PYMODULE'),
+  ('shutil',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\shutil.py',
+   'PYMODULE'),
+  ('sicurezza',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\sicurezza.py',
+   'PYMODULE'),
+  ('signal',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\signal.py',
+   'PYMODULE'),
+  ('sistema',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\sistema.py',
+   'PYMODULE'),
+  ('site',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site.py',
+   'PYMODULE'),
+  ('socket',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\socket.py',
+   'PYMODULE'),
+  ('socketserver',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\socketserver.py',
+   'PYMODULE'),
+  ('sqlite3',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\sqlite3\\__init__.py',
+   'PYMODULE'),
+  ('sqlite3.dbapi2',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\sqlite3\\dbapi2.py',
+   'PYMODULE'),
+  ('sqlite3.dump',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\sqlite3\\dump.py',
+   'PYMODULE'),
+  ('ssl',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\ssl.py',
+   'PYMODULE'),
+  ('statistics',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\statistics.py',
+   'PYMODULE'),
+  ('string',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\string.py',
+   'PYMODULE'),
+  ('stringprep',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\stringprep.py',
+   'PYMODULE'),
+  ('subprocess',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\subprocess.py',
+   'PYMODULE'),
+  ('sysconfig',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\sysconfig.py',
+   'PYMODULE'),
+  ('tarfile',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\tarfile.py',
+   'PYMODULE'),
+  ('tempfile',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\tempfile.py',
+   'PYMODULE'),
+  ('textwrap',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\textwrap.py',
+   'PYMODULE'),
+  ('threading',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\threading.py',
+   'PYMODULE'),
+  ('token',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\token.py',
+   'PYMODULE'),
+  ('tokenize',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\tokenize.py',
+   'PYMODULE'),
+  ('tomllib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\tomllib\\__init__.py',
+   'PYMODULE'),
+  ('tomllib._parser',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\tomllib\\_parser.py',
+   'PYMODULE'),
+  ('tomllib._re',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\tomllib\\_re.py',
+   'PYMODULE'),
+  ('tomllib._types',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\tomllib\\_types.py',
+   'PYMODULE'),
+  ('tracemalloc',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\tracemalloc.py',
+   'PYMODULE'),
+  ('tty',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\tty.py',
+   'PYMODULE'),
+  ('typing',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\typing.py',
+   'PYMODULE'),
+  ('typing_extensions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\typing_extensions.py',
+   'PYMODULE'),
+  ('unittest',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\unittest\\__init__.py',
+   'PYMODULE'),
+  ('unittest._log',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\unittest\\_log.py',
+   'PYMODULE'),
+  ('unittest.async_case',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\unittest\\async_case.py',
+   'PYMODULE'),
+  ('unittest.case',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\unittest\\case.py',
+   'PYMODULE'),
+  ('unittest.loader',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\unittest\\loader.py',
+   'PYMODULE'),
+  ('unittest.main',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\unittest\\main.py',
+   'PYMODULE'),
+  ('unittest.mock',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\unittest\\mock.py',
+   'PYMODULE'),
+  ('unittest.result',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\unittest\\result.py',
+   'PYMODULE'),
+  ('unittest.runner',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\unittest\\runner.py',
+   'PYMODULE'),
+  ('unittest.signals',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\unittest\\signals.py',
+   'PYMODULE'),
+  ('unittest.suite',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\unittest\\suite.py',
+   'PYMODULE'),
+  ('unittest.util',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\unittest\\util.py',
+   'PYMODULE'),
+  ('urllib',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\urllib\\__init__.py',
+   'PYMODULE'),
+  ('urllib.error',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\urllib\\error.py',
+   'PYMODULE'),
+  ('urllib.parse',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\urllib\\parse.py',
+   'PYMODULE'),
+  ('urllib.request',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\urllib\\request.py',
+   'PYMODULE'),
+  ('urllib.response',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\urllib\\response.py',
+   'PYMODULE'),
+  ('uuid',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\uuid.py',
+   'PYMODULE'),
+  ('webbrowser',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\webbrowser.py',
+   'PYMODULE'),
+  ('workflow',
+   'C:\\Users\\Tufilli Davide\\Desktop\\Argo\\workflow.py',
+   'PYMODULE'),
+  ('xml',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\__init__.py',
+   'PYMODULE'),
+  ('xml.etree',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\etree\\__init__.py',
+   'PYMODULE'),
+  ('xml.etree.ElementInclude',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\etree\\ElementInclude.py',
+   'PYMODULE'),
+  ('xml.etree.ElementPath',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\etree\\ElementPath.py',
+   'PYMODULE'),
+  ('xml.etree.ElementTree',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\etree\\ElementTree.py',
+   'PYMODULE'),
+  ('xml.etree.cElementTree',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\etree\\cElementTree.py',
+   'PYMODULE'),
+  ('xml.parsers',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\parsers\\__init__.py',
+   'PYMODULE'),
+  ('xml.parsers.expat',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\parsers\\expat.py',
+   'PYMODULE'),
+  ('xml.sax',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\sax\\__init__.py',
+   'PYMODULE'),
+  ('xml.sax._exceptions',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\sax\\_exceptions.py',
+   'PYMODULE'),
+  ('xml.sax.expatreader',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\sax\\expatreader.py',
+   'PYMODULE'),
+  ('xml.sax.handler',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\sax\\handler.py',
+   'PYMODULE'),
+  ('xml.sax.saxutils',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\sax\\saxutils.py',
+   'PYMODULE'),
+  ('xml.sax.xmlreader',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xml\\sax\\xmlreader.py',
+   'PYMODULE'),
+  ('xmlrpc',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xmlrpc\\__init__.py',
+   'PYMODULE'),
+  ('xmlrpc.client',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\xmlrpc\\client.py',
+   'PYMODULE'),
+  ('yaml',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\__init__.py',
+   'PYMODULE'),
+  ('yaml.composer',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\composer.py',
+   'PYMODULE'),
+  ('yaml.constructor',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\constructor.py',
+   'PYMODULE'),
+  ('yaml.cyaml',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\cyaml.py',
+   'PYMODULE'),
+  ('yaml.dumper',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\dumper.py',
+   'PYMODULE'),
+  ('yaml.emitter',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\emitter.py',
+   'PYMODULE'),
+  ('yaml.error',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\error.py',
+   'PYMODULE'),
+  ('yaml.events',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\events.py',
+   'PYMODULE'),
+  ('yaml.loader',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\loader.py',
+   'PYMODULE'),
+  ('yaml.nodes',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\nodes.py',
+   'PYMODULE'),
+  ('yaml.parser',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\parser.py',
+   'PYMODULE'),
+  ('yaml.reader',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\reader.py',
+   'PYMODULE'),
+  ('yaml.representer',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\representer.py',
+   'PYMODULE'),
+  ('yaml.resolver',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\resolver.py',
+   'PYMODULE'),
+  ('yaml.scanner',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\scanner.py',
+   'PYMODULE'),
+  ('yaml.serializer',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\serializer.py',
+   'PYMODULE'),
+  ('yaml.tokens',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\yaml\\tokens.py',
+   'PYMODULE'),
+  ('zipfile',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\zipfile.py',
+   'PYMODULE'),
+  ('zipimport',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\zipimport.py',
+   'PYMODULE'),
+  ('zipp',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\zipp\\__init__.py',
+   'PYMODULE'),
+  ('zipp._functools',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\zipp\\_functools.py',
+   'PYMODULE'),
+  ('zipp.compat',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\zipp\\compat\\__init__.py',
+   'PYMODULE'),
+  ('zipp.compat.overlay',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\zipp\\compat\\overlay.py',
+   'PYMODULE'),
+  ('zipp.compat.py310',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\zipp\\compat\\py310.py',
+   'PYMODULE'),
+  ('zipp.compat.py313',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\zipp\\compat\\py313.py',
+   'PYMODULE'),
+  ('zipp.glob',
+   'C:\\Users\\Tufilli '
+   'Davide\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\zipp\\glob.py',
+   'PYMODULE')])

@@ -1,0 +1,7 @@
+﻿.venv/
+__pycache__/
+*.pyc
+produzione/build/dist/
+*.db
+*.sqlite
+_dev_server.py

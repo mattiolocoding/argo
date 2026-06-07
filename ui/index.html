@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARGO</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236366f1'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='256' height='256' rx='58' fill='url(%23g)'/%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M84 66 C70 96 74 120 92 132 L112 96 Z'/%3E%3Cpath d='M172 66 C186 96 182 120 164 132 L144 96 Z'/%3E%3Ccircle cx='128' cy='142' r='58'/%3E%3C/g%3E%3Cg fill='%235b51e0'%3E%3Ccircle cx='108' cy='134' r='9'/%3E%3Ccircle cx='148' cy='134' r='9'/%3E%3Cellipse cx='128' cy='162' rx='12' ry='9'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+/* ============================================================
+   ARGO — UI 2026  (design di frontiera, singolo file)
+   ============================================================ */
+
+/* ---------- Token di design ---------- */
+:root {
+  --bg:    #080c14;
+  --bg1:   #0b0f1a;
+  --bg2:   #0e1525;
+  --card:  #111827;
+  --card2: #141e31;
+  --bd:    #1e2d45;
+  --bd2:   #263550;
+  --tx:    #e2e8f0;
+  --tx2:   #94a3b8;
+  --mut:   #64748b;
+  --acc1:  #6366f1;
+  --acc2:  #8b5cf6;
+  --ok:    #22c55e;
+  --warn:  #f59e0b;
+  --err:   #f87171;
+  --glow:  rgba(99,102,241,.18);
+  --sb-w:  52px;          /* larghezza sidebar */
+  --hdr-h: 54px;          /* altezza header */
+  --rad:   14px;
+  --trans: .18s cubic-bezier(.4,0,.2,1);
+}
+
+/* ---------- Reset & base ---------- */
+*, *::before, *::after { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+html, body { margin: 0; height: 100%; overflow: hidden; }
+body {
+  background: var(--bg);
+  color: var(--tx);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ---------- Scrollbar custom ---------- */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bd2); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #3a4f70; }
+
+/* ---------- Header ---------- */
+#hdr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--hdr-h);
+  padding: 0 14px 0 14px;
+  background: linear-gradient(180deg, #0e1627 0%, #080c14 100%);
+  border-bottom: 1px solid var(--bd);
+  flex-shrink: 0;
+  z-index: 20;
+}
+.logo {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(99,102,241,.25), 0 4px 16px rgba(99,102,241,.35);
+}
+.logo svg { display: block; width: 100%; height: 100%; }
+.hdr-title { flex: 1; }
+.hdr-title b { font-size: 14px; font-weight: 700; letter-spacing: .4px; }
+.hdr-title small {
+  display: block;
+  font-size: 10.5px;
+  color: var(--tx2);
+  margin-top: 1px;
+}
+#pills { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
+.pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; padding: 3px 8px;
+  border-radius: 999px; border: 1px solid var(--bd);
+  background: var(--card); color: var(--tx2);
+  white-space: nowrap; transition: var(--trans);
+}
+.pill.ok  { background: rgba(34,197,94,.12); color: #4ade80; border-color: rgba(34,197,94,.25); }
+.pill.off { background: rgba(248,113,113,.12); color: #fca5a5; border-color: rgba(248,113,113,.25); }
+.dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor; flex-shrink: 0;
+  animation: pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot {
+  0%,100% { opacity: 1; } 50% { opacity: .4; }
+}
+
+/* ---------- Body layout: sidebar + main ---------- */
+#body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ---------- Sidebar ---------- */
+#sidebar {
+  width: var(--sb-w);
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #0b1020 0%, #090d18 100%);
+  border-right: 1px solid var(--bd);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0 14px;
+  gap: 4px;
+  z-index: 10;
+}
+.nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 11px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--mut);
+  transition: var(--trans);
+  position: relative;
+  gap: 2px;
+}
+.nav-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.nav-btn span { font-size: 8.5px; font-weight: 600; letter-spacing: .2px; }
+.nav-btn:hover { background: var(--card2); color: var(--tx2); border-color: var(--bd); }
+.nav-btn.active {
+  background: linear-gradient(135deg, rgba(99,102,241,.22), rgba(139,92,246,.15));
+  color: #a5b4fc;
+  border-color: rgba(99,102,241,.4);
+  box-shadow: 0 0 10px var(--glow);
+}
+.nav-btn .badge {
+  position: absolute; top: 5px; right: 5px;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--warn);
+  box-shadow: 0 0 6px rgba(245,158,11,.6);
+  animation: pulse-dot 1.5s ease infinite;
+}
+
+/* ---------- Main area ---------- */
+#main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ---------- Toolbar autonomia ---------- */
+#toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: #0a0f1d;
+  border-bottom: 1px solid var(--bd);
+  flex-shrink: 0;
+}
+#toolbar .lab { color: var(--mut); font-size: 10.5px; margin-right: 2px; }
+.mode-btn {
+  cursor: pointer;
+  background: var(--card2);
+  color: var(--tx2);
+  border: 1px solid var(--bd);
+  font-size: 11px; font-weight: 500;
+  padding: 4px 11px;
+  border-radius: 999px;
+  transition: var(--trans);
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.mode-btn:hover { border-color: var(--acc1); color: var(--tx); }
+.mode-btn.on {
+  background: linear-gradient(135deg, var(--acc1), var(--acc2));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 2px 10px rgba(99,102,241,.35);
+}
+
+/* ---------- Pannelli vista ---------- */
+.view { flex: 1; overflow-y: auto; display: none; flex-direction: column; }
+.view.active { display: flex; }
+
+/* ---------- CHAT ---------- */
+#view-chat {
+  padding: 14px;
+  gap: 12px;
+  display: none;
+}
+#view-chat.active {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.15fr) minmax(260px, .85fr);
+  grid-template-rows: auto 1fr;
+  align-items: stretch;
+}
+.presence-stage {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.companion-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  border: 1px solid rgba(99,102,241,.35);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 50% 26%, rgba(99,102,241,.28), transparent 34%),
+    linear-gradient(180deg, #111a2d 0%, #0a0f1d 100%);
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 70px rgba(99,102,241,.06), 0 18px 42px rgba(0,0,0,.22);
+}
+.companion-card::before {
+  content: "";
+  position: absolute; inset: 18px;
+  border: 1px solid rgba(148,163,184,.08);
+  border-radius: 16px;
+}
+.argo-eye {
+  position: relative;
+  width: min(52vw, 250px);
+  aspect-ratio: 1.45;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(226,232,240,.96), rgba(165,180,252,.78));
+  box-shadow: 0 0 0 1px rgba(255,255,255,.16), 0 0 45px rgba(99,102,241,.48);
+  animation: eye-float 4.8s ease-in-out infinite;
+}
+.argo-eye::before {
+  content: "";
+  position: absolute;
+  inset: 16%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 42% 38%, #f8fafc 0 10%, #111827 11% 29%, #6366f1 30% 58%, #1e1b4b 59%);
+  box-shadow: 0 0 30px rgba(99,102,241,.7);
+  animation: eye-think 6s ease-in-out infinite;
+}
+.argo-eye::after {
+  content: "";
+  position: absolute;
+  left: 15%; right: 15%; top: -9%;
+  height: 16%;
+  border-radius: 50%;
+  background: rgba(8,12,20,.78);
+  transform-origin: center top;
+  animation: blink 7s ease-in-out infinite;
+}
+.companion-card.think .argo-eye::before { animation-duration: 2.2s; }
+.companion-card.alert .argo-eye { box-shadow: 0 0 0 1px rgba(245,158,11,.32), 0 0 54px rgba(245,158,11,.45); }
+.companion-card.protect .argo-eye { box-shadow: 0 0 0 1px rgba(34,197,94,.28), 0 0 54px rgba(34,197,94,.36); }
+@keyframes eye-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes eye-think { 0%,100% { transform: translate(0,0) scale(1); } 30% { transform: translate(7px,-2px) scale(.98); } 62% { transform: translate(-6px,3px) scale(1.02); } }
+@keyframes blink { 0%,92%,100% { transform: scaleY(0); } 94%,96% { transform: scaleY(1); } }
+.presence-copy {
+  position: absolute;
+  left: 18px; right: 18px; bottom: 18px;
+  display: grid;
+  gap: 5px;
+  text-align: center;
+}
+.presence-copy b { font-size: 18px; letter-spacing: .2px; }
+.presence-copy span { color: var(--tx2); font-size: 12px; }
+.cockpit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.cockpit-card {
+  border: 1px solid var(--bd);
+  background: var(--card);
+  border-radius: 13px;
+  padding: 12px;
+  min-height: 88px;
+}
+.cockpit-card small {
+  display: block;
+  color: var(--mut);
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  font-size: 9.5px;
+  margin-bottom: 6px;
+}
+.cockpit-card b { display: block; font-size: 18px; }
+.cockpit-card span { display: block; color: var(--tx2); font-size: 11px; margin-top: 4px; }
+.side-live {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.panel-title {
+  display: flex; justify-content: space-between; align-items: center;
+  color: var(--mut);
+  font-size: 10px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .7px;
+  margin-bottom: 8px;
+}
+.live-panel {
+  border: 1px solid var(--bd);
+  background: var(--card);
+  border-radius: 14px;
+  padding: 12px;
+}
+.activity-stream, .dialog-stream {
+  min-height: 0;
+  max-height: 240px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.activity-item {
+  border: 1px solid rgba(148,163,184,.12);
+  background: rgba(20,30,49,.72);
+  border-radius: 11px;
+  padding: 9px 10px;
+  animation: bubble-in .18s ease both;
+}
+.activity-item b { display:block; font-size: 11px; color: var(--tx); margin-bottom: 2px; }
+.activity-item span { color: var(--tx2); font-size: 11px; }
+.activity-item.alert { border-color: rgba(245,158,11,.35); background: rgba(245,158,11,.08); }
+.activity-item.protect { border-color: rgba(34,197,94,.28); background: rgba(34,197,94,.07); }
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.quick-actions .act { margin: 0; }
+#toast-stack {
+  position: fixed;
+  right: 16px;
+  bottom: 76px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(340px, calc(100vw - 32px));
+  pointer-events: none;
+}
+.toast {
+  border: 1px solid rgba(99,102,241,.32);
+  background: rgba(17,24,39,.96);
+  border-radius: 13px;
+  padding: 11px 12px;
+  box-shadow: 0 18px 44px rgba(0,0,0,.42);
+  animation: toast-in .25s ease both;
+}
+.toast b { display:block; font-size: 12px; margin-bottom: 3px; }
+.toast span { color: var(--tx2); font-size: 11px; }
+@keyframes toast-in { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+@media (max-width: 900px) {
+  #view-chat.active { display: flex; flex-direction: column; }
+  .cockpit-grid { grid-template-columns: 1fr; }
+  .side-live { min-height: 420px; }
+}
+#livebar {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  margin-bottom: 2px;
+  border: 1px solid rgba(99,102,241,.32);
+  background: linear-gradient(135deg, rgba(99,102,241,.16), rgba(20,30,49,.94));
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.18);
+}
+.live-main { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.live-orb {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 12px rgba(34,197,94,.8);
+  animation: pulse-dot 1.4s ease infinite;
+  flex: 0 0 auto;
+}
+.live-title { font-weight: 700; font-size: 12px; white-space: nowrap; }
+.live-detail {
+  color: var(--tx2);
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.live-meta {
+  display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end;
+  color: var(--tx2); font-size: 10px;
+}
+.live-meta span {
+  border: 1px solid var(--bd);
+  background: rgba(8,12,20,.45);
+  border-radius: 999px;
+  padding: 2px 7px;
+}
+.bolla {
+  max-width: 84%;
+  padding: 10px 13px;
+  border-radius: 16px;
+  animation: bubble-in .22s ease both;
+  word-break: break-word;
+}
+@keyframes bubble-in {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+.bolla.argo {
+  align-self: flex-start;
+  background: var(--card2);
+  border: 1px solid var(--bd);
+  border-radius: 16px 16px 16px 3px;
+}
+.bolla.tu {
+  align-self: flex-end;
+  background: linear-gradient(135deg, var(--acc1), var(--acc2));
+  color: #fff;
+  border-radius: 16px 16px 3px 16px;
+  box-shadow: 0 4px 18px rgba(99,102,241,.3);
+}
+.bolla.sys {
+  align-self: center;
+  color: var(--mut);
+  font-size: 11px;
+  font-style: italic;
+  background: none;
+  padding: 2px 0;
+}
+.bolla.err {
+  align-self: flex-start;
+  background: rgba(248,113,113,.1);
+  border: 1px solid rgba(248,113,113,.25);
+  color: #fca5a5;
+  border-radius: 16px;
+}
+/* Proposta (dentro il feed chat) */
+.prop-card {
+  align-self: stretch;
+  background: linear-gradient(135deg, rgba(245,158,11,.08), rgba(99,102,241,.06));
+  border: 1px solid rgba(245,158,11,.28);
+  border-radius: 14px;
+  padding: 14px;
+  animation: bubble-in .22s ease both;
+}
+.prop-label {
+  display: flex; align-items: center; gap: 7px;
+  color: var(--warn); font-size: 10.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .6px;
+  margin-bottom: 8px;
+}
+.prop-label svg { width: 14px; height: 14px; fill: currentColor; }
+.prop-txt { font-size: 13px; line-height: 1.5; margin-bottom: 12px; color: var(--tx); }
+.prop-row { display: flex; gap: 8px; }
+.btn-si {
+  flex: 1; border: none; cursor: pointer; font-size: 13px; font-weight: 600;
+  padding: 9px; border-radius: 10px;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #fff;
+  transition: var(--trans);
+}
+.btn-si:hover { filter: brightness(1.08); }
+.btn-no {
+  flex: 1; cursor: pointer; font-size: 13px; font-weight: 600;
+  padding: 9px; border-radius: 10px;
+  background: var(--card2); color: var(--tx2);
+  border: 1px solid var(--bd);
+  transition: var(--trans);
+}
+.btn-no:hover { border-color: var(--err); color: var(--err); }
+
+/* typing indicator */
+.typing { display: flex; align-items: center; gap: 4px; padding: 10px 13px; }
+.typing span {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--acc1); opacity: .4;
+  animation: typing-bounce .9s ease infinite;
+}
+.typing span:nth-child(2) { animation-delay: .15s; }
+.typing span:nth-child(3) { animation-delay: .3s; }
+@keyframes typing-bounce {
+  0%,80%,100% { transform: translateY(0); opacity: .4; }
+  40%          { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ---------- INPUT footer ---------- */
+#footer {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--bd);
+  background: var(--bg1);
+  flex-shrink: 0;
+}
+#inp {
+  flex: 1;
+  background: var(--card2);
+  border: 1px solid var(--bd);
+  border-radius: 11px;
+  padding: 10px 13px;
+  color: var(--tx);
+  font-size: 13px;
+  outline: none;
+  transition: border-color var(--trans);
+  font-family: inherit;
+}
+#inp:focus { border-color: var(--acc1); box-shadow: 0 0 0 2px var(--glow); }
+#inp::placeholder { color: var(--mut); }
+#send {
+  border: none; cursor: pointer;
+  background: linear-gradient(135deg, var(--acc1), var(--acc2));
+  color: #fff; font-weight: 700; font-size: 13px;
+  padding: 0 16px; border-radius: 11px;
+  transition: var(--trans);
+  display: inline-flex; align-items: center; gap: 5px;
+}
+#send:hover { filter: brightness(1.1); }
+#send:active { transform: scale(.96); }
+#send svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- CONSOLE ---------- */
+#view-console { padding: 14px; gap: 12px; }
+.section-title {
+  font-size: 10px; font-weight: 700; color: var(--mut);
+  text-transform: uppercase; letter-spacing: .8px;
+  margin-bottom: 8px;
+}
+.cgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: var(--rad);
+  padding: 13px;
+}
+.card:hover { border-color: var(--bd2); }
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 10px; color: var(--mut);
+  text-transform: uppercase; letter-spacing: .7px;
+}
+.kv {
+  display: flex; justify-content: space-between;
+  font-size: 12.5px; padding: 3.5px 0;
+  color: var(--tx2); border-bottom: 1px solid rgba(255,255,255,.03);
+}
+.kv:last-child { border-bottom: none; }
+.kv b { color: var(--tx); font-weight: 600; }
+.act {
+  display: flex; align-items: center; gap: 7px;
+  width: 100%; text-align: left; margin: 4px 0; cursor: pointer;
+  background: var(--card2); color: var(--tx2);
+  border: 1px solid var(--bd); border-radius: 9px;
+  padding: 9px 11px; font-size: 12px;
+  transition: var(--trans); font-family: inherit;
+}
+.act:hover { border-color: var(--acc1); color: var(--tx); background: rgba(99,102,241,.07); }
+.act svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.agout {
+  margin-top: 8px; color: var(--tx2);
+  font-size: 11.5px; white-space: pre-wrap;
+  background: rgba(0,0,0,.2); border-radius: 8px;
+  padding: 8px; display: none;
+}
+.agout.visible { display: block; }
+/* Status badge */
+.badge-ok  { color: #4ade80; }
+.badge-err { color: #f87171; }
+
+/* ---------- SICUREZZA ---------- */
+#view-sicurezza { padding: 14px; gap: 12px; }
+.audit-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 9px 12px;
+  background: var(--card); border: 1px solid var(--bd);
+  border-radius: 9px; font-size: 12px;
+  animation: bubble-in .2s ease both;
+}
+.audit-row .at { color: var(--mut); font-size: 10.5px; flex-shrink: 0; white-space: nowrap; }
+.audit-row .ev { color: var(--tx2); flex: 1; }
+.audit-row .tp {
+  font-size: 10px; padding: 2px 7px; border-radius: 99px;
+  background: rgba(99,102,241,.15); color: #a5b4fc;
+  flex-shrink: 0;
+}
+.mini-btn {
+  width: 24px; height: 24px; flex: 0 0 24px;
+  border: 1px solid var(--bd); border-radius: 7px;
+  background: var(--card2); color: var(--tx2);
+  cursor: pointer; font: 700 13px/1 inherit;
+}
+.mini-btn:hover { border-color: var(--acc1); color: var(--tx); }
+
+/* ---------- PERMESSI (sezione + onboarding) ---------- */
+#view-permessi { padding: 14px; gap: 12px; }
+
+/* Schermata onboarding fullscreen */
+#onboarding {
+  position: fixed; inset: 0;
+  background: rgba(8,12,20,.96);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  animation: fade-in .3s ease both;
+}
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+#onboarding.hidden { display: none; }
+.onb-box {
+  background: var(--card2);
+  border: 1px solid var(--bd2);
+  border-radius: 20px;
+  padding: 28px 26px;
+  max-width: 440px; width: 100%;
+  box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(99,102,241,.12);
+}
+.onb-logo {
+  width: 52px; height: 52px; border-radius: 15px;
+  margin: 0 auto 18px;
+  box-shadow: 0 0 0 1px rgba(99,102,241,.25), 0 6px 22px rgba(99,102,241,.4);
+  overflow: hidden;
+}
+.onb-logo svg { display: block; width: 100%; height: 100%; }
+.onb-box h2 {
+  text-align: center; font-size: 18px; font-weight: 700;
+  margin: 0 0 6px; color: var(--tx);
+}
+.onb-sub {
+  text-align: center; font-size: 12.5px; color: var(--tx2);
+  margin-bottom: 20px; line-height: 1.55;
+}
+.onb-privacy {
+  background: rgba(34,197,94,.07);
+  border: 1px solid rgba(34,197,94,.2);
+  border-radius: 10px; padding: 9px 12px;
+  font-size: 11.5px; color: #86efac;
+  margin-bottom: 18px;
+  display: flex; gap: 8px; align-items: flex-start;
+}
+.onb-privacy svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; flex-shrink: 0; margin-top: 1px; }
+.onb-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+.opt-card {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 13px 14px;
+  background: var(--card);
+  border: 2px solid var(--bd);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--trans);
+  position: relative;
+}
+.opt-card:hover { border-color: var(--acc1); background: rgba(99,102,241,.06); }
+.opt-card.selected {
+  border-color: var(--acc1);
+  background: rgba(99,102,241,.1);
+  box-shadow: 0 0 0 1px rgba(99,102,241,.2);
+}
+.opt-radio {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--bd2);
+  flex-shrink: 0; margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--trans);
+}
+.opt-card.selected .opt-radio {
+  border-color: var(--acc1);
+  background: var(--acc1);
+}
+.opt-card.selected .opt-radio::after {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%; background: #fff;
+}
+.opt-body { flex: 1; }
+.opt-name { font-size: 13px; font-weight: 600; color: var(--tx); margin-bottom: 3px; }
+.opt-desc { font-size: 11.5px; color: var(--tx2); line-height: 1.45; }
+/* Cartelle personalizzate */
+#onb-custom-folders {
+  margin-top: 8px; display: none;
+}
+#onb-custom-folders.visible { display: block; }
+.folder-list { list-style: none; margin: 0 0 8px; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+.folder-item {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg2); border: 1px solid var(--bd); border-radius: 8px;
+  padding: 6px 10px; font-size: 12px; color: var(--tx2);
+}
+.folder-item button {
+  background: none; border: none; color: var(--err); cursor: pointer;
+  font-size: 14px; line-height: 1; padding: 0 2px;
+  transition: var(--trans);
+}
+.folder-item button:hover { color: #fca5a5; }
+.add-folder-row {
+  display: flex; gap: 6px;
+}
+.add-folder-inp {
+  flex: 1; background: var(--bg2); border: 1px solid var(--bd);
+  border-radius: 8px; padding: 7px 10px; color: var(--tx);
+  font-size: 12px; outline: none; font-family: inherit;
+}
+.add-folder-inp:focus { border-color: var(--acc1); }
+.btn-add {
+  background: var(--card2); border: 1px solid var(--bd);
+  color: var(--tx2); border-radius: 8px; cursor: pointer;
+  padding: 7px 12px; font-size: 12px; font-weight: 600;
+  transition: var(--trans); font-family: inherit;
+}
+.btn-add:hover { border-color: var(--acc1); color: var(--acc1); }
+.onb-confirm {
+  width: 100%; border: none; cursor: pointer;
+  background: linear-gradient(135deg, var(--acc1), var(--acc2));
+  color: #fff; font-size: 14px; font-weight: 700;
+  padding: 13px; border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(99,102,241,.35);
+  transition: var(--trans); font-family: inherit;
+}
+.onb-confirm:hover { filter: brightness(1.08); }
+.onb-confirm:active { transform: scale(.98); }
+
+/* Sezione permessi nel pannello */
+.perm-status-card {
+  background: var(--card2); border: 1px solid var(--bd);
+  border-radius: var(--rad); padding: 14px;
+}
+.perm-modo-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600;
+  padding: 5px 12px; border-radius: 999px;
+  margin-bottom: 12px;
+}
+.perm-modo-badge.tutto  { background: rgba(34,197,94,.12); color: #4ade80; border: 1px solid rgba(34,197,94,.25); }
+.perm-modo-badge.selezione { background: rgba(99,102,241,.12); color: #a5b4fc; border: 1px solid rgba(99,102,241,.25); }
+.perm-modo-badge.niente { background: rgba(248,113,113,.12); color: #fca5a5; border: 1px solid rgba(248,113,113,.25); }
+.perm-folder-list { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+.perm-folder-item {
+  font-size: 12px; color: var(--tx2);
+  padding: 5px 10px;
+  background: var(--bg2); border: 1px solid var(--bd); border-radius: 7px;
+}
+.btn-reconf {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 14px; cursor: pointer;
+  background: var(--card2); color: var(--tx2);
+  border: 1px solid var(--bd); border-radius: 9px;
+  padding: 8px 14px; font-size: 12px; font-weight: 600;
+  transition: var(--trans); font-family: inherit;
+}
+.btn-reconf:hover { border-color: var(--acc1); color: var(--acc1); }
+
+/* ---------- Banner errore ---------- */
+#banner {
+  background: rgba(248,113,113,.12);
+  border-bottom: 1px solid rgba(248,113,113,.25);
+  color: #fca5a5; text-align: center; font-size: 11.5px;
+  padding: 6px; display: none; flex-shrink: 0;
+}
+
+/* ---------- Empty / skeleton state ---------- */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; padding: 40px 20px; color: var(--mut);
+  text-align: center;
+}
+.empty-state svg { width: 36px; height: 36px; opacity: .35; fill: none; stroke: currentColor; stroke-width: 1.2; }
+.empty-state p { font-size: 12px; margin: 0; }
+
+/* ---------- Responsive (finestra Qt ~560x820) ---------- */
+@media (max-width: 520px) {
+  .cgrid { grid-template-columns: 1fr; }
+  .onb-box { padding: 22px 16px; }
+}
+@media (max-width: 380px) {
+  var(--sb-w) { --sb-w: 44px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Onboarding permessi (overlay fullscreen) -->
+<div id="onboarding" class="hidden" aria-modal="true" role="dialog" aria-label="Configura i permessi di ARGO">
+  <div class="onb-box">
+    <div class="onb-logo">
+      <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#6366f1"/><stop offset="1" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect width="256" height="256" rx="58" fill="url(#lg2)"/>
+        <g fill="#fff">
+          <path d="M84 66 C70 96 74 120 92 132 L112 96 Z"/>
+          <path d="M172 66 C186 96 182 120 164 132 L144 96 Z"/>
+          <circle cx="128" cy="142" r="58"/>
+        </g>
+        <g fill="#5b51e0">
+          <circle cx="108" cy="134" r="9"/>
+          <circle cx="148" cy="134" r="9"/>
+          <ellipse cx="128" cy="162" rx="12" ry="9"/>
+        </g>
+      </svg>
+    </div>
+    <h2>Ciao, sono ARGO</h2>
+    <p class="onb-sub">
+      Prima di cominciare, dicci cosa puoi vedere sul tuo PC.<br>
+      Puoi cambiare idea in qualsiasi momento.
+    </p>
+    <div class="onb-privacy">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>Tutto rimane <b>locale sul tuo PC</b>. ARGO non invia nulla a server esterni.</span>
+    </div>
+    <div class="onb-options">
+      <!-- Opzione A -->
+      <div class="opt-card" data-modo="tutto" onclick="selOpt(this)">
+        <div class="opt-radio"></div>
+        <div class="opt-body">
+          <div class="opt-name">Tutto il PC</div>
+          <div class="opt-desc">Osservo Desktop, Download, Documenti, Immagini, Musica, Video. Ti aiuto ad organizzare tutto.</div>
+        </div>
+      </div>
+      <!-- Opzione B -->
+      <div class="opt-card" data-modo="selezione" onclick="selOpt(this)">
+        <div class="opt-radio"></div>
+        <div class="opt-body">
+          <div class="opt-name">Solo le cartelle che scelgo io</div>
+          <div class="opt-desc">Indico io dove guardare. Controllo pieno.</div>
+          <div id="onb-custom-folders">
+            <ul class="folder-list" id="onb-folder-list"></ul>
+            <div class="add-folder-row">
+              <input class="add-folder-inp" id="onb-folder-inp" placeholder="Es. C:\Users\Davide\Desktop" autocomplete="off">
+              <button class="btn-add" onclick="onbAddFolder()">+ Aggiungi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Opzione C -->
+      <div class="opt-card" data-modo="niente" onclick="selOpt(this)">
+        <div class="opt-radio"></div>
+        <div class="opt-body">
+          <div class="opt-name">Niente per ora</div>
+          <div class="opt-desc">Non osservo cartelle. Posso comunque rispondere alle tue domande.</div>
+        </div>
+      </div>
+    </div>
+    <button class="onb-confirm" onclick="onbConferma()">Inizia con ARGO</button>
+  </div>
+</div>
+
+<!-- Banner errore connessione -->
+<div id="banner">Motore non raggiungibile — riprovo…</div>
+
+<!-- Header fisso -->
+<header id="hdr">
+  <div class="logo">
+    <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#6366f1"/><stop offset="1" stop-color="#8b5cf6"/>
+      </linearGradient></defs>
+      <rect width="256" height="256" rx="58" fill="url(#lg)"/>
+      <g fill="#fff">
+        <path d="M84 66 C70 96 74 120 92 132 L112 96 Z"/>
+        <path d="M172 66 C186 96 182 120 164 132 L144 96 Z"/>
+        <circle cx="128" cy="142" r="58"/>
+      </g>
+      <g fill="#5b51e0">
+        <circle cx="108" cy="134" r="9"/>
+        <circle cx="148" cy="134" r="9"/>
+        <ellipse cx="128" cy="162" rx="12" ry="9"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hdr-title">
+    <b>ARGO</b>
+    <small>Custode del PC · vive con te</small>
+  </div>
+  <div id="pills"></div>
+</header>
+
+<!-- Body: sidebar + main -->
+<div id="body">
+
+  <!-- Sidebar navigazione -->
+  <nav id="sidebar" aria-label="Navigazione">
+    <button class="nav-btn active" data-view="chat" onclick="switchView('chat')" title="Vivo">
+      <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      <span>Vivo</span>
+    </button>
+    <button class="nav-btn" data-view="console" onclick="switchView('console')" title="Console">
+      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><polyline points="6 8 9 11 6 14"/><line x1="12" y1="14" x2="16" y2="14"/></svg>
+      <span>Console</span>
+    </button>
+    <button class="nav-btn" id="nav-permessi" data-view="permessi" onclick="switchView('permessi')" title="Permessi">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>Permessi</span>
+    </button>
+    <button class="nav-btn" data-view="sicurezza" onclick="switchView('sicurezza')" title="Sicurezza">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span>Audit</span>
+    </button>
+  </nav>
+
+  <!-- Area principale -->
+  <div id="main">
+
+    <!-- Toolbar autonomia (visibile su Chat e Console) -->
+    <div id="toolbar">
+      <span class="lab">Quando trova qualcosa:</span>
+      <button class="mode-btn" data-m="osserva" onclick="clickModo(this)">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Osserva
+      </button>
+      <button class="mode-btn" data-m="chiede" onclick="clickModo(this)">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Chiede
+      </button>
+      <button class="mode-btn" data-m="agisce" onclick="clickModo(this)">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Agisci
+      </button>
+    </div>
+
+    <!-- VISTA: CHAT -->
+    <div id="view-chat" class="view active" role="log" aria-live="polite">
+      <section class="presence-stage">
+        <div class="companion-card protect" id="companion-card">
+          <div class="argo-eye" aria-hidden="true"></div>
+          <div class="presence-copy">
+            <b id="presence-title">Sto vegliando sul tuo PC</b>
+            <span id="presence-sub">Avvio sensi, memoria e policy locali…</span>
+          </div>
+        </div>
+
+        <div class="cockpit-grid">
+          <div class="cockpit-card">
+            <small>Osservazione</small>
+            <b id="cockpit-cartelle">--</b>
+            <span>cartelle autorizzate</span>
+          </div>
+          <div class="cockpit-card">
+            <small>Memoria</small>
+            <b id="cockpit-ricordi">--</b>
+            <span>ricordi locali</span>
+          </div>
+          <div class="cockpit-card">
+            <small>Coda</small>
+            <b id="cockpit-coda">0</b>
+            <span>azioni/proposte</span>
+          </div>
+        </div>
+
+        <div class="live-panel">
+          <div class="panel-title"><span>Consiglio contestuale</span><span id="advice-state">vigile</span></div>
+          <div id="advice-box" style="color:var(--tx2);font-size:12px;line-height:1.55;">
+            Sto raccogliendo segnali autorizzati. Se noto qualcosa di utile, te lo propongo qui.
+          </div>
+        </div>
+      </section>
+
+      <aside class="side-live">
+        <div id="livebar">
+          <div class="live-main">
+            <span class="live-orb"></span>
+            <span class="live-title">ARGO vivo</span>
+            <span class="live-detail" id="live-detail">Avvio sensi e memoria…</span>
+          </div>
+          <div class="live-meta">
+            <span id="live-coda">coda 0</span>
+            <span id="live-scan">scan --s</span>
+          </div>
+        </div>
+
+        <div class="live-panel" style="flex:1;min-height:0;">
+          <div class="panel-title"><span>Timeline viva</span><span id="activity-count">0</span></div>
+          <div id="activity-stream" class="activity-stream"></div>
+        </div>
+
+        <div class="live-panel">
+          <div class="panel-title"><span>Azioni rapide</span><span>governate</span></div>
+          <div class="quick-actions">
+            <button class="act" onclick="switchView('console')">Console</button>
+            <button class="act" onclick="sonno()">Sonno</button>
+            <button class="act" onclick="riflettiOra()">Rifletti</button>
+            <button class="act" onclick="bonificaSkill()">Bonifica</button>
+          </div>
+        </div>
+
+        <div class="live-panel" style="max-height:260px;">
+          <div class="panel-title"><span>Parla con ARGO</span><span>secondario</span></div>
+          <div id="dialog-stream" class="dialog-stream"></div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- VISTA: CONSOLE -->
+    <div id="view-console" class="view">
+      <div id="console-content" style="display:contents"></div>
+    </div>
+
+    <!-- VISTA: PERMESSI -->
+    <div id="view-permessi" class="view">
+      <div id="permessi-content"></div>
+    </div>
+
+    <!-- VISTA: SICUREZZA / AUDIT -->
+    <div id="view-sicurezza" class="view" style="padding:14px; gap:10px;">
+      <div id="audit-content">
+        <div class="empty-state">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <p>Caricamento audit…</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /body -->
+
+<!-- Footer input (visibile solo in chat) -->
+<div id="footer">
+  <input id="inp" placeholder="Scrivi ad ARGO…" autocomplete="off" aria-label="Messaggio per ARGO">
+  <button id="send" aria-label="Invia">
+    <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    Invia
+  </button>
+</div>
+
+<div id="toast-stack" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   ARGO — JavaScript 2026
+   Tutti i fetch sono verso la stessa origine (window.location)
+   ============================================================ */
+
+const API = "";          // stessa origine: no CDN, no CORS
+let lastEvento = 0;
+let propVisibile = false;
+let vistaCorrente = "chat";
+
+// ------------------------------------------------------------------
+// Utility fetch
+// ------------------------------------------------------------------
+async function getJSON(u) {
+  const r = await fetch(API + u);
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
+async function postJSON(u, d) {
+  const r = await fetch(API + u, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(d)
+  });
+  return r.json();
+}
+
+// ------------------------------------------------------------------
+// Navigazione sidebar
+// ------------------------------------------------------------------
+function switchView(v) {
+  vistaCorrente = v;
+  document.querySelectorAll(".nav-btn").forEach(b => {
+    b.classList.toggle("active", b.dataset.view === v);
+  });
+  document.querySelectorAll(".view").forEach(el => {
+    el.classList.toggle("active", el.id === "view-" + v);
+  });
+  document.getElementById("footer").style.display = (v === "chat") ? "flex" : "none";
+  document.getElementById("toolbar").style.display = (v === "permessi") ? "none" : "flex";
+
+  if (v === "console") caricaConsole();
+  if (v === "sicurezza") caricaAudit();
+  if (v === "permessi") caricaPermessi();
+}
+
+// ------------------------------------------------------------------
+// HEADER: pills di stato
+// ------------------------------------------------------------------
+const pills = document.getElementById("pills");
+const banner = document.getElementById("banner");
+
+async function tickStato() {
+  try {
+    const s = await getJSON("/stato");
+    banner.style.display = "none";
+    const cerOk = s.cervello_online;
+    pills.innerHTML =
+      `<span class="pill ${cerOk ? "ok" : "off"}"><span class="dot"></span>${cerOk ? "Cervello online" : "Cervello offline"}</span>` +
+      `<span class="pill">${s.ricordi} ricordi</span>` +
+      `<span class="pill">${s.cartelle} cart.</span>`;
+    aggiornaLivebar(s.attivita || {});
+    aggiornaCockpit(s);
+    aggModo(s.modo);
+    mostraProposta(s.proposta);
+  } catch (e) {
+    banner.style.display = "block";
+  }
+}
+
+function aggiornaCockpit(s) {
+  const cart = document.getElementById("cockpit-cartelle");
+  const ric = document.getElementById("cockpit-ricordi");
+  const cod = document.getElementById("cockpit-coda");
+  if (cart) cart.textContent = s.cartelle ?? "--";
+  if (ric) ric.textContent = s.ricordi ?? "--";
+  if (cod) cod.textContent = (s.attivita && s.attivita.coda) || (s.proposta ? 1 : 0) || 0;
+}
+
+function aggiornaLivebar(a) {
+  const det = document.getElementById("live-detail");
+  const coda = document.getElementById("live-coda");
+  const scan = document.getElementById("live-scan");
+  const card = document.getElementById("companion-card");
+  const title = document.getElementById("presence-title");
+  const sub = document.getElementById("presence-sub");
+  const advice = document.getElementById("advice-box");
+  const adviceState = document.getElementById("advice-state");
+  if (!det) return;
+  const stato = a.stato || "vigile";
+  const dettaglio = a.dettaglio || "Sto osservando il PC autorizzato.";
+  const finestra = a.finestra ? ` · ${a.finestra}` : "";
+  det.textContent = `${stato}: ${dettaglio}${finestra}`;
+  if (coda) coda.textContent = `coda ${a.coda || 0}`;
+  if (scan) scan.textContent = `scan ${a.prossima_scansione_s ?? "--"}s`;
+  if (card) {
+    card.classList.toggle("think", ["pensiero", "scansione", "sensi"].includes(stato));
+    card.classList.toggle("alert", (a.coda || 0) > 0 || stato.includes("file"));
+    card.classList.toggle("protect", !(a.coda || 0));
+  }
+  if (title) title.textContent = (a.coda || 0) > 0 ? "Ho qualcosa da proporti" : "Sono presente sul tuo PC";
+  if (sub) sub.textContent = dettaglio;
+  if (advice) {
+    advice.textContent = (a.coda || 0) > 0
+      ? "C'è una proposta in attesa: puoi confermare, rifiutare o aprire la Console per vedere il contesto."
+      : "Sto osservando senza disturbarti. Se noto rischio, accumuli o pattern utili, apro un avviso qui.";
+  }
+  if (adviceState) adviceState.textContent = stato;
+}
+
+// ------------------------------------------------------------------
+// CHAT — bolle
+// ------------------------------------------------------------------
+const feed = document.getElementById("activity-stream") || document.getElementById("view-chat");
+const dialogFeed = document.getElementById("dialog-stream") || feed;
+const activityCount = document.getElementById("activity-count");
+
+function bolla(testo, cls, target) {
+  const box = target || feed;
+  const d = document.createElement("div");
+  d.className = "bolla " + cls;
+  d.textContent = testo;
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+}
+function activityItem(ev) {
+  const box = feed;
+  if (!box) return;
+  const d = document.createElement("div");
+  const cls = ev.tag === "errore" ? "alert" : (String(ev.testo || "").toLowerCase().includes("sensibile") ? "protect" : "");
+  d.className = "activity-item " + cls;
+  d.innerHTML = `<b>${escHtml(ev.mittente || "ARGO")}</b><span>${escHtml(ev.testo || "")}</span>`;
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+  if (activityCount) activityCount.textContent = String(box.children.length);
+}
+function toast(titolo, testo) {
+  const stack = document.getElementById("toast-stack");
+  if (!stack) return;
+  const d = document.createElement("div");
+  d.className = "toast";
+  d.innerHTML = `<b>${escHtml(titolo)}</b><span>${escHtml(testo)}</span>`;
+  stack.appendChild(d);
+  setTimeout(() => { d.style.opacity = "0"; d.style.transform = "translateY(8px)"; }, 5200);
+  setTimeout(() => d.remove(), 5800);
+}
+function tagToClass(t) {
+  if (t === "tu")      return "tu";
+  if (t === "sistema") return "sys";
+  if (t === "errore")  return "err";
+  return "argo";
+}
+
+// ------------------------------------------------------------------
+// PROPOSTA
+// ------------------------------------------------------------------
+let propEl = null;
+
+function mostraProposta(testo) {
+  if (testo) {
+    if (!propVisibile) {
+      propEl = document.createElement("div");
+      propEl.className = "prop-card";
+      propEl.innerHTML = `
+        <div class="prop-label">
+          <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Proposta di ARGO
+        </div>
+        <div class="prop-txt">${escHtml(testo)}</div>
+        <div class="prop-row">
+          <button class="btn-si" onclick="conferma(true)">Sì, procedi</button>
+          <button class="btn-no" onclick="conferma(false)">No, lascia stare</button>
+        </div>`;
+      feed.appendChild(propEl);
+      feed.scrollTop = feed.scrollHeight;
+      propVisibile = true;
+    } else if (propEl) {
+      const t = propEl.querySelector(".prop-txt");
+      if (t) t.textContent = testo;
+    }
+  } else if (propVisibile) {
+    if (propEl) propEl.remove();
+    propEl = null;
+    propVisibile = false;
+  }
+}
+
+function escHtml(s) {
+  s = String(s ?? "");
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+async function conferma(si) {
+  if (propEl) propEl.remove();
+  propEl = null; propVisibile = false;
+  try { await postJSON("/conferma", { si }); } catch(e) {}
+  tickEventi(); tickStato();
+}
+
+// ------------------------------------------------------------------
+// EVENTI (polling)
+// ------------------------------------------------------------------
+async function tickEventi() {
+  try {
+    const r = await getJSON("/eventi?since=" + lastEvento);
+    (r.eventi || []).forEach(ev => {
+      activityItem(ev);
+      if (ev.tag === "errore" || ev.tag === "sistema" || String(ev.testo || "").includes("Proposta")) {
+        toast(ev.mittente || "ARGO", ev.testo || "");
+      }
+      lastEvento = ev.id;
+    });
+  } catch(e) {}
+}
+
+// ------------------------------------------------------------------
+// INVIO messaggio
+// ------------------------------------------------------------------
+async function invia() {
+  const inp = document.getElementById("inp");
+  const t = inp.value.trim();
+  if (!t) return;
+  inp.value = "";
+
+  bolla(t, "tu", dialogFeed);
+
+  // typing indicator
+  const typing = document.createElement("div");
+  typing.className = "bolla argo";
+  typing.innerHTML = `<div class="typing"><span></span><span></span><span></span></div>`;
+  dialogFeed.appendChild(typing);
+  dialogFeed.scrollTop = dialogFeed.scrollHeight;
+
+  try {
+    const r = await postJSON("/chat", { testo: t });
+    typing.remove();
+    bolla(r.risposta || "…", "argo", dialogFeed);
+  } catch(e) {
+    typing.remove();
+    bolla("Non riesco a contattare il motore.", "err", dialogFeed);
+  }
+}
+
+document.getElementById("send").onclick = invia;
+document.getElementById("inp").addEventListener("keydown", e => {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); invia(); }
+});
+
+// ------------------------------------------------------------------
+// MODALITÀ AUTONOMIA
+// ------------------------------------------------------------------
+function aggModo(m) {
+  document.querySelectorAll(".mode-btn[data-m]").forEach(b => {
+    b.classList.toggle("on", b.dataset.m === m);
+  });
+}
+function clickModo(btn) {
+  aggModo(btn.dataset.m);
+  postJSON("/autonomia", { modo: btn.dataset.m }).catch(() => {});
+}
+
+function progettoValido(nome) {
+  const pulito = String(nome || "")
+    .replace(/[_\-.]+/g, " ")
+    .replace(/[\[\]{}()!•·]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+  if (!pulito || pulito.length <= 2) return false;
+  const falsi = new Set([
+    "action required", "required", "desktop", "downloads", "download",
+    "documenti", "documents", "sorvegliata", "argo", "codex", "chatgpt"
+  ]);
+  return !falsi.has(pulito);
+}
+
+// ------------------------------------------------------------------
+// CONSOLE
+// ------------------------------------------------------------------
+async function caricaConsole() {
+  let d;
+  try { d = await getJSON("/dashboard"); } catch(e) { return; }
+  const m = d.metriche, a = d.audit, g = d.stato.grafo || { nodi: 0, archi: 0 };
+  const integro = a && a.integro !== false;
+  const cog = d.cognizione || {};
+  const pat = cog.pattern || {};
+  const tipi = pat.tipi || {};
+  const progetti = Object.fromEntries(
+    Object.entries(pat.progetti || {}).filter(([nome]) => progettoValido(nome))
+  );
+  const lacune = cog.lacune || [];
+  const cons = cog.consolidamento || {};
+  const pens = cog.pensiero || {};
+  const props = cog.proposte || [];
+  const diario = cog.diario || [];
+  const obiettivi = cog.obiettivi || [];
+  const esperimenti = cog.esperimenti || [];
+  const skills = (d.skills && d.skills.skills) || [];
+  const wf = d.workflow || {};
+  const listaProgetti = Object.keys(progetti).slice(0, 4).join(", ") || "nessuno";
+  const listaTipi = Object.entries(tipi).slice(0, 5).map(([k,v]) => `${escHtml(k)}:${v}`).join(", ") || "nessuno";
+  const listaLacune = lacune.length ? lacune.slice(0, 3).map(x => `<li>${escHtml(x)}</li>`).join("") : "<li>Nessuna lacuna cognitiva evidente.</li>";
+  const meta = pens.metacognizione || {};
+  const proposteHtml = props.length ? props.map(p => `
+    <div class="audit-row">
+      <span class="ev">${escHtml(p.obiettivo || "")}</span>
+      <span class="tp">${escHtml(p.rischio || "")}</span>
+      <button class="mini-btn" onclick="statoProposta(${p.id}, 'approvata')" title="Approva">✓</button>
+      <button class="mini-btn" onclick="statoProposta(${p.id}, 'scartata')" title="Scarta">×</button>
+    </div>
+  `).join("") : `<p style="color:var(--mut);font-size:12px;margin:0;">Nessuna proposta operativa aperta.</p>`;
+  const skillHtml = skills.length ? skills.slice(0, 8).map(s => `
+    <div class="audit-row">
+      <span class="ev">${escHtml(s.nome || "")}<br><small style="color:var(--mut)">${escHtml(s.descrizione || "")}</small></span>
+      <span class="tp">${escHtml(s.stato || "")}</span>
+      ${(s.stato === "proposta" || s.stato === "approvata") ? `<button class="mini-btn" onclick="attivaSkill(${s.id})" title="Approva e attiva">✓</button>` : ""}
+      ${s.stato === "attiva" ? `<button class="mini-btn" onclick="eseguiSkill(${s.id})" title="Esegui">▶</button>` : ""}
+      ${s.stato !== "scartata" ? `<button class="mini-btn" onclick="scartaSkill(${s.id})" title="Scarta">×</button>` : ""}
+    </div>
+  `).join("") : `<p style="color:var(--mut);font-size:12px;margin:0;">Nessuna skill proposta dal sonno.</p>`;
+  const workflowHtml = (wf.workflow || []).length ? (wf.workflow || []).map(n => `
+    <button class="act" onclick="avviaWorkflow('${escHtml(n)}')">
+      <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Avvia ${escHtml(n)}
+    </button>
+  `).join("") : `<p style="color:var(--mut);font-size:12px;margin:0;">Workflow non disponibili.</p>`;
+  const workflowIstanze = (wf.istanze || []).length ? (wf.istanze || []).slice(0, 5).map(i => `
+    <div class="audit-row">
+      <span class="ev">${escHtml(i.workflow || "")}<br><small style="color:var(--mut)">id ${escHtml(i.id || "")}</small></span>
+      <span class="tp">${escHtml(i.stato || "")}</span>
+      ${i.stato === "in_attesa_approvazione" ? `<button class="mini-btn" onclick="approvaWorkflow('${escHtml(i.id)}')" title="Approva">✓</button>` : ""}
+    </div>
+  `).join("") : `<p style="color:var(--mut);font-size:12px;margin:8px 0 0;">Nessun workflow in corso.</p>`;
+  const diarioHtml = diario.length ? diario.slice(0, 6).map(r => `
+    <div class="audit-row">
+      <span class="ev">${escHtml(r.titolo || "")}<br><small style="color:var(--mut)">${escHtml((r.dettaglio || "").slice(0, 180))}</small></span>
+      <span class="tp">${escHtml(r.tipo || "")}</span>
+    </div>
+  `).join("") : `<p style="color:var(--mut);font-size:12px;margin:0;">Nessuna riflessione interna registrata.</p>`;
+  const obiettiviHtml = obiettivi.length ? obiettivi.slice(0, 8).map(o => `
+    <div class="audit-row">
+      <span class="ev">${escHtml(o.titolo || "")}<br><small style="color:var(--mut)">${escHtml((o.descrizione || "").slice(0, 180))}</small></span>
+      <span class="tp">${escHtml(o.stato || "")} · ${o.progresso || 0}%</span>
+    </div>
+  `).join("") : `<p style="color:var(--mut);font-size:12px;margin:0;">Nessun obiettivo permanente.</p>`;
+  const esperimentiHtml = esperimenti.length ? esperimenti.slice(0, 6).map(e => `
+    <div class="audit-row">
+      <span class="ev">${escHtml(e.nome || "")}<br><small style="color:var(--mut)">${escHtml(e.nota || "")}</small></span>
+      <span class="tp">${escHtml(e.vincitore || "-")}</span>
+    </div>
+  `).join("") : `<p style="color:var(--mut);font-size:12px;margin:0;">Nessun esperimento registrato.</p>`;
+
+  document.getElementById("console-content").innerHTML = `
+    <div id="view-console-inner" style="padding:14px;display:flex;flex-direction:column;gap:12px;">
+      <div class="cgrid">
+        <div class="card">
+          <h3>Operatività</h3>
+          <div class="kv"><span>Azioni eseguite</span><b>${m.azioni_eseguite}</b></div>
+          <div class="kv"><span>Rifiutate</span><b>${m.azioni_rifiutate}</b></div>
+          <div class="kv"><span>File visti</span><b>${m.file_visti}</b></div>
+          <div class="kv"><span>Rischi evitati</span><b>${m.rischi_evitati}</b></div>
+          <div class="kv"><span>Tempo risparmiato</span><b>${m.tempo_risparmiato_min} min</b></div>
+        </div>
+        <div class="card">
+          <h3>Memoria e conoscenza</h3>
+          <div class="kv"><span>Ricordi</span><b>${m.ricordi_totali}</b></div>
+          <div class="kv"><span>Grafo</span><b>${g.nodi}n / ${g.archi}a</b></div>
+          <div class="kv"><span>Cartelle</span><b>${d.stato.cartelle}</b></div>
+          <div class="kv"><span>Cervello</span><b>${d.stato.cervello_online ? "online" : "offline"}</b></div>
+        </div>
+        <div class="card">
+          <h3>Cognizione operativa</h3>
+          <div class="kv"><span>Eventi oggi</span><b>${pat.eventi || 0}</b></div>
+          <div class="kv"><span>Progetti probabili</span><b>${escHtml(listaProgetti)}</b></div>
+          <div class="kv"><span>Tipi evento</span><b>${listaTipi}</b></div>
+          <div class="kv"><span>Consolidamento</span><b>${cons.sintesi ? "fatto" : "non ancora"}</b></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Timeline e lacune</h3>
+        <p style="margin:0 0 10px;color:var(--mut);font-size:12px;">${escHtml(cons.sintesi || "La giornata non è ancora stata consolidata.")}</p>
+        <ul style="margin:0;padding-left:18px;color:var(--txt);font-size:12px;line-height:1.55;">${listaLacune}</ul>
+      </div>
+      <div class="card">
+        <h3>Pensiero analitico</h3>
+        <div class="kv"><span>Ultima analisi</span><b>${escHtml(pens.sintesi || "non ancora eseguita")}</b></div>
+        <div class="kv"><span>Ipotesi</span><b>${(pens.ipotesi || []).length}</b></div>
+        <div class="kv"><span>Piani governati</span><b>${(pens.piani || []).length}</b></div>
+        <div class="kv"><span>Confidenza</span><b>${meta.confidenza != null ? meta.confidenza : "-"}</b></div>
+        <button class="act" onclick="vediPensiero()">
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-4 12.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26A7 7 0 0 0 12 2z"/><path d="M9 22h6"/></svg>
+          Analizza ora
+        </button>
+        <pre id="thinkout" class="agout"></pre>
+      </div>
+      <div class="card">
+        <h3>Ricerca governata</h3>
+        <p style="margin:0 0 10px;color:var(--mut);font-size:12px;">Esplorazione web solo su tua richiesta. Salva nella timeline solo query, titoli, link e snippet.</p>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <input id="webq" class="chat-input" style="min-height:38px;padding:8px 10px;" placeholder="cerca online..." />
+          <button class="mini-btn" onclick="ricercaOnline()" title="Cerca">↗</button>
+        </div>
+        <pre id="webout" class="agout"></pre>
+      </div>
+      <div class="card">
+        <h3>Proposte operative</h3>
+        <p style="margin:0 0 10px;color:var(--mut);font-size:12px;">Piani generati dal World Model. Restano fermi finché non li approvi.</p>
+        ${proposteHtml}
+      </div>
+      <div class="card">
+        <h3>Diario interno</h3>
+        <p style="margin:0 0 10px;color:var(--mut);font-size:12px;">Auto-riflessione persistente: limiti, pattern, errori e decisioni da ricordare.</p>
+        ${diarioHtml}
+        <button class="act" onclick="riflettiOra()">
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-4 12.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26A7 7 0 0 0 12 2z"/><path d="M9 22h6"/></svg>
+          Rifletti ora
+        </button>
+        <pre id="rifout" class="agout"></pre>
+      </div>
+      <div class="card">
+        <h3>Obiettivi permanenti</h3>
+        <p style="margin:0 0 10px;color:var(--mut);font-size:12px;">Direzioni che restano tra le sessioni e guidano sonno, pensiero e proposte.</p>
+        ${obiettiviHtml}
+      </div>
+      <div class="card">
+        <h3>Esperimenti cognitivi</h3>
+        <p style="margin:0 0 10px;color:var(--mut);font-size:12px;">Registro A/B delle strategie: diretto, deliberato, memoria, verificatore.</p>
+        ${esperimentiHtml}
+      </div>
+      <div class="card">
+        <h3>Figli esperti</h3>
+        <p style="margin:0 0 10px;color:var(--mut);font-size:12px;">Skill generate dal sonno. Ogni figlio resta isolato in sandbox e va approvato prima dell'uso.</p>
+        ${skillHtml}
+        <button class="act" onclick="bonificaSkill()">
+          <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+          Bonifica skill rotte
+        </button>
+        <pre id="skillout" class="agout"></pre>
+      </div>
+      <div class="card">
+        <h3>Workflow end-to-end</h3>
+        <p style="margin:0 0 10px;color:var(--mut);font-size:12px;">Flussi multi-step con gate umano: capisci, estrai, proponi, approva, archivia, audit.</p>
+        ${workflowHtml}
+        ${workflowIstanze}
+        <pre id="wfout" class="agout"></pre>
+      </div>
+      <div class="card">
+        <h3>Governo</h3>
+        <div class="kv"><span>Ruolo</span><b>${d.ruolo}</b></div>
+        <div class="kv"><span>Policy attive</span><b>${d.policy_regole}</b></div>
+        <div class="kv"><span>Audit</span><b class="${integro ? "badge-ok" : "badge-err"}">${integro ? "integro ✓" : "ALTERATO ✗"}</b></div>
+        <div class="kv"><span>Voci audit</span><b>${a ? a.voci : "-"}</b></div>
+      </div>
+      <div class="card">
+        <h3>Agenti</h3>
+        <div id="agbtns"></div>
+        <pre id="agout" class="agout"></pre>
+      </div>
+      <div class="card">
+        <h3>Azioni di governo</h3>
+        <button class="act" onclick="annulla()">
+          <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.59"/></svg>
+          Annulla ultima azione
+        </button>
+        <button class="act" onclick="consolida()">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Consolida memoria ora
+        </button>
+        <button class="act" onclick="esportaAudit()">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Esporta audit (compliance)
+        </button>
+        <pre id="azout" class="agout"></pre>
+      </div>
+      <div class="card">
+        <h3>Sistema cognitivo</h3>
+        <button class="act" onclick="vediSensi()">
+          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Sensi — finestra / rete / appunti
+        </button>
+        <button class="act" onclick="vediModelli()">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          Model mesh — riflesso / ragionatore
+        </button>
+        <button class="act" onclick="vediConnettori()">
+          <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Connettori — email / file / git
+        </button>
+        <button class="act" onclick="sonno()">
+          <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          Esegui "sonno" — cerca lacune e propone skill
+        </button>
+        <pre id="entout" class="agout"></pre>
+      </div>
+    </div>`;
+
+  // agenti
+  const ag = document.getElementById("agbtns");
+  (d.agenti || []).forEach(n => {
+    const b = document.createElement("button");
+    b.className = "act";
+    b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polygon points="5 3 19 12 5 21 5 3"/></svg> ${escHtml(n)}`;
+    b.onclick = () => eseguiAgente(n);
+    ag.appendChild(b);
+  });
+  if (!d.agenti || d.agenti.length === 0) {
+    ag.innerHTML = `<p style="color:var(--mut);font-size:12px;margin:0;">Nessun agente configurato.</p>`;
+  }
+}
+
+async function eseguiAgente(n) {
+  const o = document.getElementById("agout");
+  o.textContent = "…"; o.classList.add("visible");
+  const r = await postJSON("/agente", { nome: n });
+  o.textContent = r.report || "";
+}
+async function annulla() {
+  const o = document.getElementById("azout");
+  o.classList.add("visible");
+  const r = await postJSON("/annulla", {});
+  o.textContent = r.messaggio || JSON.stringify(r);
+}
+async function consolida() {
+  const o = document.getElementById("azout");
+  o.textContent = "…"; o.classList.add("visible");
+  const r = await postJSON("/consolida", {});
+  o.textContent = r.riassunto || "fatto";
+}
+async function esportaAudit() {
+  const o = document.getElementById("azout");
+  o.classList.add("visible");
+  const r = await getJSON("/audit/export");
+  o.textContent = "Esportato: " + r.voci + " voci → " + r.file;
+}
+function ent(id, fn) {
+  const o = document.getElementById("entout");
+  o.textContent = "…"; o.classList.add("visible");
+  fn().then(r => { o.textContent = JSON.stringify(r, null, 2); }).catch(() => { o.textContent = "errore"; });
+}
+function vediSensi()      { ent("entout", () => getJSON("/sensi")); }
+function vediModelli()    { ent("entout", () => getJSON("/modelli")); }
+function vediConnettori() { ent("entout", () => getJSON("/connettori")); }
+async function vediPensiero() {
+  const o = document.getElementById("thinkout");
+  o.textContent = "…"; o.classList.add("visible");
+  const r = await getJSON("/pensiero");
+  o.textContent = JSON.stringify(r, null, 2);
+  caricaConsole();
+}
+async function ricercaOnline() {
+  const inp = document.getElementById("webq");
+  const o = document.getElementById("webout");
+  const query = (inp && inp.value || "").trim();
+  if (!query) return;
+  o.textContent = "…"; o.classList.add("visible");
+  const r = await postJSON("/ricerca", { query, max_risultati: 5 });
+  o.textContent = JSON.stringify(r, null, 2);
+  caricaConsole();
+}
+async function riflettiOra() {
+  const o = document.getElementById("rifout");
+  o.textContent = "…"; o.classList.add("visible");
+  const r = await postJSON("/rifletti", {});
+  o.textContent = JSON.stringify(r, null, 2);
+  caricaConsole();
+}
+async function statoProposta(id, stato) {
+  await postJSON("/proposta/stato", { id, stato });
+  caricaConsole();
+}
+async function attivaSkill(id) {
+  const o = document.getElementById("skillout");
+  o.textContent = "…"; o.classList.add("visible");
+  const r = await postJSON("/skill/attiva", { id });
+  o.textContent = JSON.stringify(r, null, 2);
+  caricaConsole();
+}
+async function bonificaSkill() {
+  const o = document.getElementById("skillout");
+  o.textContent = "…controllo skill proposte/attive in sandbox";
+  o.classList.add("visible");
+  const r = await postJSON("/skill/bonifica", {});
+  o.textContent = JSON.stringify(r, null, 2);
+  caricaConsole();
+}
+async function scartaSkill(id) {
+  await postJSON("/skill/scarta", { id });
+  caricaConsole();
+}
+async function eseguiSkill(id) {
+  const o = document.getElementById("skillout");
+  o.textContent = "…"; o.classList.add("visible");
+  const r = await postJSON("/skill/esegui", { id, contesto: { richiesta: "test controllato dalla Console" } });
+  o.textContent = JSON.stringify(r, null, 2);
+}
+async function avviaWorkflow(nome) {
+  const o = document.getElementById("wfout");
+  o.textContent = "…"; o.classList.add("visible");
+  const r = await postJSON("/workflow/avvia", {
+    nome,
+    parametri: { cartella: "sorvegliata", origine: "console" }
+  });
+  o.textContent = JSON.stringify(r, null, 2);
+  caricaConsole();
+}
+async function approvaWorkflow(id) {
+  const o = document.getElementById("wfout");
+  o.textContent = "…"; o.classList.add("visible");
+  const r = await postJSON("/workflow/approva", { id });
+  o.textContent = JSON.stringify(r, null, 2);
+  caricaConsole();
+}
+async function sonno() {
+  const o = document.getElementById("entout");
+  o.textContent = "…cerco lacune e propongo skill (richiede approvazione)";
+  o.classList.add("visible");
+  const r = await postJSON("/sonno", {});
+  o.textContent = r.report || r.errore || "fatto";
+}
+
+// ------------------------------------------------------------------
+// SICUREZZA / AUDIT
+// ------------------------------------------------------------------
+async function caricaAudit() {
+  let d;
+  try { d = await getJSON("/audit"); } catch(e) { return; }
+  const ac = document.getElementById("audit-content");
+  const voci = d.voci || [];
+  const rep = d.report || {};
+  const integro = rep.integro !== false;
+
+  let html = `<div class="card" style="margin-bottom:10px;">
+    <h3>Stato Audit</h3>
+    <div class="kv"><span>Integrità</span><b class="${integro ? "badge-ok" : "badge-err"}">${integro ? "integro ✓" : "ALTERATO ✗"}</b></div>
+    <div class="kv"><span>Voci totali</span><b>${rep.voci || 0}</b></div>
+  </div>
+  <div class="section-title">Ultime voci</div>`;
+
+  if (voci.length === 0) {
+    html += `<div class="empty-state"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><p>Nessuna voce audit.</p></div>`;
+  } else {
+    voci.slice().reverse().forEach(v => {
+      const ts = v.quando ? v.quando.substring(0,16).replace("T"," ") : "";
+      html += `<div class="audit-row">
+        <span class="at">${escHtml(ts)}</span>
+        <span class="ev">${escHtml(v.dettaglio || v.tipo || "")}</span>
+        <span class="tp">${escHtml(v.tipo || "")}</span>
+      </div>`;
+    });
+  }
+  ac.innerHTML = html;
+}
+
+// ------------------------------------------------------------------
+// PERMESSI
+// ------------------------------------------------------------------
+let _onbModo = "selezione";
+let _onbCartelle = [];
+
+function selOpt(el) {
+  document.querySelectorAll(".opt-card").forEach(c => c.classList.remove("selected"));
+  el.classList.add("selected");
+  _onbModo = el.dataset.modo;
+  const cf = document.getElementById("onb-custom-folders");
+  cf.classList.toggle("visible", _onbModo === "selezione");
+}
+
+function onbAddFolder() {
+  const inp = document.getElementById("onb-folder-inp");
+  const val = inp.value.trim();
+  if (!val) return;
+  if (!_onbCartelle.includes(val)) {
+    _onbCartelle.push(val);
+    renderOnbFolders();
+  }
+  inp.value = "";
+}
+
+function renderOnbFolders() {
+  const ul = document.getElementById("onb-folder-list");
+  ul.innerHTML = _onbCartelle.map((c, i) =>
+    `<li class="folder-item"><span>${escHtml(c)}</span><button onclick="rimuoviOnbFolder(${i})" title="Rimuovi">×</button></li>`
+  ).join("");
+}
+
+function rimuoviOnbFolder(i) {
+  _onbCartelle.splice(i, 1);
+  renderOnbFolders();
+}
+
+async function onbConferma() {
+  if (!_onbModo) { alert("Seleziona un'opzione prima di continuare."); return; }
+  try {
+    await postJSON("/permessi", { modo: _onbModo, cartelle: _onbCartelle });
+  } catch(e) {
+    // se endpoint non ancora implementato, non blocchiamo l'UI
+  }
+  document.getElementById("onboarding").classList.add("hidden");
+  caricaPermessi();
+}
+
+async function caricaPermessi() {
+  const el = document.getElementById("permessi-content");
+  let d = null;
+  try { d = await getJSON("/permessi"); } catch(e) {}
+
+  if (!d) {
+    el.innerHTML = `<div class="perm-status-card">
+      <p style="color:var(--mut);font-size:12px;">Endpoint /permessi non ancora disponibile nel motore.<br>
+      Configurazione salvata localmente quando confermata.</p>
+    </div>`;
+    return;
+  }
+
+  const modi = { tutto: "Tutto il PC", selezione: "Cartelle selezionate", niente: "Niente" };
+  const cartelle = d.cartelle || [];
+  el.innerHTML = `
+    <div class="perm-status-card">
+      <div class="section-title">Configurazione attuale</div>
+      <span class="perm-modo-badge ${d.modo}">${modi[d.modo] || d.modo}</span>
+      ${cartelle.length ? `<div class="section-title" style="margin-top:12px;">Cartelle consentite</div>
+        <ul class="perm-folder-list">${cartelle.map(c => `<li class="perm-folder-item">${escHtml(c)}</li>`).join("")}</ul>` : ""}
+      <div>
+        <button class="btn-reconf" onclick="apriOnboarding()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Modifica permessi
+        </button>
+      </div>
+    </div>
+    <div class="card" style="margin-top:12px;">
+      <h3>Informativa privacy</h3>
+      <p style="font-size:12px;color:var(--tx2);line-height:1.6;margin:0;">
+        ARGO è completamente <b style="color:var(--tx)">locale</b>. Non trasmette file, nomi o contenuti a nessun server esterno.
+        Tutto resta sul tuo PC. Puoi modificare i permessi in qualsiasi momento da questa schermata.
+      </p>
+    </div>`;
+}
+
+function apriOnboarding() {
+  document.getElementById("onboarding").classList.remove("hidden");
+}
+
+async function checkOnboarding() {
+  try {
+    const d = await getJSON("/permessi");
+    if (!d.onboarding_fatto) {
+      // segna opzione di default
+      selOpt(document.querySelector('.opt-card[data-modo="selezione"]'));
+      apriOnboarding();
+    }
+    // Badge sulla nav se onboarding non fatto
+    if (!d.onboarding_fatto) {
+      const btn = document.getElementById("nav-permessi");
+      const badge = document.createElement("span");
+      badge.className = "badge";
+      btn.appendChild(badge);
+    }
+  } catch(e) {
+    // endpoint non disponibile: non mostrare onboarding forzato
+  }
+}
+
+// ------------------------------------------------------------------
+// AVVIO
+// ------------------------------------------------------------------
+tickStato();
+tickEventi();
+checkOnboarding();
+
+setInterval(tickStato, 3000);
+setInterval(tickEventi, 1500);
+</script>
+</body>
+</html>
