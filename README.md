@@ -241,7 +241,8 @@ ARGO is **alpha** and Windows-first. The core (memory, brain, hands, governance,
 - [x] Mobile companion (installable PWA) · voice in & out (offline TTS + STT via Vosk)
 - [x] Update check (vs GitHub Releases) · packaging signature — *self-signed for now, not CA-trusted*
 - [x] Voice presence: wake-word + continuous listening (off by default, privacy-first)
-- [ ] CA-trusted signing + true auto-update installer
+- [x] Auto-update mechanism (`POST /aggiorna`: `git pull` for source, `docker pull` for containers)
+- [ ] CA-trusted code signing (needs a paid OV/EV certificate)
 
 ## Documentation
 

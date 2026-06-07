@@ -27,8 +27,10 @@ All notable changes to ARGO are documented here. Format loosely based on
   - **Voice presence** (`presenza.py` + `GET/POST /presenza`): always-on **wake-word** listening
     (Vosk, continuous). **Off by default for privacy**; once enabled, on hearing "argo …" it routes
     the spoken command to the chat and replies by voice. All local, never leaves the machine.
-  - **Update check** (`aggiornamenti.py` + `GET /aggiornamenti`): compares the running version
-    against the latest GitHub release; offline-safe.
+  - **Update check & apply** (`aggiornamenti.py` + `GET /aggiornamenti` + `POST /aggiorna`):
+    compares the running version against the latest GitHub release (offline-safe) and, on request,
+    applies the update — `git pull --ff-only` for source installs, with docker/manual guidance
+    otherwise. Never silent; gated by role; a restart loads the new code.
   - **Central fleet console** (`ui/flotta.html` + `GET /flotta/console`): a standalone page that
     polls `/flotta` and shows aggregated multi-instance status.
   - **PWA / mobile companion** (`ui/manifest.webmanifest`, `ui/sw.js`): installable on a phone,

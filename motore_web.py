@@ -1366,6 +1366,18 @@ def crea_handler(m):
                 b = self._body()
                 if b.get("_errore"): self._json({"ok": False, "messaggio": b["_errore"]}, 413); return
                 self._json(m.presenza_imposta(bool(b.get("attiva"))))
+            elif self.path.startswith("/aggiorna"):
+                # Applica l'aggiornamento (git pull per installazioni da sorgente). Solo su richiesta.
+                if not m.ruoli.puo("configurare"):
+                    self._json({"ok": False, "messaggio": "permesso negato"}); return
+                try:
+                    import aggiornamenti
+                    r = aggiornamenti.applica()
+                    try: m.audit.registra("aggiorna", str(r.get("messaggio", ""))[:120])
+                    except Exception: pass
+                    self._json(r)
+                except Exception as e:
+                    self._json({"ok": False, "messaggio": str(e)[:140]})
             elif self.path.startswith("/ricerca"):
                 b = self._body()
                 if b.get("_errore"): self._json({"ok": False, "messaggio": b["_errore"]}, 413); return

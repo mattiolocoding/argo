@@ -7,7 +7,9 @@ non solleva mai eccezioni, ritorna semplicemente aggiornamento_disponibile
 False e un campo 'errore' descrittivo.
 """
 
+import os
 import json
+import subprocess
 import urllib.request
 
 # URL dell'API GitHub per l'ultima release del progetto.
@@ -109,7 +111,59 @@ def controlla(timeout=4):
     return risultato
 
 
+def _repo_dir():
+    return os.path.dirname(os.path.abspath(__file__))
+
+
+def _e_git_checkout():
+    return os.path.isdir(os.path.join(_repo_dir(), ".git"))
+
+
+def _in_docker():
+    if os.path.exists("/.dockerenv"):
+        return True
+    return os.environ.get("ARGO_ISTANZA_NOME", "").lower().endswith("docker")
+
+
+def applica(timeout=120):
+    """Applica l'aggiornamento quando possibile (parte software; la firma CA e' fuori scope).
+
+    - Installazione da sorgente (git): esegue 'git pull --ff-only' verso main.
+    - Docker: ritorna l'istruzione per aggiornare l'immagine.
+    - Altro: ritorna il link alla release da scaricare.
+    Non solleva mai. Dopo un aggiornamento serve RIAVVIARE ARGO per caricare il codice nuovo.
+    """
+    info = controlla()
+    base = {
+        "corrente": info.get("corrente"),
+        "ultima": info.get("ultima"),
+        "aggiornamento_disponibile": info.get("aggiornamento_disponibile"),
+    }
+    if _e_git_checkout():
+        try:
+            d = _repo_dir()
+            subprocess.run(["git", "fetch", "--tags", "--quiet"], cwd=d, timeout=timeout,
+                           capture_output=True, text=True)
+            r = subprocess.run(["git", "pull", "--ff-only"], cwd=d, timeout=timeout,
+                               capture_output=True, text=True)
+            out = ((r.stdout or "") + (r.stderr or "")).strip()
+            ok = r.returncode == 0
+            aggiornato = ok and ("Already up to date" not in out) and ("aggiornato" not in out.lower() or True)
+            return {**base, "ok": ok, "metodo": "git",
+                    "messaggio": (out[:500] or ("aggiornato" if ok else "git pull fallito")),
+                    "riavvio_necessario": ok and "Already up to date" not in out and "up to date" not in out.lower()}
+        except Exception as e:
+            return {**base, "ok": False, "metodo": "git", "messaggio": f"errore git: {e}"[:300]}
+    if _in_docker():
+        return {**base, "ok": False, "metodo": "docker",
+                "messaggio": "In Docker: docker pull ghcr.io/mattiolocoding/argo:latest && docker compose up -d"}
+    return {**base, "ok": False, "metodo": "manuale",
+            "messaggio": f"Scarica l'ultima release: {info.get('url')}"}
+
+
 if __name__ == "__main__":
     esito = controlla()
     print(esito)
+    print("git checkout:", _e_git_checkout(), "| docker:", _in_docker())
+    # NB: non chiamiamo applica() nel self-test per non toccare il working tree.
     print("OK aggiornamenti")
