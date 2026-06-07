@@ -19,6 +19,14 @@ Not a chatbot you query and forget. ARGO perceives what happens on your machine,
 
 ---
 
+<div align="center">
+<img src="assets/screenshot-chat.png" alt="ARGO — watching, proposing an action, waiting for approval" width="420" />
+<br/>
+<sub>ARGO watching the PC, proposing a file action, and waiting for your one-click approval.</sub>
+</div>
+
+---
+
 ## Why ARGO
 
 Most AI today is *rented and amnesiac*: it starts from zero every time, runs on someone else's cloud with your data, and disappears when the server is shut off.
@@ -42,6 +50,16 @@ ARGO's first craft is being the **keeper of your PC**:
 - 💾 **Remembers** everything between sessions and builds a graph of relationships.
 - 🔎 **Finds by meaning** through semantic memory (embeddings).
 - 🔌 **Wakes its own brain**: starts Ollama if it's off, reconnects on its own, launches at boot.
+
+## A look inside
+
+<div align="center">
+<img src="assets/screenshot-console.png" alt="ARGO operational Console" width="300" />
+&nbsp;&nbsp;
+<img src="assets/screenshot-flotta.png" alt="ARGO Fleet card — aggregated multi-instance status" width="430" />
+<br/>
+<sub>Left: the operational Console (metrics · memory · cognition). Right: the Fleet card — aggregated status across instances.</sub>
+</div>
 
 ## Architecture
 
