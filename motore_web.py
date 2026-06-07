@@ -39,7 +39,32 @@ from cognizione import (
 
 _DIR = os.path.dirname(os.path.abspath(__file__))
 UI_FILE = os.path.join(_DIR, "ui", "index.html")
-HOST, PORT = "127.0.0.1", 8773
+
+# Versione di ARGO (usata in identità/flotta e nei doc).
+VERSIONE = "0.1.0"
+
+# Host/porta configurabili da ambiente: così piu' istanze possono girare in
+# parallelo su porte diverse (fondamenta della flotta orizzontale) senza
+# toccare il codice. Default: locale, porta storica.
+HOST = os.environ.get("ARGO_HOST", "127.0.0.1")
+try:
+    PORT = int(os.environ.get("ARGO_PORT", "8773"))
+except (TypeError, ValueError):
+    PORT = 8773
+
+# Identità dell'istanza (per distinguerla nella flotta). Se l'id non e' dato,
+# se ne deriva uno stabile da nome-macchina + porta.
+def _id_istanza_default():
+    try:
+        import socket
+        host = socket.gethostname() or "pc"
+    except Exception:
+        host = os.environ.get("COMPUTERNAME", "pc")
+    return f"{host}-{PORT}"
+
+ISTANZA_ID = os.environ.get("ARGO_ISTANZA_ID", "").strip() or _id_istanza_default()
+ISTANZA_NOME = os.environ.get("ARGO_ISTANZA_NOME", "").strip() or "ARGO"
+
 CHECK_EVERY = 3
 SCAN_EVERY = 60
 MAX_BODY_BYTES = 64 * 1024
@@ -66,6 +91,7 @@ def cartelle_utente():
 
 class Motore:
     def __init__(self):
+        self.avviato_iso = time.strftime("%Y-%m-%dT%H:%M:%S")
         self.memoria = Memoria()
         self.impostazioni = Impostazioni()
         self.cervello = Cervello()
@@ -534,6 +560,9 @@ class Motore:
         except Exception:
             cognizione = {"eventi": 0}
         return {
+            "istanza": ISTANZA_ID,
+            "nome_istanza": ISTANZA_NOME,
+            "versione": VERSIONE,
             "cervello_online": self.cervello_online,
             "ricordi": self.memoria.conta(),
             "cartelle": len(self.cartelle),
@@ -546,6 +575,35 @@ class Motore:
                 "progetti": list((cognizione.get("progetti") or {}).keys())[:5],
             },
         }
+
+    def identita(self):
+        """Carta d'identità dell'istanza, per distinguerla nella flotta."""
+        try:
+            azioni = self.metriche_eng.calcola().get("azioni_eseguite", 0)
+        except Exception:
+            azioni = 0
+        return {
+            "id": ISTANZA_ID,
+            "nome": ISTANZA_NOME,
+            "versione": VERSIONE,
+            "host": HOST,
+            "porta": PORT,
+            "avviato": getattr(self, "avviato_iso", None),
+            "cervello_online": self.cervello_online,
+            "ricordi": self.memoria.conta(),
+            "azioni": azioni,
+            "modo": self.impostazioni.autonomia("archivia"),
+        }
+
+    def flotta(self):
+        """Panoramica aggregata della flotta (questa istanza + eventuali peer)."""
+        try:
+            from fleet import Flotta
+            f = Flotta()
+            f.aggiungi(f"http://{HOST}:{PORT}")  # includi sempre se stessa
+            return f.panoramica()
+        except Exception as e:
+            return {"totale": 0, "online": 0, "istanze": [], "errore": str(e)[:140]}
 
     def _contesto_reale(self):
         """Costruisce i DATI REALI per la chat: solo cose vere dalla memoria."""
@@ -1143,6 +1201,10 @@ def crea_handler(m):
                 self._json(m.connettori_info())
             elif self.path.startswith("/skills"):
                 self._json(m.skills_lista())
+            elif self.path.startswith("/identita"):
+                self._json(m.identita())
+            elif self.path.startswith("/flotta"):
+                self._json(m.flotta())
             elif self.path.startswith("/workflow"):
                 self._json(m.workflow_stato())
             elif self.path.startswith("/console"):
