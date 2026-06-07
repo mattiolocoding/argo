@@ -1531,6 +1531,15 @@ async function caricaConsole() {
         <pre id="wfout" class="agout"></pre>
       </div>
       <div class="card">
+        <h3>Flotta</h3>
+        <p style="margin:0 0 10px;color:var(--mut);font-size:12px;">Istanze ARGO che girano in parallelo. Stato aggregato della flotta (multi-istanza).</p>
+        <div id="flotta-body"><p style="color:var(--mut);font-size:12px;margin:0;">Carico la flotta…</p></div>
+        <button class="act" onclick="caricaFlotta()" aria-label="Aggiorna flotta">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          Aggiorna flotta
+        </button>
+      </div>
+      <div class="card">
         <h3>Governo</h3>
         <div class="kv"><span>Ruolo</span><b>${d.ruolo}</b></div>
         <div class="kv"><span>Policy attive</span><b>${d.policy_regole}</b></div>
@@ -1580,6 +1589,8 @@ async function caricaConsole() {
       </div>
     </div>`;
 
+  caricaFlotta();
+
   // agenti
   const ag = document.getElementById("agbtns");
   (d.agenti || []).forEach(n => {
@@ -1592,6 +1603,25 @@ async function caricaConsole() {
   if (!d.agenti || d.agenti.length === 0) {
     ag.innerHTML = `<p style="color:var(--mut);font-size:12px;margin:0;">Nessun agente configurato.</p>`;
   }
+}
+
+async function caricaFlotta() {
+  const el = document.getElementById("flotta-body");
+  if (!el) return;
+  let f;
+  try { f = await getJSON("/flotta"); }
+  catch (e) { el.innerHTML = `<p style="color:var(--err);font-size:12px;margin:0;">Flotta non raggiungibile.</p>`; return; }
+  const istanze = f.istanze || [];
+  const testa = `
+    <div class="kv"><span>Istanze online</span><b>${f.online || 0} / ${f.totale || 0}</b></div>
+    <div class="kv"><span>Ricordi totali</span><b>${f.ricordi_totali || 0}</b></div>
+    <div class="kv"><span>Azioni totali</span><b>${f.azioni_totali || 0}</b></div>`;
+  const righe = istanze.length ? istanze.map(i => `
+    <div class="audit-row">
+      <span class="ev">${escHtml(i.nome || i.id || "?")}<br><small style="color:var(--mut)">${escHtml(i._base || "")}${i.versione ? (" · v" + escHtml(i.versione)) : ""}</small></span>
+      <span class="tp" style="color:${i._online ? "var(--ok)" : "var(--err)"}">${i._online ? "online" : "offline"}</span>
+    </div>`).join("") : `<p style="color:var(--mut);font-size:12px;margin:8px 0 0;">Nessuna istanza.</p>`;
+  el.innerHTML = testa + `<div style="margin-top:8px;">${righe}</div>`;
 }
 
 async function eseguiAgente(n) {
