@@ -1,0 +1,45 @@
+# ARGO — stack self-contained: motore + Ollama, entrambi in container.
+#
+# A differenza di docker-compose.yml (che usa l'Ollama dell'host), qui Ollama
+# gira in un proprio container: non serve nulla preinstallato sull'host.
+#
+#   docker compose -f docker-compose.ollama.yml up -d --build
+#   # scarica un modello DENTRO il container Ollama (una volta):
+#   docker compose -f docker-compose.ollama.yml exec ollama ollama pull qwen2.5:7b-instruct
+#   docker compose -f docker-compose.ollama.yml exec ollama ollama pull nomic-embed-text
+#   # poi apri  http://127.0.0.1:8780
+#
+# Nota: senza GPU Ollama gira su CPU (piu' lento). I modelli restano nel volume
+# 'ollama-models' tra i riavvii.
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: argo-ollama
+    volumes:
+      - ollama-models:/root/.ollama
+    # ports: ["11434:11434"]   # decommenta per usare questo Ollama anche dall'host
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list >/dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  argo:
+    build: .
+    image: argo:latest
+    container_name: argo
+    depends_on:
+      - ollama
+    ports:
+      - "8780:8773"
+    environment:
+      ARGO_HOST: "0.0.0.0"
+      ARGO_ISTANZA_NOME: "ARGO-stack"
+      OLLAMA_HOST: "http://ollama:11434"   # raggiunge il servizio Ollama per nome
+    restart: unless-stopped
+
+volumes:
+  ollama-models:

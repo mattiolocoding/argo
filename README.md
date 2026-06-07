@@ -145,6 +145,20 @@ docker compose -f docker-compose.fleet.yml up -d --build
 curl http://127.0.0.1:8781/flotta     # argo1 reports all three instances online
 ```
 
+**Self-contained stack** — Ollama in a container too, nothing preinstalled on the host:
+
+```bash
+docker compose -f docker-compose.ollama.yml up -d --build
+docker compose -f docker-compose.ollama.yml exec ollama ollama pull qwen2.5:7b-instruct
+# then open http://127.0.0.1:8780
+```
+
+**Prebuilt image** — CI publishes the engine image to GitHub Container Registry on every push:
+
+```bash
+docker pull ghcr.io/mattiolocoding/argo:latest
+```
+
 ## Privacy
 
 ARGO is local by design:

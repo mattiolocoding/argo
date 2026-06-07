@@ -16,6 +16,10 @@ All notable changes to ARGO are documented here. Format loosely based on
   reports 3/3 online. New `ARGO_BASE_URL` env so an instance advertises a reachable
   address (avoids the `0.0.0.0` self-base and duplicate entries).
 - Real UI screenshots in the README (chat, console, fleet card with the Docker fleet).
+- **GHCR publishing** (`.github/workflows/docker.yml`): CI builds and pushes the engine
+  image to `ghcr.io/mattiolocoding/argo` on push/tag, with layer caching and semver tags.
+- **Self-contained stack** (`docker-compose.ollama.yml`): runs Ollama in a container too,
+  so nothing needs to be preinstalled on the host.
 
 ## [0.1.0] — 2026-06-07
 
