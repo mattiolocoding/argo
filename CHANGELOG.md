@@ -21,8 +21,9 @@ All notable changes to ARGO are documented here. Format loosely based on
 - **Roadmap features** (built via a multi-agent workflow, verified live):
   - **Temporal knowledge graph** (`memoria/grafo.py`): edges carry `valido_da`/`valido_a`,
     with an `as-of` neighbor query and a defensive schema migration.
-  - **Voice** (`voce.py` + `POST /voce`): real offline TTS via pyttsx3 (ARGO speaks); STT is
-    an honest stub. Degrades gracefully without audio.
+  - **Voice in & out** (`voce.py` + `POST /voce` + `POST /ascolta`): offline TTS (pyttsx3 — ARGO
+    speaks) and offline STT (Vosk + microphone via sounddevice; Italian model in `dati/vosk-it`,
+    overridable with `ARGO_VOSK_MODEL`). Degrades gracefully without audio/model.
   - **Update check** (`aggiornamenti.py` + `GET /aggiornamenti`): compares the running version
     against the latest GitHub release; offline-safe.
   - **Central fleet console** (`ui/flotta.html` + `GET /flotta/console`): a standalone page that

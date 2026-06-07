@@ -1309,6 +1309,19 @@ def crea_handler(m):
                     self._json(voce.parla(testo))
                 except Exception as e:
                     self._json({"ok": False, "motivo": str(e)[:140]})
+            elif self.path.startswith("/ascolta"):
+                # STT difensivo: ascolta dal microfono e trascrive (Vosk offline).
+                b = self._body()
+                if b.get("_errore"): self._json({"ok": False, "messaggio": b["_errore"]}, 413); return
+                try:
+                    secondi = float(b.get("secondi", 5))
+                except (TypeError, ValueError):
+                    secondi = 5.0
+                try:
+                    import voce
+                    self._json(voce.ascolta(secondi))
+                except Exception as e:
+                    self._json({"ok": False, "motivo": str(e)[:140], "testo": ""})
             elif self.path.startswith("/ricerca"):
                 b = self._body()
                 if b.get("_errore"): self._json({"ok": False, "messaggio": b["_errore"]}, 413); return

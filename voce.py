@@ -9,8 +9,9 @@ Tutto best-effort: se pyttsx3 o l'audio mancano, le funzioni
 degradano con grazia restituendo un dict {ok, motivo} senza mai
 sollevare eccezioni.
 
-Nota onesta: lo STT (ascolto / Speech-To-Text) NON e' ancora
-implementato. La funzione ascolta() e' uno stub esplicito.
+STT (ascolto / Speech-To-Text): offline via Vosk + microfono (sounddevice).
+Il modello sta in dati/vosk-it (oppure env ARGO_VOSK_MODEL). Se vosk, il
+modello o il microfono mancano, ascolta() degrada con grazia.
 
 Prova:  python voce.py
         python -m voce
@@ -132,19 +133,108 @@ def parla(testo: str) -> dict:
 
 
 # ──────────────────────────────────────────────
-# Ascolto (STT) - TODO: non ancora implementato
+# Ascolto (STT) — Vosk offline + microfono (sounddevice)
 # ──────────────────────────────────────────────
 
-def ascolta() -> dict:
-    """
-    Stub per il riconoscimento vocale (Speech-To-Text).
+import os as _os
+import json as _json
 
-    TODO: lo STT non e' ancora implementato. Quando lo sara', qui andra'
-    la cattura dal microfono + trascrizione offline (es. vosk o whisper
-    locale), sempre con la stessa filosofia: best-effort e degradazione
-    con grazia. Per ora ritorna onestamente un esito negativo.
+_vosk = None
+_errore_vosk = None
+try:
+    import vosk as _vosk
+    _vosk.SetLogLevel(-1)          # niente log rumorosi
+except Exception as e:
+    _errore_vosk = str(e)
+
+_SAMPLE_RATE = 16000
+_modello_stt = None                # cache del modello caricato
+_modello_stt_path = None
+
+
+def _percorso_modello() -> str:
+    """Cartella del modello Vosk: env ARGO_VOSK_MODEL, altrimenti dati/vosk-it."""
+    p = _os.environ.get("ARGO_VOSK_MODEL", "").strip()
+    if p:
+        return p
+    base = _os.path.dirname(_os.path.abspath(__file__))
+    return _os.path.join(base, "dati", "vosk-it")
+
+
+def stt_disponibile() -> bool:
+    """True se vosk e' importabile e il modello e' presente su disco."""
+    return _vosk is not None and _os.path.isdir(_percorso_modello())
+
+
+def _carica_modello():
+    """Carica (una sola volta) il modello Vosk. Ritorna il Model o None."""
+    global _modello_stt, _modello_stt_path
+    if _vosk is None:
+        return None
+    path = _percorso_modello()
+    if _modello_stt is not None and _modello_stt_path == path:
+        return _modello_stt
+    if not _os.path.isdir(path):
+        return None
+    try:
+        _modello_stt = _vosk.Model(path)
+        _modello_stt_path = path
+        return _modello_stt
+    except Exception:
+        return None
+
+
+def _trascrivi_pcm(pcm_bytes: bytes) -> str:
+    """Trascrive PCM 16kHz mono int16 con Vosk. Stringa vuota se nulla."""
+    model = _carica_modello()
+    if model is None:
+        return ""
+    rec = _vosk.KaldiRecognizer(model, _SAMPLE_RATE)
+    rec.AcceptWaveform(pcm_bytes)
+    try:
+        return (_json.loads(rec.FinalResult()) or {}).get("text", "").strip()
+    except Exception:
+        return ""
+
+
+def trascrivi_wav(percorso: str) -> dict:
+    """Trascrive un file WAV mono 16-bit (utile per test senza microfono)."""
+    if not stt_disponibile():
+        return {"ok": False, "motivo": "STT non disponibile (modello Vosk assente)", "testo": ""}
+    try:
+        import wave
+        with wave.open(percorso, "rb") as wf:
+            pcm = wf.readframes(wf.getnframes())
+        return {"ok": True, "motivo": "ok", "testo": _trascrivi_pcm(pcm)}
+    except Exception as e:
+        return {"ok": False, "motivo": f"errore lettura wav: {e}", "testo": ""}
+
+
+def ascolta(secondi: float = 5.0) -> dict:
     """
-    return {"ok": False, "motivo": "STT non ancora implementato"}
+    Cattura dal microfono per 'secondi' e trascrive offline con Vosk.
+    Ritorna sempre {ok, motivo, testo}; non solleva mai. Degrada con grazia
+    se vosk, il modello o il microfono mancano.
+    """
+    if _vosk is None:
+        m = "vosk non disponibile"
+        if _errore_vosk:
+            m += f" ({_errore_vosk})"
+        return {"ok": False, "motivo": m, "testo": ""}
+    if not _os.path.isdir(_percorso_modello()):
+        return {"ok": False, "motivo": f"modello Vosk assente in {_percorso_modello()}", "testo": ""}
+    try:
+        import sounddevice as sd
+    except Exception as e:
+        return {"ok": False, "motivo": f"sounddevice non disponibile ({e})", "testo": ""}
+    try:
+        secondi = max(0.5, min(float(secondi), 30.0))
+        audio = sd.rec(int(secondi * _SAMPLE_RATE), samplerate=_SAMPLE_RATE,
+                       channels=1, dtype="int16")
+        sd.wait()
+        return {"ok": True, "motivo": "ok", "testo": _trascrivi_pcm(bytes(audio))}
+    except Exception as e:
+        return {"ok": False, "motivo": f"errore microfono: {e}", "testo": ""}
 
 
 # ──────────────────────────────────────────────
@@ -162,9 +252,13 @@ class Voce:
         """Pronuncia il testo. Ritorna {ok, motivo}."""
         return parla(testo)
 
-    def ascolta(self) -> dict:
-        """STT: stub, non ancora implementato."""
-        return ascolta()
+    def ascolta(self, secondi: float = 5.0) -> dict:
+        """STT: ascolta dal microfono e trascrive (Vosk offline)."""
+        return ascolta(secondi)
+
+    def stt_disponibile(self) -> bool:
+        """True se il riconoscimento vocale e' utilizzabile."""
+        return stt_disponibile()
 
 
 # ──────────────────────────────────────────────
@@ -183,9 +277,19 @@ if __name__ == "__main__":
         err_safe = _errore_import.encode("ascii", errors="replace").decode("ascii")
         print("Errore import    :", err_safe)
 
-    # Stub STT: deve sempre rispondere in modo onesto, senza bloccare.
-    print("Ascolto (STT)    :", ascolta())
+    # STT (Vosk): verifica senza microfono (CI-safe).
+    print("STT disponibile  :", stt_disponibile())
+    if stt_disponibile():
+        import tempfile, wave, os
+        p = os.path.join(tempfile.gettempdir(), "_argo_stt_test.wav")
+        with wave.open(p, "wb") as wf:
+            wf.setnchannels(1); wf.setsampwidth(2); wf.setframerate(16000)
+            wf.writeframes(b"\x00\x00" * 8000)   # 0.5s di silenzio
+        r = trascrivi_wav(p)
+        try: os.remove(p)
+        except Exception: pass
+        print("Trascrizione test:", r.get("ok"), repr(r.get("testo")))
 
-    # NON parliamo di default: in CI non c'e' audio e non vogliamo
-    # bloccare. La sintesi reale e' coperta dal timeout in parla().
+    # NON parliamo e NON ascoltiamo dal vivo di default: in CI non c'e'
+    # audio. La sintesi reale e' coperta dal timeout in parla().
     print("OK voce")

@@ -14,3 +14,6 @@ sorvegliata/*
 !sorvegliata/.gitkeep
 audit_export.json
 .claude/settings.local.json
+
+# Modelli vocali Vosk (grandi, scaricati a parte)
+dati/

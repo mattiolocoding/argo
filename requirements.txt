@@ -9,6 +9,15 @@ PySide6>=6.6 ; platform_system == "Windows"
 # Lightweight alternative native window:
 # pywebview>=5.0
 
+# --- Optional voice ---
+# TTS (ARGO speaks) — offline, uses the OS engine (SAPI5 on Windows):
+pyttsx3>=2.90
+# STT (ARGO listens) — offline via Vosk + microphone. Also download a model into
+# dati/vosk-it (e.g. vosk-model-small-it-0.22 from https://alphacephei.com/vosk/models).
+vosk>=0.3.45
+sounddevice>=0.4.6
+numpy>=1.26          # richiesto da sounddevice per la cattura microfono
+
 # --- Optional security: encryption at rest ---
 # Without it, ARGO still protects the local key via Windows DPAPI.
 cryptography>=42.0
