@@ -600,7 +600,11 @@ class Motore:
         try:
             from fleet import Flotta
             f = Flotta()
-            f.aggiungi(f"http://{HOST}:{PORT}")  # includi sempre se stessa
+            # ARGO_BASE_URL: indirizzo con cui questa istanza e' raggiungibile dai
+            # peer (es. nome di servizio Docker). Evita il self-base "0.0.0.0" e i
+            # doppioni quando l'istanza e' gia' elencata in ARGO_FLOTTA.
+            base = os.environ.get("ARGO_BASE_URL", "").strip() or f"http://{HOST}:{PORT}"
+            f.aggiungi(base)  # includi sempre se stessa
             return f.panoramica()
         except Exception as e:
             return {"totale": 0, "online": 0, "istanze": [], "errore": str(e)[:140]}

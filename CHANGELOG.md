@@ -11,7 +11,11 @@ All notable changes to ARGO are documented here. Format loosely based on
   maps `8780:8773`), `.dockerignore`, and `serve.py` (windowless entrypoint). Verified
   live: containerized engine starts healthy, serves the UI, connects to the host LLM.
   Multiple containers form a fleet. The native desktop app remains native.
-- Real UI screenshots in the README (chat, console, fleet card).
+- **Fleet demo on Docker** (`docker-compose.fleet.yml`): three ARGO instances on one
+  network, one aggregating the others by service name. Verified live: `/flotta`
+  reports 3/3 online. New `ARGO_BASE_URL` env so an instance advertises a reachable
+  address (avoids the `0.0.0.0` self-base and duplicate entries).
+- Real UI screenshots in the README (chat, console, fleet card with the Docker fleet).
 
 ## [0.1.0] — 2026-06-07
 

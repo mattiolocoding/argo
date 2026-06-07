@@ -1,0 +1,51 @@
+# ARGO — DEMO FLOTTA su Docker (scaling orizzontale).
+#
+# Avvia 3 istanze ARGO sulla stessa rete. argo1 fa da AGGREGATORE: la sua
+# ARGO_FLOTTA elenca tutte e tre per nome di servizio, quindi il suo /flotta
+# mostra l'intera flotta aggregata.
+#
+#   docker compose -f docker-compose.fleet.yml up -d --build
+#   curl http://127.0.0.1:8781/flotta        # vista aggregata (argo1)
+#   open http://127.0.0.1:8781               # UI -> Console -> card Flotta
+#
+# I container si raggiungono tra loro per nome di servizio (argo1/argo2/argo3)
+# sulla porta interna 8773. Le porte host 8781-8783 servono solo per ispezionarli.
+
+x-argo-comune: &argo-comune
+  build: .
+  image: argo:latest
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  restart: unless-stopped
+
+services:
+  argo1:
+    <<: *argo-comune
+    container_name: argo-1
+    ports: ["8781:8773"]
+    environment:
+      ARGO_HOST: "0.0.0.0"
+      ARGO_ISTANZA_NOME: "ARGO-1"
+      ARGO_BASE_URL: "http://argo1:8773"
+      ARGO_FLOTTA: "http://argo1:8773,http://argo2:8773,http://argo3:8773"
+      OLLAMA_HOST: "http://host.docker.internal:11434"
+
+  argo2:
+    <<: *argo-comune
+    container_name: argo-2
+    ports: ["8782:8773"]
+    environment:
+      ARGO_HOST: "0.0.0.0"
+      ARGO_ISTANZA_NOME: "ARGO-2"
+      ARGO_BASE_URL: "http://argo2:8773"
+      OLLAMA_HOST: "http://host.docker.internal:11434"
+
+  argo3:
+    <<: *argo-comune
+    container_name: argo-3
+    ports: ["8783:8773"]
+    environment:
+      ARGO_HOST: "0.0.0.0"
+      ARGO_ISTANZA_NOME: "ARGO-3"
+      ARGO_BASE_URL: "http://argo3:8773"
+      OLLAMA_HOST: "http://host.docker.internal:11434"

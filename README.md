@@ -58,7 +58,7 @@ ARGO's first craft is being the **keeper of your PC**:
 &nbsp;&nbsp;
 <img src="assets/screenshot-flotta.png" alt="ARGO Fleet card — aggregated multi-instance status" width="430" />
 <br/>
-<sub>Left: the operational Console (metrics · memory · cognition). Right: the Fleet card — aggregated status across instances.</sub>
+<sub>Left: the operational Console (metrics · memory · cognition). Right: the Fleet card — three ARGO instances running in Docker, aggregated live.</sub>
 </div>
 
 ## Architecture
@@ -137,6 +137,13 @@ docker compose up -d --build
 
 The container reaches your host's Ollama via `host.docker.internal`. Verified: the
 containerized engine starts healthy, serves the UI, and connects to the host LLM.
+
+**Fleet demo** (horizontal scaling) — three instances on one network, one aggregating the others:
+
+```bash
+docker compose -f docker-compose.fleet.yml up -d --build
+curl http://127.0.0.1:8781/flotta     # argo1 reports all three instances online
+```
 
 ## Privacy
 
