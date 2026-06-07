@@ -4,4 +4,12 @@ __pycache__/
 produzione/build/dist/
 *.db
 *.sqlite
+*.db-wal
+*.db-shm
 _dev_server.py
+
+# Stato runtime / dati personali — non sono sorgente
+sorvegliata/*
+!sorvegliata/.gitkeep
+audit_export.json
+.claude/settings.local.json
