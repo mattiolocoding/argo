@@ -12,10 +12,16 @@ All notable changes to ARGO are documented here. Format loosely based on
   `.dockerignore` updated to the new paths.
 - **UI improved to the impeccable standard**: fixed the chat-view scroll/overflow so the
   feed scrolls cleanly; rebuilt the companion eye with a real eyelid blink (pure CSS);
-  removed an AI-tell glow; detector stays at 0. (A residual chat-bubble overlay is being
-  finalized.)
+  removed an AI-tell glow; detector stays at 0.
+- **Fixed chat-bubble overlay**: `.live-panel` lacked `overflow:hidden`, so the scrolling
+  conversation bubbles bled past the rounded panel and painted over the eye and the cockpit
+  cards. Now contained — verified across window sizes.
 
 ### Added
+- **`crt-screen` skill** (`.claude/skills/crt-screen/`): a reusable, pure-CSS CRT/TV screen
+  effect (scanlines, phosphor glow, flicker, chromatic aberration, rolling interference, with
+  a reduced-motion fallback). Applied to the companion eye, which now sits on its own little
+  CRT screen with signal interference.
 - **Docker support** for the headless engine: `Dockerfile` (stdlib-only, slim image,
   healthcheck), `docker-compose.yml` (reaches host Ollama via `host.docker.internal`,
   maps `8780:8773`), `.dockerignore`, and `serve.py` (windowless entrypoint). Verified
