@@ -33,11 +33,25 @@ TIMEOUT_STATO    = 5    # secondi per /api/tags
 # Euristiche per classificare un nome-modello in una categoria di taglia
 # ---------------------------------------------------------------------------
 _PAROLE_PICCOLO = ["mini", ":1b", "1b", ":3b", "3b", "tiny", "nano", "phi3"]
-_PAROLE_MEDIO   = [":7b", "7b", ":8b", "8b", ":13b", "13b", "mistral", "llama3.1:8b"]
+_PAROLE_MEDIO   = [":7b", "7b", ":8b", "8b", ":9b", "9b", "mistral", "llama3.1:8b"]
 _PAROLE_GRANDE  = [
     "qwen3", "llama3.3", ":70b", "70b", ":34b", "34b", ":32b", "32b",
     "mixtral", "command-r", "deepseek", "llama3.2:90b", ":72b", "72b",
+    ":13b", "13b", ":14b", "14b", ":27b", "27b", ":20b", "20b",
 ]
+
+# Frammenti che identificano i modelli di EMBEDDING: NON sono modelli di chat e
+# non devono mai essere assegnati a un livello del mesh (riflesso/ragionatore/esperto).
+_PAROLE_EMBEDDING = [
+    "embed", "embedding", "bge", "nomic", "minilm", "mxbai",
+    "e5-", "gte-", "snowflake-arctic-embed", "all-minilm", "paraphrase",
+]
+
+
+def _e_modello_embedding(nome: str) -> bool:
+    """True se il nome del modello indica un modello di embedding (non chat)."""
+    n = (nome or "").lower()
+    return any(frammento in n for frammento in _PAROLE_EMBEDDING)
 
 # Parole nel testo dell'utente che indicano alta complessita'
 _PAROLE_ALTA_COMPLESSITA = [
@@ -145,8 +159,10 @@ class ModelMesh:
           4. Se c'e' un solo modello, lo usa per tutti i livelli.
         """
         modelli = self._get_modelli_installati()
+        # Escludi i modelli di embedding: non sanno chattare, non vanno nei livelli.
+        modelli = [m for m in modelli if not _e_modello_embedding(m)]
         if not modelli:
-            return  # Ollama spento o nessun modello: livelli restano None
+            return  # Ollama spento o nessun modello di chat: livelli restano None
 
         piccoli = [m for m in modelli if _taglia_modello(m) == "piccolo"]
         medi    = [m for m in modelli if _taglia_modello(m) == "medio"]
