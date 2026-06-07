@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: compile & self-tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile every module
+        shell: pwsh
+        run: |
+          python -c "import py_compile,glob,sys; errs=[]
+          for f in glob.glob('**/*.py',recursive=True):
+              if '__pycache__' in f or 'sorvegliata' in f or 'produzione/build/dist' in f or '.venv' in f: continue
+              try: py_compile.compile(f,doraise=True)
+              except Exception as e: errs.append((f,str(e)))
+          [print('FAIL',f,e) for f,e in errs]
+          print('compiled OK' if not errs else 'ERRORS'); sys.exit(1 if errs else 0)"
+
+      - name: Module self-tests (no Ollama required)
+        shell: pwsh
+        run: |
+          $tests = @(
+            "memoria\memoria.py","memoria\grafo.py","mani\mani.py","config\impostazioni.py",
+            "sicurezza.py","sistema.py","governo\policy.py","governo\ruoli.py","governo\lacune.py",
+            "governo\skill_registry.py","governo\sandbox_skill.py","governo\validator.py","workflow.py"
+          )
+          $fail = $false
+          foreach ($t in $tests) {
+            python $t
+            if ($LASTEXITCODE -ne 0) { Write-Host "FAIL: $t"; $fail = $true }
+          }
+          if ($fail) { exit 1 }
+
+      - name: Security suite
+        shell: pwsh
+        run: python test_sicurezza.py

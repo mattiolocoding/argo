@@ -1,0 +1,22 @@
+# ARGO — dependencies
+# The engine core runs on the Python 3.11+ standard library ALONE.
+# Everything below is OPTIONAL and enables extra capabilities. ARGO degrades
+# gracefully when any of these is missing.
+
+# --- Native desktop window (pick ONE) ---
+# Modern Qt window with taskbar icon (recommended for the desktop app):
+PySide6>=6.6 ; platform_system == "Windows"
+# Lightweight alternative native window:
+# pywebview>=5.0
+
+# --- Optional security: encryption at rest ---
+# Without it, ARGO still protects the local key via Windows DPAPI.
+cryptography>=42.0
+
+# --- Optional: icon generation / packaging (build only) ---
+# pillow>=10.0
+# pyinstaller>=6.0
+
+# External runtime (NOT a pip package): install Ollama from https://ollama.com
+#   ollama pull qwen2.5:7b-instruct
+#   ollama pull nomic-embed-text

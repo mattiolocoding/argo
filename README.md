@@ -1,0 +1,157 @@
+<div align="center">
+
+<img src="assets/logo.svg" alt="ARGO" width="96" height="96" />
+
+# ARGO
+
+**A local-first AI that lives on your PC. It watches, remembers, learns, and acts — 100% offline.**
+
+Not a chatbot you query and forget. ARGO perceives what happens on your machine, reasons about it with a local LLM, remembers across sessions, and — only when you allow it — takes action. The longer it works with you, the more useful it gets, because the memory is *yours* and it never leaves your computer.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-22c55e.svg)](LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11+-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![Powered by Ollama](https://img.shields.io/badge/LLM-Ollama-000000.svg?logo=ollama&logoColor=white)](https://ollama.com/)
+[![Platform: Windows](https://img.shields.io/badge/Platform-Windows-0078D6.svg?logo=windows&logoColor=white)](#requirements)
+[![100% local](https://img.shields.io/badge/Privacy-100%25%20local-6366f1.svg)](#privacy)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-8b5cf6.svg)](CONTRIBUTING.md)
+
+</div>
+
+---
+
+## Why ARGO
+
+Most AI today is *rented and amnesiac*: it starts from zero every time, runs on someone else's cloud with your data, and disappears when the server is shut off.
+
+ARGO inverts that:
+
+- **It remembers, forever.** A layered memory (episodic + knowledge graph + semantic vectors) that grows in the direction of *your* life and work.
+- **It runs entirely on your machine.** The reasoning model is [Ollama](https://ollama.com/), local. No account, no API key, no telemetry. Your data never leaves the PC.
+- **It acts under your control.** Three autonomy levels (Observe / Ask / Act), a runtime policy engine, role-based access, a tamper-evident audit log, and one-click rollback of any action.
+
+The real moat isn't the model — it's the **accumulated, private memory**. The longer ARGO works with you, the more irreplaceable it becomes.
+
+## What it does today
+
+ARGO's first craft is being the **keeper of your PC**:
+
+- 👁 **Watches** your folders (Desktop, Downloads, Documents, Images, Music, Video) and reacts to new files.
+- ✋ **Tidies** files by type / date / project, asking for confirmation (or acting on its own, if you tell it to).
+- 🔁 **Spots** duplicates and clutter ("you have 40 PDFs in Downloads").
+- 🧠 **Learns** your habits: it stops proposing what you reject, and starts doing what you always accept.
+- 💾 **Remembers** everything between sessions and builds a graph of relationships.
+- 🔎 **Finds by meaning** through semantic memory (embeddings).
+- 🔌 **Wakes its own brain**: starts Ollama if it's off, reconnects on its own, launches at boot.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    SENSES["👁 Senses<br/>file & system events"] --> BRAIN["🧠 Brain<br/>Ollama, local"]
+    BRAIN --> HANDS["✋ Hands<br/>safe file actions"]
+    HANDS --> MEMORY["💾 Memory<br/>episodic · graph · semantic"]
+    MEMORY --> BRAIN
+    GOV["🏛 Governance<br/>policy · RBAC · audit · rollback"] -.governs.-> HANDS
+    COG["✨ Cognition<br/>world model · goals · deliberation"] -.guides.-> BRAIN
+```
+
+The life loop: **perceive → recall → think → (decide, per autonomy level) → act → verify → remember → repeat**, always, in the background.
+
+| Layer | Module | What it provides |
+|---|---|---|
+| Engine | `motore_web.py` | Headless local API on `127.0.0.1:8773` (stdlib `http.server`, zero web framework) |
+| Brain | `cervello.py`, `modelli.py` | Ollama client + a model mesh that routes by complexity (reflex / reasoner / expert) |
+| Memory | `memoria/` | Episodic diary, knowledge graph, semantic vectors (all SQLite) |
+| Hands | `mani/` | Guard-railed file actions (move / rename / archive), duplicate & clutter detection |
+| Senses | `sensi.py`, `sistema.py` | Active window, network, clipboard *metadata*, disk, processes |
+| Governance | `governo/` | Policy engine, roles (RBAC), hash-chain audit, rollback, metrics, nightly consolidation |
+| Cognition | `cognizione/` | World model, internal journal, long-term goals, best-of-N deliberation |
+| Security | `sicurezza.py` | Sensitive-file protection, secret redaction, tamper-evident audit, DPAPI key protection |
+| UI | `ui/index.html` | Dark, single-file dashboard (Chat / Console / Permissions / Audit) |
+
+## Quickstart
+
+> ARGO targets **Windows** and a local **[Ollama](https://ollama.com/)** install.
+
+```powershell
+# 1. Install Ollama and pull models (chat + embeddings)
+ollama pull qwen2.5:7b-instruct
+ollama pull nomic-embed-text
+
+# 2. Get ARGO
+git clone <your-fork-url> argo
+cd argo
+
+# 3. Create an isolated environment
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+# 4. (Optional) install the native desktop window
+pip install -r requirements.txt
+
+# 5. Run it
+python argo_app.py        # native desktop app (Qt), or:
+python motore_web.py      # engine + window
+```
+
+The engine exposes a local API you can inspect in any browser:
+
+```
+http://127.0.0.1:8773/stato      → live status (brain, memories, folders)
+http://127.0.0.1:8773/console    → full dashboard data
+http://127.0.0.1:8773/audit      → tamper-evident audit log
+```
+
+No models? No window library? ARGO **degrades gracefully**: it still runs, opens in your browser, and tells you what's missing.
+
+## Privacy
+
+ARGO is local by design:
+
+- The LLM runs on your machine via Ollama. **Nothing is sent to any cloud.**
+- The API binds to `127.0.0.1` only.
+- Sensitive files and secrets are **never read, indexed, or moved** — they are detected and skipped.
+- Every action is recorded in a **hash-chained audit log** you can export and verify.
+- The local key is protected with Windows **DPAPI**; encryption at rest is optional.
+
+## Autonomy levels
+
+For each kind of task, *you* decide how much ARGO may dare. The safe default is **Ask**.
+
+| Level | Behavior |
+|---|---|
+| 🟢 **Observe** | Looks and reports. Touches nothing. |
+| 🟡 **Ask** *(default)* | Proposes the action; you approve with one click. |
+| 🔴 **Act** | Does it on its own and tells you afterward. For tasks you trust. |
+
+## Project status
+
+ARGO is **alpha** and Windows-first. The core (memory, brain, hands, governance, engine) runs and is covered by module self-tests; some enterprise layers (deep workflows, fleet/multi-instance, signed packaging) are in progress. See [`STATO_PROGETTO.md`](STATO_PROGETTO.md) for the living status (Italian) and the [roadmap](#roadmap) below.
+
+## Roadmap
+
+- [x] Persistent layered memory (episodic + graph + semantic)
+- [x] Guard-railed file actions with 3 autonomy levels
+- [x] Governance: policy, RBAC, hash-chain audit, rollback, metrics
+- [x] Cognition v0: world model, goals, deliberation
+- [x] Model mesh routing by complexity
+- [ ] End-to-end workflows inside the engine
+- [ ] Temporal knowledge graph (validity over time)
+- [ ] Fleet / multi-instance with a central console
+- [ ] Voice & presence, mobile companion
+- [ ] Signed packaging + auto-update
+
+## Documentation
+
+The design docs live at the repo root (currently in Italian, translations welcome):
+[`PROGETTO_ARGO.md`](PROGETTO_ARGO.md) (the "bible"), [`ARGO_VISIONE_ENTERPRISE.md`](ARGO_VISIONE_ENTERPRISE.md) (vision), [`PIANO_LAVORO.md`](PIANO_LAVORO.md) (work plan), [`SICUREZZA_REPORT.md`](SICUREZZA_REPORT.md) (security report).
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Good first areas: translating docs to English, the workflow engine, the temporal graph, and packaging.
+
+## License
+
+[MIT](LICENSE) — do what you want, keep the notice. ARGO is yours to run, fork, and own.
+
+> Not affiliated with the Argo Project (Argo CD / Workflows).
