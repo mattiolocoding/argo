@@ -20,6 +20,10 @@ All notable changes to ARGO are documented here. Format loosely based on
   image to `ghcr.io/mattiolocoding/argo` on push/tag, with layer caching and semver tags.
 - **Self-contained stack** (`docker-compose.ollama.yml`): runs Ollama in a container too,
   so nothing needs to be preinstalled on the host.
+- **One-command install**: `install.ps1` (Windows) and `install.sh` (Linux/macOS) one-liners,
+  plus a `docker run` one-liner; a new `argo` CLI launcher (`cli.py`) with
+  `argo` / `argo engine` / `argo fleet` / `argo version` subcommands.
+- README revamped for discoverability: install-in-one-command section, CI/Docker badges, star CTA.
 
 ## [0.1.0] — 2026-06-07
 

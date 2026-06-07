@@ -14,6 +14,11 @@ Not a chatbot you query and forget. ARGO perceives what happens on your machine,
 [![Platform: Windows](https://img.shields.io/badge/Platform-Windows-0078D6.svg?logo=windows&logoColor=white)](#requirements)
 [![100% local](https://img.shields.io/badge/Privacy-100%25%20local-6366f1.svg)](#privacy)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-8b5cf6.svg)](CONTRIBUTING.md)
+<br/>
+[![CI](https://github.com/mattiolocoding/argo/actions/workflows/ci.yml/badge.svg)](https://github.com/mattiolocoding/argo/actions/workflows/ci.yml)
+[![Docker image](https://github.com/mattiolocoding/argo/actions/workflows/docker.yml/badge.svg)](https://github.com/mattiolocoding/argo/actions/workflows/docker.yml)
+
+⭐ **If ARGO resonates with you, [star the repo](https://github.com/mattiolocoding/argo) — it helps others find it.**
 
 </div>
 
@@ -24,6 +29,41 @@ Not a chatbot you query and forget. ARGO perceives what happens on your machine,
 <br/>
 <sub>ARGO watching the PC, proposing a file action, and waiting for your one-click approval.</sub>
 </div>
+
+---
+
+## Install in one command
+
+**Windows** (PowerShell) — sets everything up and launches the desktop app:
+
+```powershell
+irm https://raw.githubusercontent.com/mattiolocoding/argo/main/install.ps1 | iex
+```
+
+**Docker** (any OS) — run the engine, open the UI in your browser:
+
+```bash
+docker run -p 8780:8773 --add-host=host.docker.internal:host-gateway ghcr.io/mattiolocoding/argo:latest
+# then open http://127.0.0.1:8780
+```
+
+**Linux / macOS** (engine):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/mattiolocoding/argo/main/install.sh | bash
+```
+
+After installing, the `argo` command is on your PATH:
+
+```
+argo            # desktop app (default)
+argo engine     # headless engine (server / container)
+argo fleet      # aggregated status across instances
+argo version
+```
+
+> ARGO needs a local [Ollama](https://ollama.com) for its brain. The installer pulls the
+> models for you; the Docker engine talks to your host's Ollama. Everything stays on your machine.
 
 ---
 
@@ -87,8 +127,9 @@ The life loop: **perceive → recall → think → (decide, per autonomy level) 
 | Security | `sicurezza.py` | Sensitive-file protection, secret redaction, tamper-evident audit, DPAPI key protection |
 | UI | `ui/index.html` | Dark, single-file dashboard (Chat / Console / Permissions / Audit) |
 
-## Quickstart
+## Manual setup (from source)
 
+> Prefer the [one-command install](#install-in-one-command) above. This is the manual path.
 > ARGO targets **Windows** and a local **[Ollama](https://ollama.com/)** install.
 
 ```powershell
