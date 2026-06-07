@@ -231,11 +231,13 @@ ARGO is **alpha** and Windows-first. The core (memory, brain, hands, governance,
 - [x] Governance: policy, RBAC, hash-chain audit, rollback, metrics
 - [x] Cognition v0: world model, goals, deliberation
 - [x] Model mesh routing by complexity
-- [ ] End-to-end workflows inside the engine
-- [ ] Temporal knowledge graph (validity over time)
-- [ ] Fleet / multi-instance with a central console
-- [ ] Voice & presence, mobile companion
-- [ ] Signed packaging + auto-update
+- [x] End-to-end workflows inside the engine (with human approval gates)
+- [x] Temporal knowledge graph (edge validity over time, `as-of` queries)
+- [x] Fleet / multi-instance with a central console (`/flotta/console`)
+- [x] Mobile companion (installable PWA) · voice output (offline TTS) — *voice input (STT) still a stub*
+- [x] Update check (vs GitHub Releases) · packaging signature — *self-signed for now, not CA-trusted*
+- [ ] Real voice input (STT) and richer presence
+- [ ] CA-trusted signing + true auto-update installer
 
 ## Documentation
 
