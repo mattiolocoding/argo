@@ -8,40 +8,57 @@
 <style>
 /* ============================================================
    ARGO — Console centrale della flotta (file singolo)
-   Tema scuro indaco, coerente col brand. Nessuna dipendenza.
+   Stesso sistema di design di index.html: navy profondo, accenti
+   indaco→violetto, scala tipografica e ritmo coerenti. Nessuna
+   dipendenza esterna.
    ============================================================ */
 :root {
-  --bg:    #0a0f1d;
+  --bg:    #080c14;       /* identico a index.html */
   --bg2:   #0e1525;
   --card:  #111827;
   --card2: #141e31;
   --bd:    #1e2d45;
   --bd2:   #263550;
-  --tx:    #e8edf5;
-  --tx2:   #aab6c9;
-  --mut:   #8492a8;
+  --tx:    #e8edf5;       /* corpo testo: >7:1 sul card */
+  --tx2:   #aab6c9;       /* secondario: ~6.6:1 sul bg */
+  --mut:   #8492a8;       /* attenuato ma leggibile: ~4.6:1 */
   --acc1:  #6366f1;
   --acc2:  #8b5cf6;
-  --acc-tx:#a5b4fc;
+  --acc-tx:#a5b4fc;       /* accento su scuro, alto contrasto */
   --ok:    #22c55e;
+  --err:   #f87171;
   --off:   #6b7689;
+  --glow:  rgba(99,102,241,.18);
   --focus: #a5b4fc;
   --rad:   14px;
-  --trans: .18s cubic-bezier(.22,1,.36,1);
+  --trans: .18s cubic-bezier(.22,1,.36,1);   /* ease-out-quint */
+  --ease:  cubic-bezier(.22,1,.36,1);
 }
 
-* { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
 html, body {
   margin: 0;
+  min-height: 100%;
   background:
     radial-gradient(1200px 500px at 80% -10%, rgba(139,92,246,.10), transparent 60%),
     radial-gradient(900px 500px at -10% 0%, rgba(99,102,241,.12), transparent 55%),
     var(--bg);
+  background-attachment: fixed;
   color: var(--tx);
-  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  letter-spacing: .005em;   /* compensa testo chiaro su fondo scuro */
+  font-kerning: normal;
 }
+h1, h2, .titoli p { text-wrap: balance; }
+
+/* ---------- Scrollbar custom (come index.html) ---------- */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bd2); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #3a4f70; }
 
 /* ---------- Focus visibile (a11y) ---------- */
 :focus-visible {
@@ -57,185 +74,233 @@ html, body {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
 .wrap {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 28px 20px 60px;
+  padding: 28px 20px 56px;
 }
 
-/* ---------- Header ---------- */
+/* Ingresso discreto: il contenuto è già visibile, l'animazione
+   lo rifinisce soltanto (mai gate sulla visibilità). */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+.enter { animation: rise .5s var(--ease) both; }
+.enter.d1 { animation-delay: .05s; }
+.enter.d2 { animation-delay: .12s; }
+.enter.d3 { animation-delay: .19s; }
+
+/* ---------- Header (allineato a index.html) ---------- */
 header.top {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 26px;
+  gap: 12px;
+  margin-bottom: 28px;
 }
 .logo {
-  width: 42px; height: 42px;
-  border-radius: 12px;
+  width: 38px; height: 38px;
+  border-radius: 11px;
   background: linear-gradient(135deg, var(--acc1), var(--acc2));
-  flex: none;
-  box-shadow: 0 6px 20px rgba(99,102,241,.35);
+  flex: 0 0 auto;
+  box-shadow: 0 0 0 1px rgba(99,102,241,.25), 0 4px 14px rgba(0,0,0,.4);
 }
 .titoli h1 {
   margin: 0;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 700;
   letter-spacing: .3px;
+  line-height: 1.25;
 }
 .titoli p {
-  margin: 2px 0 0;
+  margin: 3px 0 0;
   color: var(--tx2);
-  font-size: 13px;
+  font-size: 12.5px;
 }
 .aggiorna {
   margin-left: auto;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: var(--mut);
-  font-size: 12.5px;
+  gap: 7px;
+  color: var(--tx2);
+  font-size: 11.5px;
+  border: 1px solid var(--bd);
+  background: var(--card);
+  border-radius: 999px;
+  padding: 5px 11px;
+  white-space: nowrap;
+  transition: var(--trans);
 }
 .live {
-  width: 9px; height: 9px;
+  width: 7px; height: 7px;
   border-radius: 50%;
   background: var(--ok);
-  box-shadow: 0 0 0 0 rgba(34,197,94,.5);
-  animation: pulse 2s infinite;
+  box-shadow: 0 0 0 3px rgba(34,197,94,.18);   /* alone discreto = vivo */
+  animation: pulse-dot 1.6s ease infinite;
+  flex: 0 0 auto;
 }
-@keyframes pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(34,197,94,.5); }
-  70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
-  100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+@keyframes pulse-dot {
+  0%,100% { opacity: 1; } 50% { opacity: .4; }
 }
-.live.spenta { background: var(--off); animation: none; }
+.live.spenta {
+  background: var(--off);
+  box-shadow: 0 0 0 3px rgba(107,118,137,.16);
+  animation: none;
+}
 
 /* ---------- Schede metriche ---------- */
 .metriche {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 14px;
-  margin-bottom: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  margin-bottom: 30px;
 }
 .metrica {
-  background: linear-gradient(180deg, var(--card2), var(--card));
+  background: var(--card);
   border: 1px solid var(--bd);
   border-radius: var(--rad);
-  padding: 16px 18px;
+  padding: 15px 16px;
+  transition: border-color var(--trans);
 }
+.metrica:hover { border-color: var(--bd2); }
 .metrica .etich {
   color: var(--mut);
-  font-size: 12px;
+  font-size: 10px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .6px;
+  letter-spacing: .8px;
 }
 .metrica .val {
-  font-size: 30px;
-  font-weight: 650;
-  margin-top: 6px;
-  background: linear-gradient(135deg, var(--acc-tx), #c7b6ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 8px;
+  color: var(--tx);
+  font-variant-numeric: tabular-nums;
 }
-.metrica .sotto { color: var(--tx2); font-size: 12.5px; margin-top: 2px; }
+.metrica .sotto { color: var(--tx2); font-size: 12px; margin-top: 4px; }
 
 /* ---------- Lista istanze ---------- */
-section.istanze h2 {
-  font-size: 14px;
+.section-title {
+  font-size: 10px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .7px;
-  color: var(--tx2);
-  margin: 0 0 12px;
+  letter-spacing: .8px;
+  color: var(--mut);
+  margin: 0 0 10px;
 }
 .griglia {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 14px;
+  gap: 12px;
 }
 .istanza {
   background: var(--card);
   border: 1px solid var(--bd);
   border-radius: var(--rad);
-  padding: 16px;
-  transition: border-color var(--trans), transform var(--trans);
+  padding: 15px 16px;
+  transition: border-color var(--trans);
 }
-.istanza:hover { border-color: var(--bd2); transform: translateY(-2px); }
+.istanza:hover { border-color: var(--bd2); }
 .istanza .riga1 {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 7px;
 }
 .istanza .nome {
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
+  color: var(--tx);
 }
 .badge {
   margin-left: auto;
-  font-size: 11.5px;
+  font-size: 10.5px;
   font-weight: 600;
-  padding: 3px 10px;
+  padding: 3px 9px;
   border-radius: 999px;
   border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
-.badge.on  { color: #bbf7d0; background: rgba(34,197,94,.14);  border-color: rgba(34,197,94,.35); }
-.badge.off { color: #c4cdda; background: rgba(107,118,137,.16); border-color: rgba(107,118,137,.35); }
+.badge::before {
+  content: "";
+  width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor;
+}
+.badge.on  { color: #4ade80; background: rgba(34,197,94,.12);  border-color: rgba(34,197,94,.25); }
+.badge.on::before { animation: pulse-dot 1.6s ease infinite; }
+.badge.off { color: #c4cdda; background: rgba(107,118,137,.14); border-color: rgba(107,118,137,.3); }
 .istanza .base {
   color: var(--acc-tx);
-  font-size: 12.5px;
+  font-size: 12px;
   word-break: break-all;
 }
 .istanza .meta {
   display: flex;
-  gap: 16px;
-  margin-top: 10px;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 11px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.04);
   color: var(--tx2);
-  font-size: 12.5px;
+  font-size: 12px;
 }
-.istanza .meta b { color: var(--tx); font-weight: 600; }
-.istanza.errore { border-color: rgba(248,113,113,.4); }
-.istanza .err { color: #f8b4b4; font-size: 12px; margin-top: 8px; }
+.istanza .meta b { color: var(--tx); font-weight: 600; font-variant-numeric: tabular-nums; }
+.istanza.errore { border-color: rgba(248,113,113,.3); }
+.istanza .err { color: #fca5a5; font-size: 11.5px; margin-top: 8px; }
 
 .vuoto, .stato-msg {
+  grid-column: 1 / -1;
   color: var(--mut);
   text-align: center;
-  padding: 30px 10px;
-  font-size: 13.5px;
+  padding: 34px 16px;
+  font-size: 13px;
+  border: 1px dashed var(--bd);
+  border-radius: var(--rad);
+  background: rgba(17,24,39,.4);
 }
 
 footer.pie {
-  margin-top: 32px;
+  margin-top: 34px;
   text-align: center;
   color: var(--mut);
-  font-size: 12px;
+  font-size: 11.5px;
 }
-footer.pie a { color: var(--acc-tx); text-decoration: none; }
+footer.pie a { color: var(--acc-tx); text-decoration: none; transition: var(--trans); }
 footer.pie a:hover { text-decoration: underline; }
+
+@media (max-width: 520px) {
+  .wrap { padding: 22px 16px 48px; }
+  .metriche { gap: 10px; }
+}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header class="top">
+  <header class="top enter">
     <div class="logo" aria-hidden="true"></div>
     <div class="titoli">
       <h1>Console della flotta</h1>
-      <p>Panoramica in tempo reale delle istanze ARGO</p>
+      <p>Stato in tempo reale delle istanze ARGO</p>
     </div>
-    <div class="aggiorna">
+    <div class="aggiorna" role="status" aria-live="polite">
       <span id="live" class="live spenta" aria-hidden="true"></span>
-      <span id="agg">in attesa…</span>
+      <span id="agg">In attesa del primo aggiornamento…</span>
     </div>
   </header>
 
-  <div class="metriche" id="metriche" aria-live="polite">
+  <div class="metriche enter d1" id="metriche" aria-live="polite">
     <div class="metrica">
       <div class="etich">Istanze</div>
       <div class="val" id="m-totale">·</div>
-      <div class="sotto"><span id="m-online">0</span> online</div>
+      <div class="sotto"><span id="m-online">0</span> online ora</div>
     </div>
     <div class="metrica">
       <div class="etich">Ricordi</div>
@@ -254,15 +319,15 @@ footer.pie a:hover { text-decoration: underline; }
     </div>
   </div>
 
-  <section class="istanze">
-    <h2>Istanze</h2>
-    <div class="griglia" id="griglia">
+  <section class="istanze enter d2">
+    <h2 class="section-title">Istanze</h2>
+    <div class="griglia" id="griglia" aria-live="polite" aria-busy="true">
       <div class="stato-msg">Carico la flotta…</div>
     </div>
   </section>
 
-  <footer class="pie">
-    ARGO · <a href="/">torna all'interfaccia</a>
+  <footer class="pie enter d3">
+    ARGO · <a href="/">Torna all'interfaccia</a>
   </footer>
 
 </div>
@@ -328,11 +393,14 @@ function rendi(d) {
 
   const griglia = $("griglia");
   griglia.innerHTML = "";
+  griglia.setAttribute("aria-busy", "false");
   const lista = Array.isArray(d.istanze) ? d.istanze : [];
   if (!lista.length) {
     const v = document.createElement("div");
     v.className = "vuoto";
-    v.textContent = d.errore ? ("Flotta non disponibile: " + d.errore) : "Nessuna istanza registrata.";
+    v.textContent = d.errore
+      ? ("Flotta non disponibile: " + d.errore)
+      : "Nessuna istanza registrata. Le istanze ARGO appariranno qui appena si collegano.";
     griglia.appendChild(v);
     return;
   }
@@ -348,11 +416,11 @@ async function tick() {
     const d = await r.json();
     rendi(d);
     $("live").classList.remove("spenta");
-    $("agg").textContent = "aggiornato alle " + ora();
+    $("agg").textContent = "Aggiornato alle " + ora();
   } catch (e) {
     // Degrada con grazia: segnala lo stato senza svuotare la vista.
     $("live").classList.add("spenta");
-    $("agg").textContent = "offline, riprovo…";
+    $("agg").textContent = "Non raggiungibile, riprovo…";
   }
 }
 

@@ -1590,7 +1590,7 @@ async function caricaConsole() {
       <div class="card">
         <h3>Timeline e lacune</h3>
         <p style="margin:0 0 10px;color:var(--mut);font-size:12px;">${escHtml(cons.sintesi || "La giornata non è ancora stata consolidata.")}</p>
-        <ul style="margin:0;padding-left:18px;color:var(--txt);font-size:12px;line-height:1.55;">${listaLacune}</ul>
+        <ul style="margin:0;padding-left:18px;color:var(--tx2);font-size:12px;line-height:1.55;">${listaLacune}</ul>
       </div>
       <div class="card">
         <h3>Pensiero analitico</h3>
@@ -1744,7 +1744,7 @@ async function caricaFlotta() {
   const righe = istanze.length ? istanze.map(i => `
     <div class="audit-row">
       <span class="ev">${escHtml(i.nome || i.id || "?")}<br><small style="color:var(--mut)">${escHtml(i._base || "")}${i.versione ? (" · v" + escHtml(i.versione)) : ""}</small></span>
-      <span class="tp" style="color:${i._online ? "var(--ok)" : "var(--err)"}">${i._online ? "online" : "offline"}</span>
+      <span class="tp" style="color:${i._online ? "var(--ok)" : "var(--mut)"}">${i._online ? "online" : "offline"}</span>
     </div>`).join("") : `<p style="color:var(--mut);font-size:12px;margin:8px 0 0;">Nessuna istanza.</p>`;
   el.innerHTML = testa + `<div style="margin-top:8px;">${righe}</div>`;
 }

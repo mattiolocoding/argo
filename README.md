@@ -99,6 +99,10 @@ ARGO's first craft is being the **keeper of your PC**:
 <img src="assets/screenshot-flotta.png" alt="ARGO Fleet card — aggregated multi-instance status" width="430" />
 <br/>
 <sub>Left: the operational Console (metrics · memory · cognition). Right: the Fleet card — three ARGO instances running in Docker, aggregated live.</sub>
+<br/><br/>
+<img src="assets/screenshot-flotta-console.png" alt="ARGO central fleet console" width="660" />
+<br/>
+<sub>The central fleet console (<code>/flotta/console</code>): real-time aggregated status across every instance.</sub>
 </div>
 
 ## Architecture
