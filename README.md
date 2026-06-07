@@ -240,7 +240,7 @@ ARGO is **alpha** and Windows-first. The core (memory, brain, hands, governance,
 - [x] Fleet / multi-instance with a central console (`/flotta/console`)
 - [x] Mobile companion (installable PWA) · voice in & out (offline TTS + STT via Vosk)
 - [x] Update check (vs GitHub Releases) · packaging signature — *self-signed for now, not CA-trusted*
-- [ ] Richer presence (wake word, continuous listening)
+- [x] Voice presence: wake-word + continuous listening (off by default, privacy-first)
 - [ ] CA-trusted signing + true auto-update installer
 
 ## Documentation

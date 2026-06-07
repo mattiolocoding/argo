@@ -160,6 +160,9 @@ class Motore:
         except Exception as e:
             print("[MOTORE] workflow:", e)
 
+        # presenza vocale (ascolto continuo + wake-word): off di default (privacy)
+        self.presenza = None
+
         # permessi (cosa ARGO può vedere) — caricati in modo sicuro
         self.permessi = None
         try:
@@ -608,6 +611,40 @@ class Motore:
             return f.panoramica()
         except Exception as e:
             return {"totale": 0, "online": 0, "istanze": [], "errore": str(e)[:140]}
+
+    def _on_comando_vocale(self, testo):
+        """Comando vocale udito dopo la wake-word: lo passa alla chat e risponde a voce."""
+        try:
+            risp = (self.chat(testo) or {}).get("risposta", "")
+            if risp:
+                import voce
+                voce.parla(risp)
+        except Exception:
+            pass
+
+    def presenza_imposta(self, attiva):
+        """Attiva/disattiva l'ascolto continuo con wake-word (off di default per privacy)."""
+        try:
+            if self.presenza is None:
+                from presenza import Presenza
+                self.presenza = Presenza(on_comando=self._on_comando_vocale)
+            r = self.presenza.avvia() if attiva else self.presenza.ferma()
+            try:
+                self.audit.registra("presenza", "attivata" if attiva else "fermata")
+            except Exception:
+                pass
+            return r
+        except Exception as e:
+            return {"ok": False, "motivo": str(e)[:140]}
+
+    def presenza_stato(self):
+        try:
+            if self.presenza is None:
+                from presenza import Presenza
+                return {"attiva": False, "disponibile": Presenza().disponibile(), "wake": "argo"}
+            return self.presenza.stato()
+        except Exception as e:
+            return {"attiva": False, "disponibile": False, "errore": str(e)[:140]}
 
     def _contesto_reale(self):
         """Costruisce i DATI REALI per la chat: solo cose vere dalla memoria."""
@@ -1264,6 +1301,8 @@ def crea_handler(m):
                 self._json(m.identita())
             elif self.path.startswith("/flotta"):
                 self._json(m.flotta())
+            elif self.path.startswith("/presenza"):
+                self._json(m.presenza_stato())
             elif self.path.startswith("/workflow"):
                 self._json(m.workflow_stato())
             elif self.path.startswith("/console"):
@@ -1322,6 +1361,11 @@ def crea_handler(m):
                     self._json(voce.ascolta(secondi))
                 except Exception as e:
                     self._json({"ok": False, "motivo": str(e)[:140], "testo": ""})
+            elif self.path.startswith("/presenza"):
+                # Ascolto continuo + wake-word: on/off esplicito (privacy).
+                b = self._body()
+                if b.get("_errore"): self._json({"ok": False, "messaggio": b["_errore"]}, 413); return
+                self._json(m.presenza_imposta(bool(b.get("attiva"))))
             elif self.path.startswith("/ricerca"):
                 b = self._body()
                 if b.get("_errore"): self._json({"ok": False, "messaggio": b["_errore"]}, 413); return
