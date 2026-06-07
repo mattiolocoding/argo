@@ -35,7 +35,8 @@ jobs:
           $tests = @(
             "memoria\memoria.py","memoria\grafo.py","mani\mani.py","config\impostazioni.py",
             "sicurezza.py","sistema.py","governo\policy.py","governo\ruoli.py","governo\lacune.py",
-            "governo\skill_registry.py","governo\sandbox_skill.py","governo\validator.py","workflow.py"
+            "governo\skill_registry.py","governo\sandbox_skill.py","governo\validator.py","workflow.py",
+            "test_fleet.py"
           )
           $fail = $false
           foreach ($t in $tests) {
