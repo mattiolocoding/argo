@@ -198,6 +198,22 @@ ARGO (app desktop locale)
     `fai_icona.py` (svg→ico), `primo_avvio.py`, `installer.iss`.
   - Creato `RICHIESTE_VS_IMPLEMENTATO.md` (mappa richieste↔stato).
 
+- **2026-06-07** — sessione "migliora + impeccable + scala + open source":
+  - **Ambiente**: installato Python 3.11.9 + `.venv` dedicato; impeccable in `.claude/skills`; git inizializzato.
+  - **Verifica base**: compila tutto, 17 self-test moduli OK, motore vivo, tutti gli endpoint 200
+    (inclusi `/console` e `/audit`: i bug dei resoconti risultano già risolti).
+  - **Fix model-mesh** (`modelli.py`): esclusi i modelli di *embedding* (bge-m3, nomic) dai ruoli
+    chat; 14b→grande. Ora riflesso=qwen2.5:7b, ragionatore=llama3.1:8b, esperto=qwen2.5:14b.
+  - **Frontend impeccable** (`ui/index.html`): polish (anti-pattern detector 2→0): contrasto WCAG,
+    tipografia, motion + `prefers-reduced-motion`, focus-visible/ARIA, lighting intenzionale.
+    Selettori JS e 27 endpoint preservati.
+  - **Scaling orizzontale (flotta)**: `fleet.py` + endpoint `/identita` e `/flotta`; HOST/PORT/identità
+    configurabili da ambiente. Verificato dal vivo con 2 istanze (8773+8774) → flotta vede 2 online.
+  - **Scaling verticale**: confermato che il workflow engine è già integrato nel motore
+    (`/workflow`, `/workflow/avvia`, `/workflow/approva` con audit+timeline).
+  - **Open source**: README (EN), LICENSE (MIT), CONTRIBUTING, SECURITY, CoC, CI GitHub Actions,
+    issue/PR template, PRODUCT.md. (Non ancora pushato.)
+
 ## Mancano ancora (verso la visione piena)
 Workflow profondi nel motore, KG temporale serio, fleet/multi-istanza, mobile/voce,
 packaging firmato + auto-update, apprendimento federato, marketplace skill. Sono i
